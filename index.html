@@ -7,14 +7,14 @@
   <title>MONO | Home</title>
   <meta name="title" content="MONO | Home" />
   <meta name="description"
-    content="Exploring the boundaries of web design with only typography, black, white, and shades of gray in between." />
+    content="A monochrome design system: typography, black, white, and the grays between. Components, type specimens, and a live customizer." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mono.layogtima.com/" />
   <meta property="og:title" content="MONO | Home" />
   <meta property="og:description"
-    content="Exploring the boundaries of web design with only typography, black, white, and shades of gray in between." />
+    content="A monochrome design system: typography, black, white, and the grays between. Components, type specimens, and a live customizer." />
   <meta property="og:image" content="https://mono.layogtima.com/images/screenshot.png" />
 
   <!-- Twitter -->
@@ -22,7 +22,7 @@
   <meta property="twitter:url" content="https://mono.layogtima.com/" />
   <meta property="twitter:title" content="MONO | Home" />
   <meta property="twitter:description"
-    content="Exploring the boundaries of web design with only typography, black, white, and shades of gray in between." />
+    content="A monochrome design system: typography, black, white, and the grays between. Components, type specimens, and a live customizer." />
   <meta property="twitter:image" content="https://mono.layogtima.com/images/screenshot.png" />
 
   <!-- Favicons -->
@@ -35,420 +35,268 @@
   <meta name="apple-mobile-web-app-title" content="Amit" />
   <link rel="manifest" href="https://mono.layogtima.com/images/favicon/site.webmanifest" />
 
-  <!-- Meta Tags Generated with https://metatags.io -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            mono: ["Space Mono", "monospace"],
-          },
-          animation: {
-            "text-slide": "text-slide 12s linear infinite",
-            "pulse-slow": "pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-          },
-          keyframes: {
-            "text-slide": {
-              "0%, 100%": { transform: "translateX(0%)" },
-              "50%": { transform: "translateX(-20%)" },
-            },
-          },
-        },
-      },
-    };
-  </script>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
-    * {
-      font-family: "Space Mono", monospace;
-    }
-
-    .animate-scroll {
-      animation: scroll 20s linear infinite;
-    }
-
-    @keyframes scroll {
-      0% {
-        transform: translateX(100%);
-      }
-
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    .diagonal-stripes {
-      background-image: repeating-linear-gradient(45deg,
-          #000,
-          #000 5px,
-          #fff 5px,
-          #fff 10px);
-    }
-
-    .noisy-bg {
-      position: relative;
-    }
-
-    .noisy-bg::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      z-index: -1;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-  </style>
+  <script src="js/mono-config.js"></script>
+  <link rel="stylesheet" href="css/mono.css" />
+  <script src="js/mono.js" defer></script>
 </head>
 
-<body class="bg-white text-black min-h-screen flex flex-col">
-  <!-- Navigation -->
-  <nav class="fixed w-full px-4 py-3 flex justify-between items-center z-50 bg-white border-b border-gray-900">
-    <a href="index.html" class="text-xl font-bold tracking-normal">MONO<span class="text-xs align-text-top"></span></a>
-    <div class="flex gap-6">
-      <a href="typography.html" class="text-sm hover:underline decoration-4 underline-offset-8">TYPOGRAPHY</a>
-      <a href="layout.html" class="text-sm hover:underline decoration-4 underline-offset-8">LAYOUT</a>
-      <a href="gallery.html" class="text-sm hover:underline decoration-4 underline-offset-8">GALLERY</a>
-      <a href="about.html" class="text-sm hover:underline decoration-4 underline-offset-8">ABOUT</a>
-    </div>
-  </nav>
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
+    Skip to content
+  </a>
 
-  <!-- Hero Section -->
-  <header class="h-screen flex flex-col justify-center items-center pt-16 relative overflow-hidden">
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="w-full h-full">
-        <div class="diagonal-stripes w-96 h-96 rounded-full absolute -right-12 -top-12 opacity-10"></div>
-        <div class="w-64 h-64 rounded-full border-8 border-gray-200 absolute left-20 bottom-20"></div>
-        <div class="w-32 h-32 bg-black absolute left-48 top-48"></div>
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+    <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
+      <a href="index.html" class="text-step-1 font-bold" aria-current="page">MONO</a>
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="components.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">COMPONENTS</a>
+          <a href="typography.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">TYPOGRAPHY</a>
+          <a href="layout.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">LAYOUT</a>
+          <a href="gallery.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">GALLERY</a>
+          <a href="customizer.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">CUSTOMIZER</a>
+          <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
+          <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
+        </div>
+        <button type="button" data-mono-invert
+          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+          title="Swap ink and paper">INVERT</button>
+        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden text-step--1 font-bold">MENU</button>
       </div>
-    </div>
-    <div class="z-10 px-8 max-w-4xl">
-      <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-none">
-        MONO<span class="text-xs align-super">CHROME</span>
-      </h1>
-      <p class="text-lg md:text-xl max-w-lg">
-        Exploring the boundaries of web design with only typography, black,
-        white, and shades of gray in between.
-      </p>
-      <div class="mt-12">
-        <a href="#explore"
-          class="bg-black text-white px-8 py-3 text-sm uppercase tracking-widest inline-block hover:bg-gray-800 transition-colors">Explore</a>
-      </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Marquee Text -->
-  <div class="bg-black text-white py-3 overflow-hidden whitespace-nowrap">
-    <div class="animate-scroll inline-block">
-      <span class="text-xl mx-4">LIMITATIONS BREED CREATIVITY</span>
-      <span class="text-xl mx-4">•</span>
-      <span class="text-xl mx-4">BLACK & WHITE AND NO MORE</span>
-      <span class="text-xl mx-4">•</span>
-      <span class="text-xl mx-4">TYPOGRAPHY IS THE VOICE OF DESIGN</span>
-      <span class="text-xl mx-4">•</span>
-      <span class="text-xl mx-4">FORM FOLLOWS FUNCTION</span>
-      <span class="text-xl mx-4">•</span>
-    </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
+    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
+      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
+      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
+      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
+      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
+      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
+      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
+      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
+    </ul>
   </div>
 
-  <!-- Explore Section -->
-  <section id="explore" class="py-24 px-8">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-5xl font-bold mb-16">
-        EX<span class="text-xs align-super">PLORE</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <!-- Typography Card -->
-        <a href="typography.html" class="group">
-          <div
-            class="border-2 border-black p-6 h-96 flex flex-col justify-between transition-all duration-300 group-hover:bg-black group-hover:text-white relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-16 h-16 bg-black group-hover:bg-white transition-all duration-300">
-            </div>
-            <h3 class="text-3xl font-bold z-10">
-              TYPO<span class="text-xs align-super">GRAPHY</span>
-            </h3>
-            <p class="z-10">
-              Exploring the limits of expression with a single font.
-            </p>
-            <div
-              class="text-xs self-end uppercase tracking-widest mt-4 group-hover:underline decoration-2 underline-offset-4 z-10">
-              Explore →
-            </div>
-          </div>
-        </a>
-
-        <!-- Layout Card -->
-        <a href="layout.html" class="group">
-          <div
-            class="border-2 border-black p-6 h-96 flex flex-col justify-between transition-all duration-300 group-hover:bg-black group-hover:text-white">
-            <div class="absolute top-0 left-0 w-24 h-1 bg-black group-hover:bg-white transition-all duration-300"></div>
-            <h3 class="text-3xl font-bold z-10">
-              LAY<span class="text-xs align-super">OUT</span>
-            </h3>
-            <p class="z-10">
-              Breaking conventional grid systems with monochromatic precision.
-            </p>
-            <div
-              class="text-xs self-end uppercase tracking-widest mt-4 group-hover:underline decoration-2 underline-offset-4">
-              Explore →
-            </div>
-          </div>
-        </a>
-
-        <!-- Gallery Card -->
-        <a href="gallery.html" class="group">
-          <div
-            class="border-2 border-black p-6 h-96 flex flex-col justify-between transition-all duration-300 group-hover:bg-black group-hover:text-white">
-            <h3 class="text-3xl font-bold">
-              GALL<span class="text-xs align-super">ERY</span>
-            </h3>
-            <p>Creative solutions in a monochromatic world.</p>
-            <div
-              class="text-xs self-end uppercase tracking-widest mt-4 group-hover:underline decoration-2 underline-offset-4">
-              Explore →
-            </div>
-          </div>
-        </a>
-
-        <!-- About Card -->
-        <a href="about.html" class="group">
-          <div
-            class="border-2 border-black p-6 h-96 flex flex-col justify-between transition-all duration-300 group-hover:bg-black group-hover:text-white noisy-bg">
-            <h3 class="text-3xl font-bold">
-              AB<span class="text-xs align-super">OUT</span>
-            </h3>
-            <p>The philosophy behind designing within constraints.</p>
-            <div
-              class="text-xs self-end uppercase tracking-widest mt-4 group-hover:underline decoration-2 underline-offset-4">
-              Explore →
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Built With Section -->
-  <section class="py-24 px-8 bg-black text-white">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-5xl font-bold mb-16 transform rotate-0.5">
-        BUILT<span class="text-xs align-super"> WITH</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- layogtima.COM -->
-        <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer"
-          class="block group relative transform rotate-0.5">
-          <div
-            class="border-2 border-white p-6 h-64 flex flex-col justify-between transition-all duration-300 relative overflow-hidden">
-            <div class="absolute top-0 right-0 h-1 w-full bg-white"></div>
-
-            <h3 class="text-2xl font-bold">
-              LAYOG<span class="text-xs align-super">TIMA.COM</span>
-            </h3>
-
-            <p class="text-sm my-4">
-              Amit's portfolio showcasing UI/UX design, hardware consulting,
-              and flow artistry.
-            </p>
-
-            <div class="flex justify-between items-end">
-              <div class="flex gap-2">
-                <span class="text-xs border border-white px-2 py-1 inline-block">Minimal</span>
-                <span class="text-xs border border-white px-2 py-1 inline-block">Portfolio</span>
-              </div>
-              <div class="text-xs uppercase tracking-widest underline decoration-2 underline-offset-4">
-                Visit →
-              </div>
-            </div>
-
-            <div class="absolute bottom-0 left-0 h-1 w-full bg-white"></div>
-            <div
-              class="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-white z-0 transform rotate-3">
-            </div>
-          </div>
-        </a>
-
-        <!-- sm0.dev/ -->
-        <a href="https://www.sm0.dev/" target="_blank" rel="noopener noreferrer"
-          class="block group relative transform rotate-0.5">
-          <div
-            class="border-2 border-white p-6 h-64 flex flex-col justify-between transition-all duration-300 relative overflow-hidden">
-            <div class="absolute top-0 right-0 h-1 w-full bg-white"></div>
-
-            <h3 class="text-2xl font-bold">
-              SM0<span class="text-xs align-super">.DEV</span>
-            </h3>
-
-            <p class="text-sm my-4">
-              Shreshth's portfolio showcasing web development, visualizations,
-              outdoors, and his philosophy in life!
-            </p>
-
-            <div class="flex justify-between items-end">
-              <div class="flex gap-2">
-                <span class="text-xs border border-white px-2 py-1 inline-block">Minimal</span>
-                <span class="text-xs border border-white px-2 py-1 inline-block">Portfolio</span>
-              </div>
-              <div class="text-xs uppercase tracking-widest underline decoration-2 underline-offset-4">
-                Visit →
-              </div>
-            </div>
-
-            <div class="absolute bottom-0 left-0 h-1 w-full bg-white"></div>
-            <div
-              class="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-white z-0 transform rotate-3">
-            </div>
-          </div>
-        </a>
-
-        <!-- seeds.layogtima.com -->
-        <a href="https://seeds.layogtima.com/" target="_blank" rel="noopener noreferrer"
-          class="block group relative transform rotate-0.5">
-          <div
-            class="border-2 border-white p-6 h-64 flex flex-col justify-between transition-all duration-300 relative overflow-hidden">
-            <div class="absolute top-0 right-0 h-1 w-full bg-white"></div>
-
-            <h3 class="text-2xl font-bold">
-              SEEDS<span class="text-xs align-super">.LAYOGTIMA.COM</span>
-            </h3>
-
-            <p class="text-sm my-4">
-              Personal guide to growing food in Bengaluru. Plant what thrives
-              now, harvest what you love!
-            </p>
-
-            <div class="flex justify-between items-end">
-              <div class="flex gap-2">
-                <span class="text-xs border border-white px-2 py-1 inline-block">Webapp</span>
-                <span class="text-xs border border-white px-2 py-1 inline-block">Interactive</span>
-              </div>
-              <div class="text-xs uppercase tracking-widest underline decoration-2 underline-offset-4">
-                Visit →
-              </div>
-            </div>
-
-            <div class="absolute bottom-0 left-0 h-1 w-full bg-white"></div>
-            <div
-              class="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-white z-0 transform rotate-3">
-            </div>
-          </div>
-        </a>
-
-        <a href="https://india.xonotic.au/" target="_blank" rel="noopener noreferrer"
-          class="block group relative transform rotate-0.5">
-          <div
-            class="border-2 border-white p-6 h-64 flex flex-col justify-between transition-all duration-300 relative overflow-hidden">
-            <div class="absolute top-0 right-0 h-1 w-full bg-white"></div>
-
-            <h3 class="text-2xl font-bold">
-              INDIA<span class="text-xs align-super">.XONOTIC.AU</span>
-            </h3>
-
-            <p class="text-sm my-4">
-              India's Xonotic server with low ping for Indian players.
-            </p>
-
-            <div class="flex justify-between items-end">
-              <div class="flex gap-2">
-                <span class="text-xs border border-white px-2 py-1 inline-block">Server</span>
-                <span class="text-xs border border-white px-2 py-1 inline-block">Community</span>
-              </div>
-              <div class="text-xs uppercase tracking-widest underline decoration-2 underline-offset-4">
-                Visit →
-              </div>
-            </div>
-
-            <div class="absolute bottom-0 left-0 h-1 w-full bg-white"></div>
-            <div
-              class="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-white z-0 transform rotate-3">
-            </div>
-          </div>
-        </a>
-
-        <a href="https://layogtima.com/drums/" target="_blank" rel="noopener noreferrer"
-          class="block group relative transform rotate-0.5">
-          <div
-            class="border-2 border-white p-6 h-64 flex flex-col justify-between transition-all duration-300 relative overflow-hidden">
-            <div class="absolute top-0 right-0 h-1 w-full bg-white"></div>
-
-            <h3 class="text-2xl font-bold">
-              <span class="text-xs align-super">LAYOGTIMA.</span>DRUMS<span class="text-xs align-super">.COM</span>
-            </h3>
-
-            <p class="text-sm my-4">
-              Interacitve drum set that lets you drop a beat!
-            </p>
-
-            <div class="flex justify-between items-end">
-              <div class="flex gap-2">
-                <span class="text-xs border border-white px-2 py-1 inline-block">Interactive</span>
-                <span class="text-xs border border-white px-2 py-1 inline-block">Music</span>
-              </div>
-              <div class="text-xs uppercase tracking-widest underline decoration-2 underline-offset-4">
-                Visit →
-              </div>
-            </div>
-
-            <div class="absolute bottom-0 left-0 h-1 w-full bg-white"></div>
-            <div
-              class="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-white z-0 transform rotate-3">
-            </div>
-          </div>
-        </a>
-
-        <!-- Placeholder for future sites -->
-        <div
-          class="border-2 border-white border-dashed p-6 h-64 flex flex-col justify-center items-center transform -rotate-0.5">
-          <div class="w-16 h-16 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1" class="w-full h-full">
-              <rect x="2" y="2" width="20" height="20" rx="2" />
-              <path d="M12 2v20M2 12h20" />
-            </svg>
-          </div>
-          <p class="text-center text-sm">List your MONO project here.</p>
-        </div>
-
-        <!-- Placeholder for future sites -->
-        <div class=""></div>
-      </div>
-
-      <!-- Optional: Add a CTA to encourage people to use the design system -->
-      <div class="mt-16 text-center">
-        <p class="mb-6 max-w-4xl mx-auto text-2xl">
-          Want your project featured here? Build something amazing with the
-          MONO design system.
+  <main id="main" class="flex-1 pt-14">
+    <!-- Hero -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-32">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">A design system in black &amp; white</p>
+        <h1 class="display-xl">MONO<span class="sup">CHROME</span></h1>
+        <p class="measure mt-8 text-step-1">
+          Strip away color and what remains is the design itself: typography,
+          spacing, and proportion. MONO is design on hard mode — if it works
+          in black and white, it will work anywhere.
         </p>
-        <a href="https://github.com/layogtima/mono"
-          class="bg-white text-black px-8 py-3 text-sm uppercase tracking-widest inline-block transform hover:translate-y-0.5 transition-all duration-300">
-          Get Started
-        </a>
+        <div class="mt-12 flex flex-wrap gap-4">
+          <a href="components.html" class="btn">Browse components</a>
+          <a href="customizer.html" class="btn btn-secondary">Open customizer</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Index -->
+    <section class="px-4 lg:px-8 py-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-10">01 — Index</h2>
+        <ol class="border-t border-ink list-none">
+          <li>
+            <a href="components.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">01</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">COMPONENTS</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                Buttons, forms, tables, tabs, dialogs, toasts — every element
+                styled, accessible, and copy-paste ready.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="typography.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">02</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">TYPOGRAPHY</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                A specimen book: six monospace faces, a modular scale, and the
+                rules of measure, weight, and rhythm.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="layout.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">03</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">LAYOUT</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                The twelve-column grid as a spec sheet, plus asymmetry and
+                editorial composition in practice.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="gallery.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">04</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">GALLERY</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                Typographic compositions, each one built from the system's own
+                tokens.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="customizer.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">05</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">CUSTOMIZER</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                Tune the font, scale, weight, and rhythm live — then copy your
+                theme as tokens you can take home.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="examples.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">06</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">EXAMPLES</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                Real pages built with the system: a login screen, an article,
+                a dashboard, a pricing table.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="about.html"
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              <span class="col-span-2 md:col-span-1 text-step--1">07</span>
+              <span class="col-span-10 md:col-span-4 text-step-2 font-bold">ABOUT</span>
+              <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
+                The manifesto: why constraint is the whole point.
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-10">02 — Principles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <h3 class="md:col-span-4 text-step-3 font-bold">Four R's, no hex codes.</h3>
+          <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+            <div>
+              <h4 class="font-bold mb-2"><span class="text-gray-500 mr-2">i.</span>REDUCTION</h4>
+              <p class="text-step--1">Strip away the non-essential. Color,
+                decoration, complexity — gone.</p>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2"><span class="text-gray-500 mr-2">ii.</span>REFINEMENT</h4>
+              <p class="text-step--1">Perfect what remains: typography,
+                spacing, and proportion.</p>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2"><span class="text-gray-500 mr-2">iii.</span>RHYTHM</h4>
+              <p class="text-step--1">Create patterns and relationships with
+                limited elements.</p>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2"><span class="text-gray-500 mr-2">iv.</span>REACTION</h4>
+              <p class="text-step--1">Test how readers respond. Does it
+                communicate? Does it connect?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- In the wild -->
+    <section class="px-4 lg:px-8 py-20 bg-ink text-paper">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-10 text-gray-400">03 — In the wild</h2>
+        <dl class="border-t border-hairline border-gray-600">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-1 border-b border-hairline border-gray-600 py-5">
+            <dt class="md:col-span-4 font-bold">
+              <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer"
+                class="underline decoration-1 underline-offset-4 hover:decoration-2">layogtima.com</a>
+            </dt>
+            <dd class="md:col-span-6 text-step--1 text-gray-400">Amit's portfolio — UI/UX design,
+              hardware consulting, and flow artistry.</dd>
+            <dd class="md:col-span-2 text-step--2 tracking-wide text-gray-500 md:text-right">PORTFOLIO</dd>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-1 border-b border-hairline border-gray-600 py-5">
+            <dt class="md:col-span-4 font-bold">
+              <a href="https://www.sm0.dev/" target="_blank" rel="noopener noreferrer"
+                class="underline decoration-1 underline-offset-4 hover:decoration-2">sm0.dev</a>
+            </dt>
+            <dd class="md:col-span-6 text-step--1 text-gray-400">Shreshth's corner of the internet —
+              web development, visualizations, and philosophy.</dd>
+            <dd class="md:col-span-2 text-step--2 tracking-wide text-gray-500 md:text-right">PORTFOLIO</dd>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-1 border-b border-hairline border-gray-600 py-5">
+            <dt class="md:col-span-4 font-bold">
+              <a href="https://seeds.layogtima.com/" target="_blank" rel="noopener noreferrer"
+                class="underline decoration-1 underline-offset-4 hover:decoration-2">seeds.layogtima.com</a>
+            </dt>
+            <dd class="md:col-span-6 text-step--1 text-gray-400">A guide to growing food in Bengaluru.
+              Plant what thrives now, harvest what you love.</dd>
+            <dd class="md:col-span-2 text-step--2 tracking-wide text-gray-500 md:text-right">WEBAPP</dd>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-1 border-b border-hairline border-gray-600 py-5">
+            <dt class="md:col-span-4 font-bold">
+              <a href="https://india.xonotic.au/" target="_blank" rel="noopener noreferrer"
+                class="underline decoration-1 underline-offset-4 hover:decoration-2">india.xonotic.au</a>
+            </dt>
+            <dd class="md:col-span-6 text-step--1 text-gray-400">India's Xonotic server — low ping,
+              arena shooters, community.</dd>
+            <dd class="md:col-span-2 text-step--2 tracking-wide text-gray-500 md:text-right">COMMUNITY</dd>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-1 border-b border-hairline border-gray-600 py-5">
+            <dt class="md:col-span-4 font-bold">
+              <a href="https://layogtima.com/drums/" target="_blank" rel="noopener noreferrer"
+                class="underline decoration-1 underline-offset-4 hover:decoration-2">layogtima.com/drums</a>
+            </dt>
+            <dd class="md:col-span-6 text-step--1 text-gray-400">An interactive drum set. Drop a
+              beat.</dd>
+            <dd class="md:col-span-2 text-step--2 tracking-wide text-gray-500 md:text-right">MUSIC</dd>
+          </div>
+        </dl>
+        <p class="mt-10 text-step--1 text-gray-400 measure">
+          Built something with MONO?
+          <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+            class="underline decoration-1 underline-offset-4 hover:decoration-2 text-paper">Open a pull request</a>
+          and list it here.
+        </p>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="py-8 px-8 border-t border-gray-400 dark:border-gray-600">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <div>
-        <a href="https://layogtima.com" target="_blank" class="text-xl font-bold tracking-normal">
-          AMIT
-        </a>
-      </div>
-      <div class="flex items-center gap-4">
-        <div class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-2">
-          <span class="inline-block transform rotate-180 text-lg mb-2">©</span>
-          <span>GPLv3 2025 -
-            <a href="https://github.com/layogtima/mono" target="_blank" class="underline">Share, Adapt,
-              Build.</a></span>
-        </div>
-      </div>
+  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
+      <p class="text-step--1 text-gray-600">
+        <span class="inline-block rotate-180" aria-hidden="true">©</span>
+        GPLv3 2025 —
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="underline underline-offset-4">Share, Adapt, Build.</a>
+      </p>
     </div>
   </footer>
 </body>

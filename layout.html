@@ -1,491 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MONO | Layout</title>
-    <meta name="title" content="MONO | Layout" />
-    <meta
-      name="description"
-      content="Monochrome design forces us to focus on composition, typography, and form. By removing color as a variable, we can more clearly evaluate the effectiveness of these fundamental elements."
-    />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mono.layogtima.com/" />
-    <meta property="og:title" content="MONO | Layout" />
-    <meta
-      property="og:description"
-      content="Monochrome design forces us to focus on composition, typography, and form. By removing color as a variable, we can more clearly evaluate the effectiveness of these fundamental elements."
-    />
-    <meta
-      property="og:image"
-      content="https://mono.layogtima.com/images/screenshot.png"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Layout</title>
+  <meta name="title" content="MONO | Layout" />
+  <meta name="description"
+    content="The MONO grid as a spec sheet: twelve columns, asymmetric splits, spacing rhythm, and editorial composition in black and white." />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://mono.layogtima.com/" />
-    <meta property="twitter:title" content="MONO | Layout" />
-    <meta
-      property="twitter:description"
-      content="Monochrome design forces us to focus on composition, typography, and form. By removing color as a variable, we can more clearly evaluate the effectiveness of these fundamental elements."
-    />
-    <meta
-      property="twitter:image"
-      content="https://mono.layogtima.com/images/screenshot.png"
-    />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mono.layogtima.com/layout.html" />
+  <meta property="og:title" content="MONO | Layout" />
+  <meta property="og:description"
+    content="The MONO grid as a spec sheet: twelve columns, asymmetric splits, spacing rhythm, and editorial composition in black and white." />
+  <meta property="og:image" content="https://mono.layogtima.com/images/screenshot.png" />
 
-    <!-- Favicons -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
-      sizes="96x96"
-    />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="https://mono.layogtima.com/images/favicon/favicon.svg"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://mono.layogtima.com/images/favicon/favicon.ico"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://mono.layogtima.com/images/favicon/apple-touch-icon.png?M24613"
-    />
-    <meta name="apple-mobile-web-app-title" content="Amit" />
-    <link
-      rel="manifest"
-      href="https://mono.layogtima.com/images/favicon/site.webmanifest"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              mono: ["Space Mono", "monospace"],
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
+    sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://mono.layogtima.com/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://mono.layogtima.com/images/favicon/favicon.ico" />
 
-      * {
-        font-family: "Space Mono", monospace;
-      }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
 
-      .grid-lines {
-        background-size: 20px 20px;
-        background-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.05) 1px,
-            transparent 1px
-          ),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-      }
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/mono-config.js"></script>
+  <link rel="stylesheet" href="css/mono.css" />
+  <script src="js/mono.js" defer></script>
+</head>
 
-      .rotated-text {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-      }
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
+    Skip to content
+  </a>
 
-      .diagonal-split {
-        background: linear-gradient(135deg, #ffffff 50%, #000000 50%);
-      }
-
-      .checkerboard {
-        background-image: linear-gradient(45deg, #000 25%, transparent 25%),
-          linear-gradient(-45deg, #000 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #000 75%),
-          linear-gradient(-45deg, transparent 75%, #000 75%);
-        background-size: 20px 20px;
-        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-      }
-    </style>
-  </head>
-  <body class="bg-white text-black min-h-screen flex flex-col">
-    <!-- Navigation -->
-    <nav
-      class="fixed w-full px-4 py-3 flex justify-between items-center z-50 bg-white border-b border-gray-900"
-    >
-      <a href="index.html" class="text-xl font-bold tracking-normal">MONO</a>
-      <div class="flex gap-6">
-        <a
-          href="typography.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >TYPOGRAPHY</a
-        >
-        <a
-          href="layout.html"
-          class="text-sm underline decoration-4 underline-offset-8"
-          >LAYOUT</a
-        >
-        <a
-          href="gallery.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >GALLERY</a
-        >
-        <a
-          href="about.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >ABOUT</a
-        >
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+    <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
+      <a href="index.html" class="text-step-1 font-bold">MONO</a>
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="components.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">COMPONENTS</a>
+          <a href="typography.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">TYPOGRAPHY</a>
+          <a href="layout.html" aria-current="page"
+            class="text-step--1 underline decoration-2 underline-offset-8">LAYOUT</a>
+          <a href="gallery.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">GALLERY</a>
+          <a href="customizer.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">CUSTOMIZER</a>
+          <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
+          <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
+        </div>
+        <button type="button" data-mono-invert
+          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+          title="Swap ink and paper">INVERT</button>
+        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden text-step--1 font-bold">MENU</button>
       </div>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <header
-      class="h-screen flex flex-col justify-center items-center pt-16 relative overflow-hidden"
-    >
-      <div class="grid-lines absolute inset-0 z-0"></div>
-      <div class="z-10 px-8 max-w-4xl text-center">
-        <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-none">
-          LAY<span class="text-xs align-super">OUT</span>
-        </h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto">
-          Breaking the grid. Exploring space. Pushing boundaries.
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
+    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
+      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
+      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
+      <li><a href="layout.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">LAYOUT</a></li>
+      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
+      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
+      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
+      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
+    </ul>
+  </div>
+
+  <main id="main" class="flex-1 pt-14">
+    <!-- Hero -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">The grid as a spec sheet</p>
+        <h1 class="display-xl">LAY<span class="sup">OUT</span></h1>
+        <p class="measure mt-8 text-step-1">
+          Twelve columns, a handful of spacing tokens, and the discipline to
+          use them. Composition in MONO is arithmetic you can see.
         </p>
       </div>
-    </header>
-
-    <!-- Split Layout Section -->
-    <section class="h-screen relative">
-      <div class="absolute inset-0 diagonal-split"></div>
-      <div class="absolute inset-0 flex">
-        <div class="w-1/2 p-12 flex items-center">
-          <div>
-            <h2 class="text-5xl font-bold mb-8">SPLIT</h2>
-            <p class="text-lg">
-              Layouts that break conventional design patterns create visual
-              interest and guide the eye in unexpected ways.
-            </p>
-          </div>
-        </div>
-        <div class="w-1/2 p-12 flex items-center justify-end text-white">
-          <div class="text-right">
-            <h2 class="text-5xl font-bold mb-8">SPACE</h2>
-            <p class="text-lg">
-              Negative space is as important as positive space in creating
-              visual rhythm and balance.
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Grid Layout Exploration -->
-    <section class="py-24 px-8 bg-white">
+    <!-- 01 The twelve-column grid -->
+    <section class="px-4 lg:px-8 py-20">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          GRID<span class="text-xs align-super"> SYSTEMS</span>
-        </h2>
+        <h2 class="meta mb-4">01 — The twelve-column grid</h2>
+        <p class="measure text-step--1 text-gray-600 mb-12">
+          Every layout on this site resolves to twelve columns with a 1rem
+          gutter. The annotations below are the layout itself, measured.
+        </p>
 
-        <div class="grid grid-cols-12 gap-4 mb-16">
-          <div
-            class="col-span-12 md:col-span-8 bg-black text-white p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">8 UNITS</span>
-          </div>
-          <div
-            class="col-span-12 md:col-span-4 bg-gray-200 p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">4 UNITS</span>
-          </div>
+        <!-- 12 × 1 -->
+        <p class="text-step--2 tracking-wide text-gray-500 mb-2">12 × 1 — THE UNITS</p>
+        <div class="grid grid-cols-12 gap-4 mb-12">
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">1</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">2</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">3</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">4</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">5</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">6</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">7</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">8</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">9</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">10</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">11</div>
+          <div class="bg-gray-100 border-hairline border-gray-300 py-3 text-center text-step--2 text-gray-600">12</div>
+        </div>
 
-          <div
-            class="col-span-6 md:col-span-3 bg-gray-800 text-white p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-6 md:col-span-3 bg-gray-600 text-white p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-6 md:col-span-3 bg-gray-400 p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-6 md:col-span-3 bg-gray-200 p-8 h-64 flex items-center justify-center"
-          >
-            <span class="text-4xl font-bold">3</span>
-          </div>
+        <!-- 4 / 8 -->
+        <p class="text-step--2 tracking-wide text-gray-500 mb-2">4 / 8 — SIDEBAR + CONTENT, THE HOUSE SPLIT</p>
+        <div class="grid grid-cols-12 gap-4 mb-12">
+          <div class="col-span-4 bg-ink text-paper py-6 px-4 text-step--1">col-span-4</div>
+          <div class="col-span-8 border border-ink py-6 px-4 text-step--1">col-span-8</div>
+        </div>
 
-          <div
-            class="col-span-4 bg-black text-white p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">4</span>
-          </div>
-          <div
-            class="col-span-4 bg-white border border-black p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">4</span>
-          </div>
-          <div
-            class="col-span-4 bg-black text-white p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">4</span>
-          </div>
+        <!-- 8 / 4 -->
+        <p class="text-step--2 tracking-wide text-gray-500 mb-2">8 / 4 — CONTENT + ASIDE</p>
+        <div class="grid grid-cols-12 gap-4 mb-12">
+          <div class="col-span-8 border border-ink py-6 px-4 text-step--1">col-span-8</div>
+          <div class="col-span-4 bg-gray-200 py-6 px-4 text-step--1">col-span-4</div>
+        </div>
 
-          <div
-            class="col-span-3 bg-white border border-black p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-3 bg-black text-white p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-3 bg-white border border-black p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">3</span>
-          </div>
-          <div
-            class="col-span-3 bg-black text-white p-4 h-32 flex items-center justify-center"
-          >
-            <span class="text-xl font-bold">3</span>
-          </div>
+        <!-- 6 / 6 -->
+        <p class="text-step--2 tracking-wide text-gray-500 mb-2">6 / 6 — THE EVEN ARGUMENT</p>
+        <div class="grid grid-cols-12 gap-4 mb-12">
+          <div class="col-span-6 bg-ink text-paper py-6 px-4 text-step--1">col-span-6</div>
+          <div class="col-span-6 border border-ink py-6 px-4 text-step--1">col-span-6</div>
+        </div>
 
-          <div
-            class="col-span-2 bg-black text-white p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
-          <div
-            class="col-span-2 bg-white border border-black p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
-          <div
-            class="col-span-2 bg-black text-white p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
-          <div
-            class="col-span-2 bg-white border border-black p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
-          <div
-            class="col-span-2 bg-black text-white p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
-          <div
-            class="col-span-2 bg-white border border-black p-2 h-16 flex items-center justify-center"
-          >
-            <span class="text-xs font-bold">2</span>
-          </div>
+        <!-- 3 × 4 -->
+        <p class="text-step--2 tracking-wide text-gray-500 mb-2">4 / 4 / 4 — THE TRIPTYCH</p>
+        <div class="grid grid-cols-12 gap-4">
+          <div class="col-span-4 border border-ink py-6 px-4 text-step--1">col-span-4</div>
+          <div class="col-span-4 bg-gray-200 py-6 px-4 text-step--1">col-span-4</div>
+          <div class="col-span-4 bg-ink text-paper py-6 px-4 text-step--1">col-span-4</div>
         </div>
       </div>
     </section>
 
-    <!-- Asymmetrical Layout -->
-    <section class="py-24 px-8 bg-black text-white">
+    <!-- 02 Spacing rhythm -->
+    <section class="px-4 lg:px-8 py-20 border-t border-ink">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          ASYM<span class="text-xs align-super">METRY</span>
-        </h2>
-
-        <div class="flex flex-col md:flex-row h-screen">
-          <div class="w-full md:w-1/3 p-8 flex flex-col">
-            <h3 class="text-3xl font-bold mb-4">LEFT</h3>
-            <p class="mb-8">
-              Asymmetrical layouts create dynamic visual tension and interest
-              through deliberate imbalance.
-            </p>
-            <div class="mt-auto">
-              <div class="h-24 w-24 bg-white"></div>
-            </div>
+        <h2 class="meta mb-4">02 — Spacing rhythm</h2>
+        <p class="measure text-step--1 text-gray-600 mb-12">
+          Eight spacing tokens, from 4px to 96px. Vertical rhythm comes from
+          repeating these — never from eyeballing margins.
+        </p>
+        <div class="border-t border-ink">
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-1 · 4px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 0.25rem"></div></div>
           </div>
-
-          <div class="w-full md:w-2/3 flex flex-col">
-            <div class="h-1/2 p-8 bg-gray-900 flex items-center justify-center">
-              <span class="text-6xl font-bold">TOP</span>
-            </div>
-            <div class="h-1/2 grid grid-cols-2">
-              <div class="p-8 bg-gray-800 flex items-end">
-                <div class="h-32 w-32 border border-white"></div>
-              </div>
-              <div class="p-8 bg-gray-700 flex justify-end items-start">
-                <div class="h-48 w-48 bg-white"></div>
-              </div>
-            </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-2 · 8px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 0.5rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-3 · 16px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 1rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-4 · 24px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 1.5rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-5 · 32px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 2rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-6 · 48px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 3rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-hairline border-gray-300 py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-7 · 64px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 4rem"></div></div>
+          </div>
+          <div class="grid grid-cols-12 gap-4 items-center border-b border-ink py-3">
+            <span class="col-span-4 sm:col-span-2 text-step--1 text-gray-600">--space-8 · 96px</span>
+            <div class="col-span-8 sm:col-span-10"><div class="bg-ink h-4" style="width: 6rem"></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Rotated Layout Elements -->
-    <section class="py-24 px-8">
+    <!-- 03 Asymmetry in practice -->
+    <section class="px-4 lg:px-8 py-20 border-t border-ink">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          ROT<span class="text-xs align-super">ATION</span>
-        </h2>
+        <h2 class="meta mb-4">03 — Asymmetry in practice</h2>
+        <p class="measure text-step--1 text-gray-600 mb-12">
+          The grid above, doing real work: an editorial spread set 4/8, with a
+          pull quote crossing the gutter.
+        </p>
 
-        <div class="h-screen relative flex">
-          <!-- Left Side -->
-          <div class="w-24 relative">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <h3 class="rotated-text text-6xl font-bold">VERTICAL</h3>
+        <article class="border border-ink">
+          <div class="grid grid-cols-1 md:grid-cols-12">
+            <!-- Rail -->
+            <div class="md:col-span-4 border-b md:border-b-0 md:border-r border-ink p-6 lg:p-8">
+              <p class="meta mb-4">Field notes · No. 04</p>
+              <h3 class="text-step-4 font-bold">The grid is a promise.</h3>
+              <p class="text-step--1 text-gray-600 mt-4">
+                A deck sits in the narrow column: it frames the piece, sets the
+                tone, and leaves the wide column free for the argument itself.
+              </p>
+            </div>
+            <!-- Body -->
+            <div class="md:col-span-8 p-6 lg:p-8">
+              <div class="md:columns-2 md:gap-8 text-step--1">
+                <p class="mb-4">
+                  A reader meets a page the way a traveler meets a city: first
+                  the skyline, then the streets. The grid is the street plan —
+                  invisible when it works, bewildering when it doesn't. Set the
+                  columns honestly and the eye finds its way without a map.
+                </p>
+                <p class="mb-4">
+                  Asymmetry is not imbalance. A four-column rail against an
+                  eight-column body is a hierarchy stated plainly: this frames,
+                  that argues. Symmetry asks the reader to choose; asymmetry
+                  chooses for them, and readers are grateful for it.
+                </p>
+                <p>
+                  None of this requires color. Weight, scale, and position do
+                  all the pointing. When the bones are right, ink and paper are
+                  enough.
+                </p>
+              </div>
+              <blockquote class="border-l-4 border-ink pl-6 mt-8 text-step-2 font-bold">
+                Symmetry asks the reader to choose; asymmetry chooses for them.
+              </blockquote>
             </div>
           </div>
-
-          <!-- Right Content -->
-          <div class="flex-1 grid grid-cols-2 gap-4">
-            <div
-              class="border-2 border-black p-8 flex flex-col justify-between"
-            >
-              <div class="text-4xl font-bold -rotate-90 origin-top-left ml-8">
-                ROTATE
-              </div>
-              <div
-                class="self-end text-4xl font-bold rotate-90 origin-bottom-right mb-8"
-              >
-                TWIST
-              </div>
-            </div>
-
-            <div
-              class="border-2 border-black p-8 flex items-center justify-center"
-            >
-              <div class="text-4xl font-bold rotate-45">TILT</div>
-            </div>
-
-            <div class="border-2 border-black p-8 relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-8xl font-bold opacity-10">BIG</div>
-              </div>
-              <div class="relative z-10">
-                <h4 class="text-2xl font-bold mb-4">Layered Text</h4>
-                <p>Creating depth through layering and transparency.</p>
-              </div>
-            </div>
-
-            <div
-              class="border-2 border-black p-8 flex items-center justify-center"
-            >
-              <div class="text-4xl font-bold -rotate-12">SKEW</div>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- Pattern Section -->
-    <section class="py-24 px-8 relative">
-      <div class="checkerboard absolute inset-0 opacity-5"></div>
-      <div class="max-w-6xl mx-auto relative z-10">
-        <h2 class="text-5xl font-bold mb-16">
-          PATT<span class="text-xs align-super">ERNS</span>
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div
-            class="border-2 border-black p-8 h-96 flex flex-col justify-between"
-          >
-            <h3 class="text-2xl font-bold">REPEAT</h3>
-            <div class="grid grid-cols-4 gap-2">
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-            </div>
-          </div>
-
-          <div
-            class="border-2 border-black p-8 h-96 flex flex-col justify-between"
-          >
-            <h3 class="text-2xl font-bold">ALTERNATE</h3>
-            <div class="grid grid-cols-4 gap-2">
-              <div class="bg-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="bg-black h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-            </div>
-          </div>
-
-          <div
-            class="border-2 border-black p-8 h-96 flex flex-col justify-between"
-          >
-            <h3 class="text-2xl font-bold">PROGRESS</h3>
-            <div class="grid grid-cols-4 gap-2">
-              <div class="bg-gray-900 h-8 w-8"></div>
-              <div class="bg-gray-800 h-8 w-8"></div>
-              <div class="bg-gray-700 h-8 w-8"></div>
-              <div class="bg-gray-600 h-8 w-8"></div>
-              <div class="bg-gray-500 h-8 w-8"></div>
-              <div class="bg-gray-400 h-8 w-8"></div>
-              <div class="bg-gray-300 h-8 w-8"></div>
-              <div class="bg-gray-200 h-8 w-8"></div>
-              <div class="bg-gray-100 h-8 w-8"></div>
-              <div class="bg-gray-50 h-8 w-8"></div>
-              <div class="border border-black h-8 w-8"></div>
-              <div class="border border-gray-200 h-8 w-8"></div>
-            </div>
-          </div>
-        </div>
+    <!-- CTA -->
+    <section class="px-4 lg:px-8 py-20 border-t border-ink bg-ink text-paper">
+      <div class="max-w-6xl mx-auto">
+        <p class="text-step-3 font-bold measure">See the grid carry real pages.</p>
+        <p class="text-step--1 text-gray-400 mt-4 measure">
+          A login screen, an article, a dashboard, a pricing table — all set on
+          these twelve columns.
+        </p>
+        <a href="examples.html" class="btn btn-secondary mt-8"
+          style="border-color: var(--paper); color: var(--paper)">View the examples</a>
       </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="py-8 px-8 border-t border-gray-400 dark:border-gray-600">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <div>
-          <a
-            href="https://layogtima.com"
-            target="_blank"
-            class="text-xl font-bold tracking-normal"
-          >
-            AMIT
-          </a>
-        </div>
-        <div class="flex items-center gap-4">
-          <div
-            class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-2"
-          >
-            <span class="inline-block transform rotate-180 text-lg mb-2"
-              >©</span
-            >
-            <span
-              >Copyleft 2025 -
-              <a
-                href="https://github.com/layogtima/mono"
-                target="_blank"
-                class="underline"
-                >Share, Adapt, Build.</a
-              ></span
-            >
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+  <!-- Footer -->
+  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
+      <p class="text-step--1 text-gray-600">
+        <span class="inline-block rotate-180" aria-hidden="true">©</span>
+        GPLv3 2025 —
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="underline underline-offset-4">Share, Adapt, Build.</a>
+      </p>
+    </div>
+  </footer>
+</body>
+
 </html>

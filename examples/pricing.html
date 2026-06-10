@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Example — Pricing</title>
+  <meta name="description" content="A pricing page built with the MONO design system." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/mono-config.js"></script>
+  <link rel="stylesheet" href="../css/mono.css" />
+  <script src="../js/mono.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <!-- Example chrome -->
+  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+    <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
+    <button type="button" data-mono-invert
+      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+      title="Swap ink and paper">INVERT</button>
+  </header>
+
+  <main class="flex-1">
+    <!-- Header -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">Inkwell — version control for manuscripts</p>
+        <h1 class="display">PRI<span class="sup">CING</span></h1>
+        <p class="measure mt-6 text-step-1">
+          Three plans, zero colors. Cancel whenever; your words stay yours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tiers -->
+    <section class="px-4 lg:px-8 py-16">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <!-- Drafter -->
+        <div class="border border-ink p-8 flex flex-col">
+          <p class="meta">Drafter</p>
+          <p class="mt-4"><span class="text-step-5 font-bold">$0</span><span class="text-step--1 text-gray-600">
+              /month</span></p>
+          <p class="text-step--1 text-gray-600 mt-2">For the notebook-and-a-pencil phase.</p>
+          <ul class="mt-8 space-y-3 text-step--1 flex-1">
+            <li>✓ 3 manuscripts</li>
+            <li>✓ Full revision history, 30 days</li>
+            <li>✓ Plain-text export</li>
+            <li class="text-gray-400">× Collaborators</li>
+            <li class="text-gray-400">× Priority typesetting</li>
+          </ul>
+          <button type="button" class="btn btn-secondary w-full mt-8" data-mono-toast="Welcome aboard, drafter.">Start
+            free</button>
+        </div>
+
+        <!-- Author — featured, inverted -->
+        <div class="bg-ink text-paper border border-ink p-8 flex flex-col">
+          <p class="meta text-gray-400">Author — most chosen</p>
+          <p class="mt-4"><span class="text-step-5 font-bold">$12</span><span class="text-step--1 text-gray-400">
+              /month</span></p>
+          <p class="text-step--1 text-gray-400 mt-2">For people with deadlines and opinions.</p>
+          <ul class="mt-8 space-y-3 text-step--1 flex-1">
+            <li>✓ Unlimited manuscripts</li>
+            <li>✓ Full revision history, forever</li>
+            <li>✓ All export formats</li>
+            <li>✓ 5 collaborators</li>
+            <li class="text-gray-500">× Priority typesetting</li>
+          </ul>
+          <button type="button" class="btn w-full mt-8"
+            style="background-color: var(--paper); color: var(--ink); border-color: var(--paper)"
+            data-mono-toast="Author plan selected. Deadlines now apply.">Choose Author</button>
+        </div>
+
+        <!-- Publisher -->
+        <div class="border border-ink p-8 flex flex-col">
+          <p class="meta">Publisher</p>
+          <p class="mt-4"><span class="text-step-5 font-bold">$48</span><span class="text-step--1 text-gray-600">
+              /month</span></p>
+          <p class="text-step--1 text-gray-600 mt-2">For houses, imprints, and empires.</p>
+          <ul class="mt-8 space-y-3 text-step--1 flex-1">
+            <li>✓ Everything in Author</li>
+            <li>✓ Unlimited collaborators</li>
+            <li>✓ Priority typesetting</li>
+            <li>✓ Single sign-on</li>
+            <li>✓ A human on the phone</li>
+          </ul>
+          <button type="button" class="btn btn-secondary w-full mt-8"
+            data-mono-toast="Publisher plan selected. An actual human will call.">Choose Publisher</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="px-4 lg:px-8 py-16 border-t border-ink">
+      <div class="max-w-6xl mx-auto overflow-x-auto">
+        <h2 class="meta mb-8">Side by side</h2>
+        <table class="table">
+          <caption class="sr-only">Feature comparison across plans</caption>
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Drafter</th>
+              <th scope="col">Author</th>
+              <th scope="col">Publisher</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Manuscripts</td>
+              <td>3</td>
+              <td>Unlimited</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Revision history</td>
+              <td>30 days</td>
+              <td>Forever</td>
+              <td>Forever</td>
+            </tr>
+            <tr>
+              <td>Collaborators</td>
+              <td>—</td>
+              <td>5</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Priority typesetting</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Single sign-on</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="px-4 lg:px-8 py-16 border-t border-ink">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="meta mb-8">Questions, answered</h2>
+        <details class="accordion">
+          <summary>Can I change plans later?</summary>
+          <p class="text-step--1 text-gray-700 measure">Any time. Upgrades apply immediately; downgrades at the end of
+            the billing month. Your manuscripts never notice.</p>
+        </details>
+        <details class="accordion">
+          <summary>What happens to my work if I cancel?</summary>
+          <p class="text-step--1 text-gray-700 measure">You get a complete export in every format we support, and we
+            keep a read-only copy for 90 days in case you change your mind.</p>
+        </details>
+        <details class="accordion">
+          <summary>Do you offer student discounts?</summary>
+          <p class="text-step--1 text-gray-700 measure">Yes — the Author plan is half price with a student email
+            address. Theses count as manuscripts; we checked.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
