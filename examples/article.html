@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Example — Article</title>
+  <meta name="description" content="An editorial article layout built with the MONO design system." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/mono-config.js"></script>
+  <link rel="stylesheet" href="../css/mono.css" />
+  <script src="../js/mono.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <!-- Example chrome -->
+  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+    <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
+    <button type="button" data-mono-invert
+      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+      title="Swap ink and paper">INVERT</button>
+  </header>
+
+  <main class="flex-1">
+    <article class="px-4 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto">
+        <!-- Kicker + headline -->
+        <p class="meta mb-6">Essays · Design under constraint</p>
+        <h1 class="text-step-5 font-bold" style="line-height: var(--leading-tight)">
+          GRAY<span class="sup">SCALE</span> is a feature, not a fallback
+        </h1>
+
+        <!-- Byline -->
+        <div class="flex flex-wrap gap-x-8 gap-y-1 border-y border-hairline border-gray-300 py-3 mt-8 text-step--1 text-gray-600">
+          <span>By A. Printer</span>
+          <span>June 2026</span>
+          <span>6 min read</span>
+        </div>
+
+        <!-- Lead -->
+        <p class="text-step-1 mt-10 measure">
+          Every few years the industry rediscovers restraint, gives it a name,
+          and sells it back to itself. But monochrome isn't a trend with a
+          mood board — it's the oldest stress test in publishing.
+        </p>
+
+        <!-- Body -->
+        <div class="mt-8 space-y-6 measure">
+          <p>
+            Before a page earns its color, it has to survive without it. The
+            newspaper knew this; so did the photocopier, the fax machine, and
+            every paperback ever set in a single ink. If the hierarchy holds
+            in grayscale — if the headline still leads, the caption still
+            whispers, the link still invites — then color becomes a gift
+            rather than a crutch.
+          </p>
+          <p>
+            The discipline pays off in unexpected places. Accessibility
+            audits get easier, because nothing depends on hue. Dark mode
+            stops being a second design and becomes a variable swap. Print
+            stylesheets write themselves.
+          </p>
+        </div>
+
+        <!-- Pull quote -->
+        <blockquote class="border-l-4 border-ink pl-6 my-12 text-step-2 font-bold" style="line-height: var(--leading-tight)">
+          Before a page earns its color, it has to survive without it.
+        </blockquote>
+
+        <!-- Figure -->
+        <figure class="my-12 border border-ink">
+          <div class="aspect-video flex items-center justify-center bg-gray-100" aria-hidden="true">
+            <span class="text-step-6 font-bold text-gray-300 select-none">FIG. 1</span>
+          </div>
+          <figcaption class="border-t border-ink px-4 py-3 text-step--1 text-gray-600">
+            Fig. 1 — A placeholder doing an honest day's work.
+          </figcaption>
+        </figure>
+
+        <div class="space-y-6 measure">
+          <p>
+            None of this argues against color. It argues for sequencing:
+            structure first, sweetness later. Design the skeleton in ink and
+            paper, then let color point to what already works.<a href="#fn-1"
+              id="ref-1" class="underline underline-offset-4" aria-label="Footnote 1"><sup>1</sup></a>
+          </p>
+          <p>
+            And if the color never arrives? Then you've shipped something
+            that prints clean, reads everywhere, and looks deliberate — which
+            is more than most palettes can claim.<a href="#fn-2" id="ref-2"
+              class="underline underline-offset-4" aria-label="Footnote 2"><sup>2</sup></a>
+          </p>
+        </div>
+
+        <!-- Footnotes -->
+        <footer class="mt-16 border-t border-ink pt-6">
+          <h2 class="meta mb-4">Notes</h2>
+          <ol class="space-y-2 text-step--1 text-gray-600 list-decimal list-inside">
+            <li id="fn-1">A sequencing also recommended for typography, spacing,
+              and dinner courses. <a href="#ref-1" class="underline underline-offset-4" aria-label="Back to reference 1">↩</a></li>
+            <li id="fn-2">The author's palette ships with eleven values, all of
+              them gray. <a href="#ref-2" class="underline underline-offset-4" aria-label="Back to reference 2">↩</a></li>
+          </ol>
+        </footer>
+      </div>
+    </article>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Customizer</title>
+  <meta name="title" content="MONO | Customizer" />
+  <meta name="description"
+    content="Tune MONO live: pick a monospace face, base size, scale ratio, weight, and rhythm — then copy your theme as tokens." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mono.layogtima.com/customizer.html" />
+  <meta property="og:title" content="MONO | Customizer" />
+  <meta property="og:description"
+    content="Tune MONO live: pick a monospace face, base size, scale ratio, weight, and rhythm — then copy your theme as tokens." />
+  <meta property="og:image" content="https://mono.layogtima.com/images/screenshot.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
+    sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://mono.layogtima.com/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://mono.layogtima.com/images/favicon/favicon.ico" />
+
+  <!-- Fonts: the full roster, so every choice previews instantly -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=Fragment+Mono:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/mono-config.js"></script>
+  <link rel="stylesheet" href="css/mono.css" />
+  <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
+    Skip to content
+  </a>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+    <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
+      <a href="index.html" class="text-step-1 font-bold">MONO</a>
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="components.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">COMPONENTS</a>
+          <a href="typography.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">TYPOGRAPHY</a>
+          <a href="layout.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">LAYOUT</a>
+          <a href="gallery.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">GALLERY</a>
+          <a href="customizer.html" aria-current="page"
+            class="text-step--1 underline decoration-2 underline-offset-8">CUSTOMIZER</a>
+          <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
+          <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
+        </div>
+        <button type="button" data-mono-invert
+          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+          title="Swap ink and paper">INVERT</button>
+        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden text-step--1 font-bold">MENU</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
+    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
+      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
+      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
+      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
+      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
+      <li><a href="customizer.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">CUSTOMIZER</a></li>
+      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
+      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
+    </ul>
+  </div>
+
+  <main id="main" class="flex-1 pt-14">
+    <!-- Hero -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">Your tokens, tuned live</p>
+        <h1 class="display">CUSTOM<span class="sup">IZER</span></h1>
+        <p class="measure mt-6 text-step-0">
+          Every control below rewrites the system's CSS custom properties on
+          the preview. When it looks right, copy the snippet and the theme is
+          yours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Customizer -->
+    <section class="px-4 lg:px-8 py-12">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Controls -->
+        <form id="customizer-form" class="lg:col-span-4 space-y-8" aria-label="Theme controls">
+          <h2 class="meta border-b border-ink pb-2">Controls</h2>
+
+          <div class="field">
+            <label class="label" for="ctl-font">Typeface</label>
+            <div class="select">
+              <select id="ctl-font">
+                <option selected>Space Mono</option>
+                <option>JetBrains Mono</option>
+                <option>IBM Plex Mono</option>
+                <option>Fragment Mono</option>
+                <option>Courier Prime</option>
+                <option>Spline Sans Mono</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-base">Base size — <output id="ctl-base-out"></output></label>
+            <input type="range" class="range" id="ctl-base" min="14" max="20" step="1" value="16" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-ratio">Scale ratio</label>
+            <div class="select">
+              <select id="ctl-ratio">
+                <option value="1.125">1.125 — major second</option>
+                <option value="1.2">1.200 — minor third</option>
+                <option value="1.25" selected>1.250 — major third</option>
+                <option value="1.333">1.333 — perfect fourth</option>
+                <option value="1.414">1.414 — augmented fourth</option>
+                <option value="1.5">1.500 — perfect fifth</option>
+                <option value="1.618">1.618 — golden ratio</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-weight">Heading weight</label>
+            <div class="select">
+              <select id="ctl-weight">
+                <option value="300">300 — light</option>
+                <option value="400">400 — regular</option>
+                <option value="500">500 — medium</option>
+                <option value="700" selected>700 — bold</option>
+                <option value="800">800 — extra bold</option>
+              </select>
+            </div>
+            <p class="hint">Weights the chosen face doesn't ship are disabled.</p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-tracking">Tracking — <output id="ctl-tracking-out"></output></label>
+            <input type="range" class="range" id="ctl-tracking" min="-0.05" max="0.15" step="0.01" value="0" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-leading">Line height — <output id="ctl-leading-out"></output></label>
+            <input type="range" class="range" id="ctl-leading" min="1.2" max="2" step="0.05" value="1.6" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="ctl-border">Border width — <output id="ctl-border-out"></output></label>
+            <input type="range" class="range" id="ctl-border" min="1" max="4" step="1" value="2" />
+          </div>
+
+          <label class="choice">
+            <input type="checkbox" class="switch" id="ctl-invert" />
+            Invert ink &amp; paper
+          </label>
+
+          <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
+        </form>
+
+        <!-- Preview -->
+        <div class="lg:col-span-8">
+          <h2 class="meta border-b border-ink pb-2 mb-4">Preview</h2>
+          <!-- font-mono re-resolves --font-mono at this node, so the font control works -->
+          <div id="customizer-preview" class="font-mono border border-ink p-6 lg:p-10"
+            style="background-color: var(--paper); color: var(--ink)">
+            <p class="meta mb-4">Specimen · live</p>
+            <p class="text-step-5" style="font-weight: var(--heading-weight, 700)">
+              MONO<span class="sup">CHROME</span>
+            </p>
+            <p class="text-step-3 mt-6" style="font-weight: var(--heading-weight, 700)">Constraint is the brief.</p>
+            <p class="text-step-1 mt-4" style="font-weight: var(--heading-weight, 700)">Set the scale once; spend it
+              everywhere.</p>
+            <p class="measure mt-6 text-step-0">
+              Strip away color and what remains is the design itself. This
+              paragraph tracks your base size, leading, and tracking — read a
+              few lines and trust your eyes over the numbers.
+            </p>
+            <p class="measure mt-3 text-step--1 text-gray-600">
+              Secondary text steps down once and drops to gray. Captions and
+              metadata step down twice.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <button type="button" class="btn">Primary</button>
+              <button type="button" class="btn btn-secondary">Secondary</button>
+              <button type="button" class="btn btn-ghost">Ghost</button>
+            </div>
+            <div class="field max-w-sm mt-8">
+              <label class="label" for="preview-input">Input</label>
+              <input class="input" type="text" id="preview-input" placeholder="Type to feel the face" />
+              <p class="hint">Borders follow your border-width token.</p>
+            </div>
+            <table class="table mt-8">
+              <thead>
+                <tr>
+                  <th scope="col">Token</th>
+                  <th scope="col">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>--step-0</td>
+                  <td>Body</td>
+                </tr>
+                <tr>
+                  <td>--step-3</td>
+                  <td>Headings</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Output -->
+          <h2 class="meta border-b border-ink pb-2 mb-4 mt-12">Take it home</h2>
+          <p class="text-step--1 text-gray-600 mb-4 measure">
+            Paste the fonts link in your <code>&lt;head&gt;</code>, the tokens
+            in your CSS, and — if you use the Tailwind CDN — the config after
+            the CDN script.
+          </p>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="customizer-output">COPY</button>
+            <pre id="customizer-output"><code></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
+      <p class="text-step--1 text-gray-600">
+        <span class="inline-block rotate-180" aria-hidden="true">©</span>
+        GPLv3 2025 —
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="underline underline-offset-4">Share, Adapt, Build.</a>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,483 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MONO | Gallery</title>
-    <meta name="title" content="MONO | Gallery" />
-    <meta
-      name="description"
-      content="Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
-    />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mono.layogtima.com/" />
-    <meta property="og:title" content="MONO | Gallery" />
-    <meta
-      property="og:description"
-      content="Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
-    />
-    <meta
-      property="og:image"
-      content="https://mono.layogtima.com/images/screenshot.png"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Gallery</title>
+  <meta name="title" content="MONO | Gallery" />
+  <meta name="description"
+    content="Typographic compositions built from MONO's own tokens — scale, weight, rhythm, and inversion in black and white." />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://mono.layogtima.com/" />
-    <meta property="twitter:title" content="MONO | Gallery" />
-    <meta
-      property="twitter:description"
-      content="Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
-    />
-    <meta
-      property="twitter:image"
-      content="https://mono.layogtima.com/images/screenshot.png"
-    />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mono.layogtima.com/gallery.html" />
+  <meta property="og:title" content="MONO | Gallery" />
+  <meta property="og:description"
+    content="Typographic compositions built from MONO's own tokens — scale, weight, rhythm, and inversion in black and white." />
+  <meta property="og:image" content="https://mono.layogtima.com/images/screenshot.png" />
 
-    <!-- Favicons -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
-      sizes="96x96"
-    />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="https://mono.layogtima.com/images/favicon/favicon.svg"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://mono.layogtima.com/images/favicon/favicon.ico"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://mono.layogtima.com/images/favicon/apple-touch-icon.png?M24613"
-    />
-    <meta name="apple-mobile-web-app-title" content="Amit" />
-    <link
-      rel="manifest"
-      href="https://mono.layogtima.com/images/favicon/site.webmanifest"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              mono: ["Space Mono", "monospace"],
-            },
-            animation: {
-              "spin-slow": "spin 8s linear infinite",
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
+    sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://mono.layogtima.com/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://mono.layogtima.com/images/favicon/favicon.ico" />
 
-      * {
-        font-family: "Space Mono", monospace;
-      }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
 
-      .border-grid {
-        background-size: 40px 40px;
-        background-image: linear-gradient(to right, black 1px, transparent 1px),
-          linear-gradient(to bottom, black 1px, transparent 1px);
-      }
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/mono-config.js"></script>
+  <link rel="stylesheet" href="css/mono.css" />
+  <script src="js/mono.js" defer></script>
+</head>
 
-      .hover-scale {
-        transition: transform 0.3s ease;
-      }
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
+    Skip to content
+  </a>
 
-      .hover-scale:hover {
-        transform: scale(1.05);
-        z-index: 10;
-      }
-
-      .text-outline {
-        -webkit-text-stroke: 1px black;
-        -webkit-text-fill-color: white;
-      }
-
-      .halftone {
-        background-image: radial-gradient(#000 3px, transparent 3px);
-        background-size: 15px 15px;
-      }
-    </style>
-  </head>
-  <body class="bg-white text-black min-h-screen flex flex-col">
-    <!-- Navigation -->
-    <nav
-      class="fixed w-full px-4 py-3 flex justify-between items-center z-50 bg-white border-b border-gray-900"
-    >
-      <a href="index.html" class="text-xl font-bold tracking-normal"
-        >MONO</span></a
-      >
-      <div class="flex gap-6">
-        <a
-          href="typography.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >TYPOGRAPHY</a
-        >
-        <a
-          href="layout.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >LAYOUT</a
-        >
-        <a
-          href="gallery.html"
-          class="text-sm underline decoration-4 underline-offset-8"
-          >GALLERY</a
-        >
-        <a
-          href="about.html"
-          class="text-sm hover:underline decoration-4 underline-offset-8"
-          >ABOUT</a
-        >
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+    <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
+      <a href="index.html" class="text-step-1 font-bold">MONO</a>
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="components.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">COMPONENTS</a>
+          <a href="typography.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">TYPOGRAPHY</a>
+          <a href="layout.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">LAYOUT</a>
+          <a href="gallery.html" aria-current="page"
+            class="text-step--1 underline decoration-2 underline-offset-8">GALLERY</a>
+          <a href="customizer.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">CUSTOMIZER</a>
+          <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
+          <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
+        </div>
+        <button type="button" data-mono-invert
+          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+          title="Swap ink and paper">INVERT</button>
+        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden text-step--1 font-bold">MENU</button>
       </div>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <header
-      class="h-screen flex flex-col justify-center items-center pt-16 relative overflow-hidden bg-black text-white"
-    >
-      <div class="z-10 px-8 max-w-4xl text-center">
-        <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-none">
-          GALL<span class="text-xs align-super">ERY</span>
-        </h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto">
-          Monochromatic marvels. Design within constraints.
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
+    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
+      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
+      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
+      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
+      <li><a href="gallery.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">GALLERY</a></li>
+      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
+      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
+      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
+    </ul>
+  </div>
+
+  <main id="main" class="flex-1 pt-14">
+    <!-- Hero -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">Compositions from the system's own tokens</p>
+        <h1 class="display-xl">GALL<span class="sup">ERY</span></h1>
+        <p class="measure mt-8 text-step-1">
+          Nine studies, one constraint. Every piece below is set with the same
+          scale, the same grays, the same grid — nothing imported, nothing
+          drawn.
         </p>
       </div>
-      <div class="absolute inset-0 halftone opacity-20"></div>
-    </header>
+    </section>
 
-    <!-- Gallery Grid -->
-    <section class="py-24 px-8">
+    <!-- Grid -->
+    <section class="px-4 lg:px-8 py-20">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- 01 Inversion -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col overflow-hidden" aria-hidden="true">
+            <div class="flex-1 flex items-center justify-center bg-paper text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
+              <span class="text-step-4 font-bold">DAY</span>
+            </div>
+            <div class="flex-1 flex items-center justify-center bg-ink text-paper group-hover:bg-paper group-hover:text-ink transition-colors">
+              <span class="text-step-4 font-bold">NIGHT</span>
+            </div>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">01</span>
+            <span class="col-span-5 font-bold">INVERSION</span>
+            <span class="col-span-5 text-gray-500 text-right">--ink · --paper</span>
+          </figcaption>
+        </figure>
+
+        <!-- 02 Scale -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 gap-1 hover:bg-ink hover:text-paper transition-colors"
+            aria-hidden="true">
+            <span class="text-step--1">scale</span>
+            <span class="text-step-0">scale</span>
+            <span class="text-step-1">scale</span>
+            <span class="text-step-2 font-bold">scale</span>
+            <span class="text-step-3 font-bold">scale</span>
+            <span class="text-step-4 font-bold">SCALE</span>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">02</span>
+            <span class="col-span-5 font-bold">SCALE</span>
+            <span class="col-span-5 text-gray-500 text-right">--step--1 … 4</span>
+          </figcaption>
+        </figure>
+
+        <!-- 03 Weight -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col items-center justify-center hover:bg-ink hover:text-paper transition-colors"
+            aria-hidden="true">
+            <span class="text-step-5 font-normal">whisper</span>
+            <span class="text-step-5 font-bold">SHOUT</span>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">03</span>
+            <span class="col-span-5 font-bold">WEIGHT</span>
+            <span class="col-span-5 text-gray-500 text-right">400 · 700</span>
+          </figcaption>
+        </figure>
+
+        <!-- 04 The ramp -->
+        <figure>
+          <div class="aspect-square border border-ink flex flex-col" aria-hidden="true">
+            <div class="flex-1 bg-gray-100 flex items-center px-4 text-step--2 text-gray-600">100</div>
+            <div class="flex-1 bg-gray-200 flex items-center px-4 text-step--2 text-gray-600">200</div>
+            <div class="flex-1 bg-gray-300 flex items-center px-4 text-step--2 text-gray-700">300</div>
+            <div class="flex-1 bg-gray-400 flex items-center px-4 text-step--2 text-gray-800">400</div>
+            <div class="flex-1 bg-gray-500 flex items-center px-4 text-step--2 text-gray-100">500</div>
+            <div class="flex-1 bg-gray-600 flex items-center px-4 text-step--2 text-gray-200">600</div>
+            <div class="flex-1 bg-gray-700 flex items-center px-4 text-step--2 text-gray-200">700</div>
+            <div class="flex-1 bg-gray-800 flex items-center px-4 text-step--2 text-gray-300">800</div>
+            <div class="flex-1 bg-gray-900 flex items-center px-4 text-step--2 text-gray-300">900</div>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">04</span>
+            <span class="col-span-5 font-bold">THE RAMP</span>
+            <span class="col-span-5 text-gray-500 text-right">--gray-100 … 900</span>
+          </figcaption>
+        </figure>
+
+        <!-- 05 Rhythm -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 overflow-hidden hover:bg-ink transition-colors"
+            aria-hidden="true">
+            <p class="text-step-2 font-bold whitespace-nowrap">MONO MONO MONO</p>
+            <p class="text-step-2 font-bold whitespace-nowrap text-gray-400">MONO MONO MONO</p>
+            <p class="text-step-2 font-bold whitespace-nowrap text-gray-500">MONO MONO MONO</p>
+            <p class="text-step-2 font-bold whitespace-nowrap text-gray-400">MONO MONO MONO</p>
+            <p class="text-step-2 font-bold whitespace-nowrap group-hover:text-paper">MONO MONO MONO</p>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">05</span>
+            <span class="col-span-5 font-bold">RHYTHM</span>
+            <span class="col-span-5 text-gray-500 text-right">repetition · grays</span>
+          </figcaption>
+        </figure>
+
+        <!-- 06 Tracking -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col items-center justify-center gap-6 hover:bg-ink hover:text-paper transition-colors"
+            aria-hidden="true">
+            <span class="text-step-3 font-bold" style="letter-spacing: 0.5em">A I R</span>
+            <span class="text-step-3 font-bold" style="letter-spacing: -0.08em">INK</span>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">06</span>
+            <span class="col-span-5 font-bold">TRACKING</span>
+            <span class="col-span-5 text-gray-500 text-right">−0.08em · 0.5em</span>
+          </figcaption>
+        </figure>
+
+        <!-- 07 Hierarchy -->
+        <figure>
+          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 gap-3 hover:bg-ink hover:text-paper transition-colors"
+            aria-hidden="true">
+            <span class="text-step--2 tracking-wide text-gray-500">KICKER, QUIET</span>
+            <span class="text-step-3 font-bold">A headline, loud.</span>
+            <span class="text-step--1 text-gray-600 group-hover:text-gray-400">Body copy, level. Three voices,
+              one face, no color — hierarchy by size and weight alone.</span>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">07</span>
+            <span class="col-span-5 font-bold">HIERARCHY</span>
+            <span class="col-span-5 text-gray-500 text-right">size · weight · gray</span>
+          </figcaption>
+        </figure>
+
+        <!-- 08 Density -->
+        <figure>
+          <div class="group aspect-square border border-ink p-6 overflow-hidden hover:bg-ink hover:text-paper transition-colors"
+            aria-hidden="true">
+            <p class="text-step--2 text-justify break-all text-gray-400 group-hover:text-gray-500" style="line-height: 1.3">
+              monomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomono<span
+                class="text-step-2 font-bold text-ink group-hover:text-paper">MONO</span>monomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomono
+            </p>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">08</span>
+            <span class="col-span-5 font-bold">DENSITY</span>
+            <span class="col-span-5 text-gray-500 text-right">texture · contrast</span>
+          </figcaption>
+        </figure>
+
+        <!-- 09 The grid -->
+        <figure>
+          <div class="aspect-square border border-ink grid grid-cols-4 grid-rows-4" aria-hidden="true">
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300 bg-ink"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300 flex items-center justify-center text-step-2 font-bold">M</div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300 bg-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300"></div>
+            <div class="border-hairline border-gray-300 bg-gray-200"></div>
+          </div>
+          <figcaption class="grid grid-cols-12 gap-2 border-b border-hairline border-gray-300 py-3 text-step--1">
+            <span class="col-span-2 text-gray-500">09</span>
+            <span class="col-span-5 font-bold">THE GRID</span>
+            <span class="col-span-5 text-gray-500 text-right">--border-w-hairline</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-4 lg:px-8 py-20 border-t border-ink bg-ink text-paper">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          CURA<span class="text-xs align-super">TED</span>
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
-          <!-- Gallery Item 1 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="w-32 h-32 bg-black rounded-full"></div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">CIRCLE</h3>
-              <p class="text-sm">Perfection in simplicity.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 2 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="w-32 h-32 border-8 border-black"></div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">SQUARE</h3>
-              <p class="text-sm">Balance through equality.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 3 -->
-          <div
-            class="relative aspect-square overflow-hidden hover-scale bg-black text-white"
-          >
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="w-40 h-40 border-8 border-white rounded-full"></div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">INVERSION</h3>
-              <p class="text-sm">Contrast creates emphasis.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 4 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="w-40 h-40 bg-black rotate-45"></div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">DIAMOND</h3>
-              <p class="text-sm">Transformation through perspective.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 5 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div
-              class="absolute inset-0 flex flex-col items-center justify-center p-8"
-            >
-              <div class="mb-4 text-4xl font-bold text-outline">TEXT</div>
-              <div class="text-4xl font-bold">TEXT</div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">OVERLAY</h3>
-              <p class="text-sm">Visual depth through layers.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 6 -->
-          <div
-            class="relative aspect-square overflow-hidden hover-scale bg-black text-white"
-          >
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div
-              class="absolute inset-0 flex items-center justify-center p-8 animate-spin-slow"
-            >
-              <div class="w-32 h-32 relative">
-                <div class="absolute w-full h-2 bg-white top-0 left-0"></div>
-                <div class="absolute w-2 h-full bg-white top-0 right-0"></div>
-                <div class="absolute w-full h-2 bg-white bottom-0 left-0"></div>
-                <div class="absolute w-2 h-full bg-white top-0 left-0"></div>
-              </div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">MOTION</h3>
-              <p class="text-sm">Dynamic storytelling through animation.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 7 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 grid grid-cols-2 grid-rows-2">
-              <div class="bg-white"></div>
-              <div class="bg-black"></div>
-              <div class="bg-black"></div>
-              <div class="bg-white"></div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4 text-white">
-              <h3 class="text-xl font-bold">QUARTERS</h3>
-              <p class="text-sm">Division creates harmony.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 8 -->
-          <div class="relative aspect-square overflow-hidden hover-scale">
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="relative">
-                <div class="w-16 h-16 bg-black absolute top-0 left-0"></div>
-                <div
-                  class="w-16 h-16 bg-black absolute top-0 right-0 translate-x-4 -translate-y-4"
-                ></div>
-                <div
-                  class="w-16 h-16 bg-black absolute bottom-0 right-0 translate-x-8 -translate-y-8"
-                ></div>
-                <div
-                  class="w-16 h-16 bg-black absolute bottom-0 left-0 translate-x-12 -translate-y-12"
-                ></div>
-                <div
-                  class="w-16 h-16 bg-black absolute top-0 left-0 translate-x-16 -translate-y-16"
-                ></div>
-              </div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">CASCADE</h3>
-              <p class="text-sm">Layered repetition creates rhythm.</p>
-            </div>
-          </div>
-
-          <!-- Gallery Item 9 -->
-          <div
-            class="relative aspect-square overflow-hidden hover-scale bg-black text-white"
-          >
-            <div class="absolute inset-0 border-grid opacity-20"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-9xl font-bold opacity-10">A</div>
-              <div class="text-7xl font-bold absolute">A</div>
-            </div>
-            <div class="absolute bottom-0 left-0 p-4">
-              <h3 class="text-xl font-bold">ECHO</h3>
-              <p class="text-sm">Repetition creates depth.</p>
-            </div>
-          </div>
-        </div>
+        <p class="text-step-3 font-bold measure">Same tokens, your composition.</p>
+        <p class="text-step--1 text-gray-400 mt-4 measure">
+          Everything here is plain HTML and the system's variables. Fork it,
+          rearrange it, send back what you make.
+        </p>
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="btn btn-secondary mt-8" style="border-color: var(--paper); color: var(--paper)">Fork on GitHub</a>
       </div>
     </section>
+  </main>
 
-    <!-- Featured Gallery Items -->
-    <section class="py-24 px-8 bg-black text-white">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          FEAT<span class="text-xs align-super">URED</span>
-        </h2>
+  <!-- Footer -->
+  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
+      <p class="text-step--1 text-gray-600">
+        <span class="inline-block rotate-180" aria-hidden="true">©</span>
+        GPLv3 2025 —
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="underline underline-offset-4">Share, Adapt, Build.</a>
+      </p>
+    </div>
+  </footer>
+</body>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-          <!-- Featured Item 1 -->
-          <div class="flex flex-col h-96">
-            <div class="flex-1 overflow-hidden relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-36 h-36 rounded-full border-8 border-white"></div>
-              </div>
-            </div>
-            <div class="mt-4">
-              <h3 class="text-2xl font-bold">ORBITAL</h3>
-              <p class="text-lg mt-2">
-                Perfect circles are a universal symbol of unity and wholeness,
-                representing the cyclical nature of time and space.
-              </p>
-              <div class="border-t border-white mt-4 pt-4 flex items-center">
-                <div class="text-sm uppercase tracking-widest flex-1"></div>
-                <div class="text-sm">01</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Featured Item 2 -->
-          <div class="flex flex-col h-96">
-            <div class="flex-1 overflow-hidden relative">
-              <div
-                class="absolute inset-0 grid grid-cols-5 grid-rows-5 gap-2 p-8"
-              >
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-3 row-span-3 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-                <div class="col-span-1 row-span-1 bg-white"></div>
-              </div>
-            </div>
-            <div class="mt-4">
-              <h3 class="text-2xl font-bold">MODULAR</h3>
-              <p class="text-lg mt-2">
-                Grid-based systems allow for endless combinations of modular
-                design elements, creating infinite possibilities from finite
-                constraints.
-              </p>
-              <div class="border-t border-white mt-4 pt-4 flex items-center">
-                <div class="text-sm uppercase tracking-widest flex-1"></div>
-                <div class="text-sm">02</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Gallery -->
-    <section class="py-24 px-8">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold mb-16">
-          INTER<span class="text-xs align-super">ACTIVE</span>
-        </h2>
-
-        <div class="grid grid-cols-1 gap-16">
-          <!-- Interactive Element 1 -->
-          <div
-            class="h-64 border-2 border-black relative overflow-hidden group cursor-pointer"
-          >
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div
-                class="text-6xl font-bold transition-all duration-500 group-hover:opacity-0"
-              >
-                HOVER
-              </div>
-              <div
-                class="text-6xl font-bold absolute opacity-0 transition-all duration-500 group-hover:opacity-100"
-              >
-                REVEAL
-              </div>
-            </div>
-          </div>
-
-          <!-- Interactive Element 2 -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div
-              class="h-64 bg-white border-2 border-black p-8 relative overflow-hidden group cursor-pointer"
-            >
-              <div
-                class="absolute inset-0 bg-black transform origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
-              ></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                  class="text-4xl font-bold z-10 transition-colors duration-500 group-hover:text-white"
-                >
-                  SLIDE
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="h-64 bg-black text-white border-2 border-white p-8 relative overflow-hidden group cursor-pointer"
-            >
-              <div
-                class="absolute inset-0 bg-white transform origin-right scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
-              ></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                  class="text-4xl font-bold z-10 transition-colors duration-500 group-hover:text-black"
-                >
-                  REVEAL
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quote Section -->
-    <section class="py-24 px-8 bg-black text-white">
-      <div class="max-w-4xl mx-auto text-center">
-        <blockquote class="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-          "Thinking about design is hard, but not thinking about it can be
-          disastrous."
-        </blockquote>
-        <p class="text-xl">— Ralph Caplan</p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 px-8 border-t border-gray-400 dark:border-gray-600">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <div>
-          <a
-            href="https://layogtima.com"
-            target="_blank"
-            class="text-xl font-bold tracking-normal"
-          >
-            AMIT
-          </a>
-        </div>
-        <div class="flex items-center gap-4">
-          <div
-            class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-2"
-          >
-            <span class="inline-block transform rotate-180 text-lg mb-2"
-              >©</span
-            >
-            <span
-              >Copyleft 2025 -
-              <a href="https://github.com/layogtima/mono" target="_blank" class="underline"
-                >Share, Adapt, Build.</a
-              ></span
-            >
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
 </html>

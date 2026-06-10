@@ -1,0 +1,785 @@
+/* ==========================================================================
+   MONO — design tokens + components
+   Black, white, and the grays between. Nothing else.
+   https://github.com/layogtima/mono
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01 — TOKENS
+   Scale steps are precomputed (base 16px, ratio 1.25). The customizer
+   recomputes them; CSS pow() is deliberately avoided.
+   -------------------------------------------------------------------------- */
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+
+  --gray-100: #f4f4f4;
+  --gray-200: #e4e4e4;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+
+  --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --text-base: 1rem;
+  --step--2: 0.64rem;
+  --step--1: 0.8rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-5: 3.052rem;
+  --step-6: 3.815rem;
+  --step-7: 4.768rem;
+
+  --leading: 1.6;
+  --leading-tight: 1.1;
+  --tracking: 0em;
+  --tracking-wide: 0.12em;
+
+  --border-w: 2px;
+  --border-w-hairline: 1px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+
+  --measure: 65ch;
+}
+
+/* Inversion. One attribute flips the whole site. */
+html[data-theme="dark"] {
+  --paper: #0a0a0a;
+  --ink: #fafafa;
+
+  --gray-100: #171717;
+  --gray-200: #262626;
+  --gray-300: #404040;
+  --gray-400: #525252;
+  --gray-500: #737373;
+  --gray-600: #a3a3a3;
+  --gray-700: #d4d4d4;
+  --gray-800: #e4e4e4;
+  --gray-900: #f4f4f4;
+}
+
+/* --------------------------------------------------------------------------
+   02 — BASE
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  line-height: var(--leading);
+  letter-spacing: var(--tracking);
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: var(--border-w) solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   03 — TYPOGRAPHIC UTILITIES
+   -------------------------------------------------------------------------- */
+
+/* Oversized editorial display type; fluid so heroes never overflow. */
+.display {
+  font-size: clamp(var(--step-5), 9vw, var(--step-7));
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.display-xl {
+  font-size: clamp(var(--step-6), 14vw, 8.5rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* The MONO signature: a superscript tail on the page <h1>. Use once per page. */
+.sup {
+  font-size: 0.25em;
+  vertical-align: super;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Numbered section labels: 01 — TYPE SCALE */
+.meta {
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* Hairline rule */
+.rule {
+  border: 0;
+  border-top: var(--border-w-hairline) solid var(--ink);
+}
+
+/* Subtle baseline-grid texture for heroes */
+.baseline-grid {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--gray-200) 0,
+    var(--gray-200) 1px,
+    transparent 1px,
+    transparent var(--space-5)
+  );
+}
+
+/* --------------------------------------------------------------------------
+   04 — BUTTONS
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.btn:hover {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--ink);
+}
+
+.btn-secondary:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn-ghost {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: var(--border-w);
+}
+
+.btn-ghost:hover {
+  background-color: var(--gray-100);
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--step--2);
+}
+
+.btn-lg {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--step-0);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  border-color: var(--gray-400);
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+  cursor: not-allowed;
+}
+
+.btn-secondary:disabled {
+  background-color: transparent;
+}
+
+/* Loading: animated ellipsis, no spinner SVG needed. */
+.btn-loading::after {
+  content: "";
+  animation: mono-ellipsis 1.2s steps(4) infinite;
+}
+
+@keyframes mono-ellipsis {
+  0%   { content: ""; }
+  25%  { content: "."; }
+  50%  { content: ".."; }
+  75%  { content: "..."; }
+}
+
+/* --------------------------------------------------------------------------
+   05 — TEXT FIELDS
+   -------------------------------------------------------------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: var(--step-0);
+  line-height: var(--leading);
+}
+
+.input::placeholder {
+  color: var(--gray-500);
+}
+
+.input:disabled {
+  border-color: var(--gray-400);
+  background-color: var(--gray-100);
+  color: var(--gray-500);
+  cursor: not-allowed;
+}
+
+.input[aria-invalid="true"],
+.input-error {
+  border-style: dashed;
+}
+
+.hint {
+  font-size: var(--step--1);
+  color: var(--gray-600);
+}
+
+.error-text {
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.error-text::before {
+  content: "× ";
+}
+
+.success-text {
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.success-text::before {
+  content: "✓ ";
+}
+
+/* --------------------------------------------------------------------------
+   06 — SELECT
+   Wrapper + ::after CSS triangle keeps the marker monochrome and
+   invert-safe (no hardcoded SVG fill).
+   -------------------------------------------------------------------------- */
+.select {
+  position: relative;
+  display: block;
+}
+
+.select > select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3);
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: var(--step-0);
+  line-height: var(--leading);
+  cursor: pointer;
+}
+
+.select::after {
+  content: "";
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-25%);
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+  border-top: 0.5em solid var(--ink);
+  pointer-events: none;
+}
+
+.select > select:disabled {
+  border-color: var(--gray-400);
+  background-color: var(--gray-100);
+  color: var(--gray-500);
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   07 — CHECKBOX, RADIO, SWITCH
+   -------------------------------------------------------------------------- */
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: var(--step-0);
+}
+
+.check,
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+}
+
+.radio {
+  border-radius: 50%;
+}
+
+.check::before,
+.radio::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  background-color: var(--ink);
+  transform: scale(0);
+  transition: transform 100ms ease;
+}
+
+.radio::before {
+  border-radius: 50%;
+}
+
+.check:checked::before,
+.radio:checked::before {
+  transform: scale(1);
+}
+
+.check:disabled,
+.radio:disabled {
+  border-color: var(--gray-400);
+  background-color: var(--gray-100);
+  cursor: not-allowed;
+}
+
+.check:disabled::before,
+.radio:disabled::before {
+  background-color: var(--gray-400);
+}
+
+/* Toggle switch: a checkbox under the hood. */
+.switch {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 3em;
+  height: 1.5em;
+  flex-shrink: 0;
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  cursor: pointer;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  top: 0.125em;
+  left: 0.125em;
+  width: 1em;
+  height: 1em;
+  background-color: var(--ink);
+  transition: transform 150ms ease;
+}
+
+.switch:checked {
+  background-color: var(--ink);
+}
+
+.switch:checked::before {
+  background-color: var(--paper);
+  transform: translateX(1.5em);
+}
+
+.switch:disabled {
+  border-color: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.switch:disabled::before {
+  background-color: var(--gray-400);
+}
+
+/* --------------------------------------------------------------------------
+   08 — RANGE
+   -------------------------------------------------------------------------- */
+.range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1.25em;
+  background: transparent;
+  cursor: pointer;
+}
+
+.range::-webkit-slider-runnable-track {
+  height: var(--border-w);
+  background-color: var(--ink);
+}
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1em;
+  height: 1em;
+  margin-top: calc((1em - var(--border-w)) / -2);
+  background-color: var(--ink);
+  border: none;
+}
+
+.range::-moz-range-track {
+  height: var(--border-w);
+  background-color: var(--ink);
+}
+
+.range::-moz-range-thumb {
+  width: 1em;
+  height: 1em;
+  background-color: var(--ink);
+  border: none;
+  border-radius: 0;
+}
+
+/* --------------------------------------------------------------------------
+   09 — FILE INPUT
+   -------------------------------------------------------------------------- */
+.file {
+  width: 100%;
+  font-size: var(--step--1);
+  color: var(--gray-600);
+}
+
+.file::file-selector-button {
+  margin-right: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.file::file-selector-button:hover {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   10 — TABLE
+   -------------------------------------------------------------------------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+  text-align: left;
+}
+
+.table caption {
+  text-align: left;
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--gray-600);
+  padding-bottom: var(--space-2);
+}
+
+.table th {
+  border-bottom: var(--border-w) solid var(--ink);
+  padding: var(--space-2) var(--space-3);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.table td {
+  border-bottom: var(--border-w-hairline) solid var(--gray-300);
+  padding: var(--space-2) var(--space-3);
+}
+
+.table-striped tbody tr:nth-child(odd) td {
+  background-color: var(--gray-100);
+}
+
+.table-dense th,
+.table-dense td {
+  padding: var(--space-1) var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   11 — TABS
+   -------------------------------------------------------------------------- */
+.tabs {
+  display: flex;
+  border-bottom: var(--border-w) solid var(--ink);
+}
+
+.tab {
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  background: transparent;
+  color: var(--gray-600);
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tab[aria-selected="true"] {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.tabpanel {
+  padding: var(--space-4) 0;
+}
+
+/* --------------------------------------------------------------------------
+   12 — ACCORDION (native <details>)
+   -------------------------------------------------------------------------- */
+.accordion {
+  border-top: var(--border-w) solid var(--ink);
+}
+
+.accordion:last-of-type {
+  border-bottom: var(--border-w) solid var(--ink);
+}
+
+.accordion > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion > summary::after {
+  content: "+";
+  font-size: var(--step-1);
+  line-height: 1;
+}
+
+.accordion[open] > summary::after {
+  content: "−";
+}
+
+.accordion > :not(summary) {
+  padding-bottom: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   13 — MODAL (native <dialog>)
+   -------------------------------------------------------------------------- */
+.modal {
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+  padding: var(--space-5);
+  max-width: min(32rem, calc(100vw - var(--space-5)));
+  margin: auto;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="dark"] .modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* --------------------------------------------------------------------------
+   14 — DROPDOWN MENU
+   -------------------------------------------------------------------------- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  min-width: 12rem;
+  border: var(--border-w) solid var(--ink);
+  background-color: var(--paper);
+  z-index: 30;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: var(--step--1);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   15 — TOOLTIP
+   -------------------------------------------------------------------------- */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-size: var(--step--2);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+  z-index: 40;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   16 — TOAST
+   -------------------------------------------------------------------------- */
+.toast-region {
+  position: fixed;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 60;
+}
+
+.toast {
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-w) solid var(--paper);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-size: var(--step--1);
+  max-width: 24rem;
+  animation: mono-toast-in 200ms ease;
+}
+
+@keyframes mono-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17 — CODE BLOCKS (component snippets)
+   -------------------------------------------------------------------------- */
+.code-block {
+  position: relative;
+  border: var(--border-w-hairline) solid var(--gray-400);
+  background-color: var(--gray-100);
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+
+.code-block pre {
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.code-block .copy-btn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+}

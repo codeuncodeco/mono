@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Components</title>
+  <meta name="title" content="MONO | Components" />
+  <meta name="description"
+    content="The MONO component library: buttons, forms, tables, tabs, dialogs, dropdowns, tooltips, and toasts — monochrome, accessible, copy-paste ready." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mono.layogtima.com/components.html" />
+  <meta property="og:title" content="MONO | Components" />
+  <meta property="og:description"
+    content="The MONO component library: buttons, forms, tables, tabs, dialogs, dropdowns, tooltips, and toasts — monochrome, accessible, copy-paste ready." />
+  <meta property="og:image" content="https://mono.layogtima.com/images/screenshot.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://mono.layogtima.com/images/favicon/favicon-96x96.png?M24613"
+    sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://mono.layogtima.com/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://mono.layogtima.com/images/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/mono-config.js"></script>
+  <link rel="stylesheet" href="css/mono.css" />
+  <script src="js/mono.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
+    Skip to content
+  </a>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+    <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
+      <a href="index.html" class="text-step-1 font-bold">MONO</a>
+      <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="components.html" aria-current="page"
+            class="text-step--1 underline decoration-2 underline-offset-8">COMPONENTS</a>
+          <a href="typography.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">TYPOGRAPHY</a>
+          <a href="layout.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">LAYOUT</a>
+          <a href="gallery.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">GALLERY</a>
+          <a href="customizer.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">CUSTOMIZER</a>
+          <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
+          <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
+        </div>
+        <button type="button" data-mono-invert
+          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+          title="Swap ink and paper">INVERT</button>
+        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden text-step--1 font-bold">MENU</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
+    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
+      <li><a href="components.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">COMPONENTS</a></li>
+      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
+      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
+      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
+      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
+      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
+      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
+    </ul>
+  </div>
+
+  <main id="main" class="flex-1 pt-14">
+    <!-- Hero -->
+    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+      <div class="max-w-6xl mx-auto">
+        <p class="meta mb-6">Every element, in ink and paper</p>
+        <h1 class="display-xl">COMPO<span class="sup">NENTS</span></h1>
+        <p class="measure mt-8 text-step-1">
+          Buttons, forms, tables, and the dynamic parts — tabs, dialogs,
+          dropdowns, toasts. Each one accessible, keyboard-friendly, and
+          ready to copy. The classes live in
+          <code class="bg-gray-100 px-1 text-step-0">css/mono.css</code>;
+          the behaviors in
+          <code class="bg-gray-100 px-1 text-step-0">js/mono.js</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section index -->
+    <nav class="px-4 lg:px-8 py-6 border-b border-hairline border-gray-300" aria-label="Components">
+      <div class="max-w-6xl mx-auto flex flex-wrap gap-x-6 gap-y-2 text-step--1">
+        <a href="#buttons" class="hover:underline underline-offset-4">01 BUTTONS</a>
+        <a href="#inputs" class="hover:underline underline-offset-4">02 INPUTS</a>
+        <a href="#select" class="hover:underline underline-offset-4">03 SELECT</a>
+        <a href="#choices" class="hover:underline underline-offset-4">04 CHECKBOX &amp; RADIO</a>
+        <a href="#switch" class="hover:underline underline-offset-4">05 SWITCH</a>
+        <a href="#range" class="hover:underline underline-offset-4">06 RANGE</a>
+        <a href="#file" class="hover:underline underline-offset-4">07 FILE</a>
+        <a href="#validation" class="hover:underline underline-offset-4">08 VALIDATION</a>
+        <a href="#table" class="hover:underline underline-offset-4">09 TABLE</a>
+        <a href="#tabs" class="hover:underline underline-offset-4">10 TABS</a>
+        <a href="#accordion" class="hover:underline underline-offset-4">11 ACCORDION</a>
+        <a href="#modal" class="hover:underline underline-offset-4">12 MODAL</a>
+        <a href="#dropdown" class="hover:underline underline-offset-4">13 DROPDOWN</a>
+        <a href="#tooltip" class="hover:underline underline-offset-4">14 TOOLTIP</a>
+        <a href="#toast" class="hover:underline underline-offset-4">15 TOAST</a>
+      </div>
+    </nav>
+
+    <!-- 01 Buttons -->
+    <section id="buttons" class="px-4 lg:px-8 py-16 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">01 — Buttons</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Three variants, three sizes. The primary button is solid ink; hover
+          inverts it. Disabled drops to gray — never half-transparent.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 space-y-6">
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="button" class="btn">Primary</button>
+            <button type="button" class="btn btn-secondary">Secondary</button>
+            <button type="button" class="btn btn-ghost">Ghost</button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="button" class="btn btn-sm">Small</button>
+            <button type="button" class="btn">Medium</button>
+            <button type="button" class="btn btn-lg">Large</button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="button" class="btn" disabled>Disabled</button>
+            <button type="button" class="btn btn-loading">Saving</button>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-buttons">COPY</button>
+            <pre id="code-buttons"><code>&lt;button class="btn"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;
+
+&lt;button class="btn btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-lg"&gt;Large&lt;/button&gt;
+
+&lt;button class="btn" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="btn btn-loading"&gt;Saving&lt;/button&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 02 Inputs -->
+    <section id="inputs" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">02 — Text input &amp; textarea</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Label, field, hint — in that order. Error states use a dashed border
+          and a message wired up with <code>aria-describedby</code>; never
+          color alone.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="field">
+            <label class="label" for="demo-name">Name</label>
+            <input class="input" type="text" id="demo-name" placeholder="Ada Lovelace" />
+            <p class="hint">As it should appear in print.</p>
+          </div>
+          <div class="field">
+            <label class="label" for="demo-email">Email</label>
+            <input class="input" type="email" id="demo-email" value="not-an-email" aria-invalid="true"
+              aria-describedby="demo-email-error" />
+            <p class="error-text" id="demo-email-error">That doesn't look like an email address.</p>
+          </div>
+          <div class="field">
+            <label class="label" for="demo-handle">Handle</label>
+            <input class="input" type="text" id="demo-handle" value="@mono" aria-describedby="demo-handle-ok" />
+            <p class="success-text" id="demo-handle-ok">Available.</p>
+          </div>
+          <div class="field">
+            <label class="label" for="demo-locked">Locked</label>
+            <input class="input" type="text" id="demo-locked" value="Read only territory" disabled />
+            <p class="hint">Disabled fields go gray, not ghostly.</p>
+          </div>
+          <div class="field md:col-span-2">
+            <label class="label" for="demo-bio">Bio</label>
+            <textarea class="input" id="demo-bio" rows="3" placeholder="Strictly no more than two sentences."></textarea>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-inputs">COPY</button>
+            <pre id="code-inputs"><code>&lt;div class="field"&gt;
+  &lt;label class="label" for="name"&gt;Name&lt;/label&gt;
+  &lt;input class="input" type="text" id="name" placeholder="Ada Lovelace" /&gt;
+  &lt;p class="hint"&gt;As it should appear in print.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Error state --&gt;
+&lt;div class="field"&gt;
+  &lt;label class="label" for="email"&gt;Email&lt;/label&gt;
+  &lt;input class="input" type="email" id="email"
+         aria-invalid="true" aria-describedby="email-error" /&gt;
+  &lt;p class="error-text" id="email-error"&gt;That doesn't look like an email address.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Textarea --&gt;
+&lt;div class="field"&gt;
+  &lt;label class="label" for="bio"&gt;Bio&lt;/label&gt;
+  &lt;textarea class="input" id="bio" rows="3"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 03 Select -->
+    <section id="select" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">03 — Select</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          A native <code>&lt;select&gt;</code> with the chrome stripped and a
+          CSS triangle for a marker — it inverts with the theme because it's
+          drawn in <code>--ink</code>.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="field">
+            <label class="label" for="demo-font">Typeface</label>
+            <div class="select">
+              <select id="demo-font">
+                <option>Space Mono</option>
+                <option>JetBrains Mono</option>
+                <option>IBM Plex Mono</option>
+                <option>Fragment Mono</option>
+                <option>Courier Prime</option>
+                <option>Spline Sans Mono</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="demo-select-disabled">Disabled</label>
+            <div class="select">
+              <select id="demo-select-disabled" disabled>
+                <option>No choices today</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-select">COPY</button>
+            <pre id="code-select"><code>&lt;div class="field"&gt;
+  &lt;label class="label" for="font"&gt;Typeface&lt;/label&gt;
+  &lt;div class="select"&gt;
+    &lt;select id="font"&gt;
+      &lt;option&gt;Space Mono&lt;/option&gt;
+      &lt;option&gt;JetBrains Mono&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 04 Checkbox & Radio -->
+    <section id="choices" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">04 — Checkbox &amp; radio</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Square check, round radio — geometry tells them apart before the
+          cursor does. Both are real inputs under
+          <code>appearance:&nbsp;none</code>.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <fieldset>
+            <legend class="label mb-4">Subscriptions</legend>
+            <div class="flex flex-col gap-3">
+              <label class="choice"><input type="checkbox" class="check" checked /> Release notes</label>
+              <label class="choice"><input type="checkbox" class="check" /> Monthly digest</label>
+              <label class="choice"><input type="checkbox" class="check" disabled /> Telemetry (never)</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="label mb-4">Theme</legend>
+            <div class="flex flex-col gap-3">
+              <label class="choice"><input type="radio" name="demo-theme" class="radio" checked /> Ink on paper</label>
+              <label class="choice"><input type="radio" name="demo-theme" class="radio" /> Paper on ink</label>
+              <label class="choice"><input type="radio" name="demo-theme" class="radio" disabled /> Sepia (no)</label>
+            </div>
+          </fieldset>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-choices">COPY</button>
+            <pre id="code-choices"><code>&lt;label class="choice"&gt;
+  &lt;input type="checkbox" class="check" checked /&gt; Release notes
+&lt;/label&gt;
+
+&lt;label class="choice"&gt;
+  &lt;input type="radio" name="theme" class="radio" checked /&gt; Ink on paper
+&lt;/label&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 05 Switch -->
+    <section id="switch" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">05 — Toggle switch</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          A checkbox in a track. The thumb slides; with
+          <code>prefers-reduced-motion</code> it simply jumps.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 flex flex-col gap-4">
+          <label class="choice"><input type="checkbox" class="switch" checked /> Autosave</label>
+          <label class="choice"><input type="checkbox" class="switch" /> Public profile</label>
+          <label class="choice"><input type="checkbox" class="switch" disabled /> Time travel</label>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-switch">COPY</button>
+            <pre id="code-switch"><code>&lt;label class="choice"&gt;
+  &lt;input type="checkbox" class="switch" checked /&gt; Autosave
+&lt;/label&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 06 Range -->
+    <section id="range" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">06 — Range</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          A hairline track and a square thumb. Add
+          <code>data-mono-output</code> and the value renders live into any
+          element.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <div class="field max-w-md">
+            <label class="label" for="demo-range">Contrast — <output id="demo-range-out"></output></label>
+            <input type="range" class="range" id="demo-range" min="0" max="100" value="80"
+              data-mono-output="demo-range-out" data-unit="%" />
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-range">COPY</button>
+            <pre id="code-range"><code>&lt;label class="label" for="contrast"&gt;Contrast — &lt;output id="contrast-out"&gt;&lt;/output&gt;&lt;/label&gt;
+&lt;input type="range" class="range" id="contrast" min="0" max="100" value="80"
+       data-mono-output="contrast-out" data-unit="%" /&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 07 File -->
+    <section id="file" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">07 — File input</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          The native input, with its button restyled through
+          <code>::file-selector-button</code>. No hidden-input tricks, so
+          keyboard and screen reader behavior stay stock.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <div class="field max-w-md">
+            <label class="label" for="demo-file">Attachment</label>
+            <input type="file" class="file" id="demo-file" />
+            <p class="hint">Black and white images preferred, obviously.</p>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-file">COPY</button>
+            <pre id="code-file"><code>&lt;div class="field"&gt;
+  &lt;label class="label" for="attachment"&gt;Attachment&lt;/label&gt;
+  &lt;input type="file" class="file" id="attachment" /&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 08 Validation -->
+    <section id="validation" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">08 — Fieldset &amp; validation</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          The full pattern: a <code>&lt;fieldset&gt;</code> with a legend, an
+          error summary at the top, and per-field messages tied in with
+          <code>aria-invalid</code> and <code>aria-describedby</code>.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <form class="max-w-md" onsubmit="event.preventDefault(); mono.toast('Form submitted. Hypothetically.')">
+            <div class="border border-ink p-4 mb-6" role="alert">
+              <p class="text-step--1 font-bold">2 fields need attention</p>
+              <ul class="text-step--1 mt-2 list-disc list-inside">
+                <li><a href="#val-email" class="underline underline-offset-4">Email is not valid</a></li>
+                <li><a href="#val-pass" class="underline underline-offset-4">Password is too short</a></li>
+              </ul>
+            </div>
+            <fieldset class="space-y-6">
+              <legend class="label mb-4">Create account</legend>
+              <div class="field">
+                <label class="label" for="val-email">Email</label>
+                <input class="input" type="email" id="val-email" value="mono@" aria-invalid="true"
+                  aria-describedby="val-email-err" />
+                <p class="error-text" id="val-email-err">Email is not valid.</p>
+              </div>
+              <div class="field">
+                <label class="label" for="val-pass">Password</label>
+                <input class="input" type="password" id="val-pass" value="123" aria-invalid="true"
+                  aria-describedby="val-pass-err" />
+                <p class="error-text" id="val-pass-err">Password is too short — 12 characters minimum.</p>
+              </div>
+              <button type="submit" class="btn">Create account</button>
+            </fieldset>
+          </form>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-validation">COPY</button>
+            <pre id="code-validation"><code>&lt;div class="border border-ink p-4" role="alert"&gt;
+  &lt;p class="text-step--1 font-bold"&gt;2 fields need attention&lt;/p&gt;
+  &lt;ul class="text-step--1 mt-2 list-disc list-inside"&gt;
+    &lt;li&gt;&lt;a href="#email"&gt;Email is not valid&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;fieldset&gt;
+  &lt;legend class="label"&gt;Create account&lt;/legend&gt;
+  &lt;div class="field"&gt;
+    &lt;label class="label" for="email"&gt;Email&lt;/label&gt;
+    &lt;input class="input" type="email" id="email"
+           aria-invalid="true" aria-describedby="email-err" /&gt;
+    &lt;p class="error-text" id="email-err"&gt;Email is not valid.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 09 Table -->
+    <section id="table" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">09 — Table</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Heavy rule under the header, hairlines between rows. Add
+          <code>.table-striped</code> for zebra rows or
+          <code>.table-dense</code> for data-heavy views.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 overflow-x-auto">
+          <table class="table table-striped">
+            <caption>The roster, by the numbers</caption>
+            <thead>
+              <tr>
+                <th scope="col">Typeface</th>
+                <th scope="col">Designer</th>
+                <th scope="col">Weights</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Space Mono</td>
+                <td>Colophon Foundry</td>
+                <td>400, 700</td>
+                <td>2016</td>
+              </tr>
+              <tr>
+                <td>JetBrains Mono</td>
+                <td>JetBrains</td>
+                <td>100–800</td>
+                <td>2020</td>
+              </tr>
+              <tr>
+                <td>IBM Plex Mono</td>
+                <td>Bold Monday</td>
+                <td>400, 700</td>
+                <td>2017</td>
+              </tr>
+              <tr>
+                <td>Fragment Mono</td>
+                <td>Wei Huang</td>
+                <td>400</td>
+                <td>2022</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-table">COPY</button>
+            <pre id="code-table"><code>&lt;table class="table table-striped"&gt;
+  &lt;caption&gt;The roster, by the numbers&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope="col"&gt;Typeface&lt;/th&gt;&lt;th scope="col"&gt;Year&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Space Mono&lt;/td&gt;&lt;td&gt;2016&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 10 Tabs -->
+    <section id="tabs" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">10 — Tabs</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Proper <code>role="tablist"</code> semantics with arrow-key
+          navigation and roving tabindex — wired automatically by
+          <code>js/mono.js</code>.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <div class="tabs" role="tablist" aria-label="Manifesto tabs">
+            <button class="tab" role="tab" id="tab-reduce" aria-controls="panel-reduce" aria-selected="true"
+              type="button">Reduce</button>
+            <button class="tab" role="tab" id="tab-refine" aria-controls="panel-refine" aria-selected="false"
+              tabindex="-1" type="button">Refine</button>
+            <button class="tab" role="tab" id="tab-repeat" aria-controls="panel-repeat" aria-selected="false"
+              tabindex="-1" type="button">Repeat</button>
+          </div>
+          <div class="tabpanel" id="panel-reduce" role="tabpanel" aria-labelledby="tab-reduce">
+            <p class="text-step--1 measure">Strip away the non-essential. Color, decoration, complexity — gone.</p>
+          </div>
+          <div class="tabpanel" id="panel-refine" role="tabpanel" aria-labelledby="tab-refine" hidden>
+            <p class="text-step--1 measure">Perfect what remains: typography, spacing, and proportion.</p>
+          </div>
+          <div class="tabpanel" id="panel-repeat" role="tabpanel" aria-labelledby="tab-repeat" hidden>
+            <p class="text-step--1 measure">Create patterns and relationships with limited elements.</p>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-tabs">COPY</button>
+            <pre id="code-tabs"><code>&lt;div class="tabs" role="tablist" aria-label="Sections"&gt;
+  &lt;button class="tab" role="tab" id="tab-1" aria-controls="panel-1"
+          aria-selected="true"&gt;Reduce&lt;/button&gt;
+  &lt;button class="tab" role="tab" id="tab-2" aria-controls="panel-2"
+          aria-selected="false" tabindex="-1"&gt;Refine&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="tabpanel" id="panel-1" role="tabpanel" aria-labelledby="tab-1"&gt;…&lt;/div&gt;
+&lt;div class="tabpanel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden&gt;…&lt;/div&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 11 Accordion -->
+    <section id="accordion" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">11 — Accordion</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Native <code>&lt;details&gt;</code> — zero JavaScript, fully
+          keyboard accessible, and the browser remembers how it works.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <details class="accordion">
+            <summary>Does it work without JavaScript?</summary>
+            <p class="text-step--1 text-gray-700 measure">Yes. This accordion is a native
+              <code>&lt;details&gt;</code> element; the only thing CSS adds is the plus-minus marker.</p>
+          </details>
+          <details class="accordion">
+            <summary>Can more than one be open?</summary>
+            <p class="text-step--1 text-gray-700 measure">By default, yes. Add a shared
+              <code>name</code> attribute to make them exclusive in modern browsers.</p>
+          </details>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-accordion">COPY</button>
+            <pre id="code-accordion"><code>&lt;details class="accordion"&gt;
+  &lt;summary&gt;Does it work without JavaScript?&lt;/summary&gt;
+  &lt;p&gt;Yes. It's a native element.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 12 Modal -->
+    <section id="modal" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">12 — Modal</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Native <code>&lt;dialog&gt;</code>: focus trapping, Escape, and the
+          backdrop come free from the browser. Clicking outside closes it.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <button type="button" class="btn" data-mono-modal-open="demo-modal">Open modal</button>
+          <dialog id="demo-modal" class="modal" aria-labelledby="demo-modal-title">
+            <h3 id="demo-modal-title" class="text-step-2 font-bold mb-4">Delete everything?</h3>
+            <p class="text-step--1 text-gray-700 mb-8">
+              This will remove all color from your project. Which, to be fair,
+              is the whole idea.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-end">
+              <button type="button" class="btn btn-secondary" data-mono-modal-close>Cancel</button>
+              <button type="button" class="btn" data-mono-modal-close>Proceed</button>
+            </div>
+          </dialog>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-modal">COPY</button>
+            <pre id="code-modal"><code>&lt;button class="btn" data-mono-modal-open="confirm"&gt;Open modal&lt;/button&gt;
+
+&lt;dialog id="confirm" class="modal" aria-labelledby="confirm-title"&gt;
+  &lt;h3 id="confirm-title" class="text-step-2 font-bold"&gt;Delete everything?&lt;/h3&gt;
+  &lt;p&gt;…&lt;/p&gt;
+  &lt;button class="btn btn-secondary" data-mono-modal-close&gt;Cancel&lt;/button&gt;
+  &lt;button class="btn" data-mono-modal-close&gt;Proceed&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 13 Dropdown -->
+    <section id="dropdown" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">13 — Dropdown menu</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          A button with <code>aria-expanded</code> and a panel. Escape or an
+          outside click closes it.
+        </p>
+        <div class="border border-ink p-6 lg:p-8">
+          <div class="dropdown" data-mono-dropdown>
+            <button type="button" class="btn btn-secondary" aria-expanded="false" aria-haspopup="true">Actions ▾</button>
+            <ul class="dropdown-menu" hidden>
+              <li><button type="button">Duplicate</button></li>
+              <li><button type="button">Rename</button></li>
+              <li><button type="button">Export as PNG</button></li>
+              <li><button type="button">Delete</button></li>
+            </ul>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-dropdown">COPY</button>
+            <pre id="code-dropdown"><code>&lt;div class="dropdown" data-mono-dropdown&gt;
+  &lt;button class="btn btn-secondary" aria-expanded="false"
+          aria-haspopup="true"&gt;Actions ▾&lt;/button&gt;
+  &lt;ul class="dropdown-menu" hidden&gt;
+    &lt;li&gt;&lt;button&gt;Duplicate&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button&gt;Delete&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 14 Tooltip -->
+    <section id="tooltip" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">14 — Tooltip</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Pure CSS via <code>data-tooltip</code>; it appears on hover and on
+          keyboard focus. Keep it to a few words — tooltips are captions, not
+          paragraphs.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 flex flex-wrap gap-6">
+          <button type="button" class="btn btn-secondary" data-tooltip="Saves to local storage">Hover or focus me</button>
+          <button type="button" class="btn btn-secondary" data-tooltip="Approximately 42 grays">How many grays?</button>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-tooltip">COPY</button>
+            <pre id="code-tooltip"><code>&lt;button class="btn btn-secondary"
+        data-tooltip="Saves to local storage"&gt;Hover or focus me&lt;/button&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 15 Toast -->
+    <section id="toast" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">15 — Toast</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Call <code>mono.toast('message')</code> from anywhere, or put the
+          message in a <code>data-mono-toast</code> attribute. Toasts land in
+          a <code>role="status"</code> region and dismiss themselves.
+        </p>
+        <div class="border border-ink p-6 lg:p-8 flex flex-wrap gap-4">
+          <button type="button" class="btn" data-mono-toast="Changes saved. All zero colors of them.">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-mono-toast="Link copied to clipboard.">Copy link</button>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-toast">COPY</button>
+            <pre id="code-toast"><code>&lt;!-- Declarative --&gt;
+&lt;button class="btn" data-mono-toast="Changes saved."&gt;Save changes&lt;/button&gt;
+
+&lt;!-- Programmatic --&gt;
+&lt;script&gt;
+  mono.toast("Changes saved.");
+&lt;/script&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
+      <p class="text-step--1 text-gray-600">
+        <span class="inline-block rotate-180" aria-hidden="true">©</span>
+        GPLv3 2025 —
+        <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
+          class="underline underline-offset-4">Share, Adapt, Build.</a>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

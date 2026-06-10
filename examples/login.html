@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Example — Login</title>
+  <meta name="description" content="A sign-in screen built with the MONO design system." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/mono-config.js"></script>
+  <link rel="stylesheet" href="../css/mono.css" />
+  <script src="../js/mono.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen flex flex-col">
+  <!-- Example chrome -->
+  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+    <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
+    <button type="button" data-mono-invert
+      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+      title="Swap ink and paper">INVERT</button>
+  </header>
+
+  <main class="flex-1 baseline-grid flex items-center justify-center px-4 py-16">
+    <div class="w-full max-w-md bg-paper border border-ink">
+      <div class="p-8 pb-0">
+        <p class="meta mb-2">Example · 01</p>
+        <h1 class="text-step-3 font-bold">LED<span class="sup">GER</span></h1>
+        <p class="text-step--1 text-gray-600 mt-2">A fictional bookkeeping tool. Strictly black ink.</p>
+      </div>
+
+      <div class="p-8">
+        <div class="tabs" role="tablist" aria-label="Authentication">
+          <button class="tab" role="tab" id="tab-signin" aria-controls="panel-signin" aria-selected="true"
+            type="button">Sign in</button>
+          <button class="tab" role="tab" id="tab-signup" aria-controls="panel-signup" aria-selected="false" tabindex="-1"
+            type="button">Sign up</button>
+        </div>
+
+        <!-- Sign in -->
+        <div class="tabpanel" id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
+          <form class="space-y-6" onsubmit="event.preventDefault(); mono.toast('Signed in. Welcome back.')">
+            <div class="field">
+              <label class="label" for="signin-email">Email</label>
+              <input class="input" type="email" id="signin-email" autocomplete="email" placeholder="you@ledger.ink" />
+            </div>
+            <div class="field">
+              <label class="label" for="signin-password">Password</label>
+              <input class="input" type="password" id="signin-password" autocomplete="current-password" />
+              <p class="hint"><a href="#" class="underline underline-offset-4">Forgot it entirely?</a></p>
+            </div>
+            <label class="choice text-step--1">
+              <input type="checkbox" class="switch" checked /> Stay signed in
+            </label>
+            <button type="submit" class="btn w-full">Sign in</button>
+          </form>
+        </div>
+
+        <!-- Sign up -->
+        <div class="tabpanel" id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+          <form class="space-y-6" onsubmit="event.preventDefault();">
+            <div class="field">
+              <label class="label" for="signup-name">Name</label>
+              <input class="input" type="text" id="signup-name" autocomplete="name" placeholder="Ada Lovelace" />
+            </div>
+            <div class="field">
+              <label class="label" for="signup-email">Email</label>
+              <input class="input" type="email" id="signup-email" value="ada@" aria-invalid="true"
+                aria-describedby="signup-email-err" />
+              <p class="error-text" id="signup-email-err">That doesn't look like an email address.</p>
+            </div>
+            <div class="field">
+              <label class="label" for="signup-password">Password</label>
+              <input class="input" type="password" id="signup-password" autocomplete="new-password"
+                aria-describedby="signup-password-hint" />
+              <p class="hint" id="signup-password-hint">Twelve characters minimum. Color names not allowed.</p>
+            </div>
+            <button type="submit" class="btn w-full">Create account</button>
+          </form>
+        </div>
+      </div>
+
+      <p class="px-8 pb-8 text-step--2 text-gray-500">
+        By continuing you agree to render all interfaces in monochrome.
+      </p>
+    </div>
+  </main>
+</body>
+
+</html>

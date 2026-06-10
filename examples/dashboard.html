@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONO | Example — Dashboard</title>
+  <meta name="description" content="A data dashboard built with the MONO design system." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- MONO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/mono-config.js"></script>
+  <link rel="stylesheet" href="../css/mono.css" />
+  <script src="../js/mono.js" defer></script>
+</head>
+
+<body class="bg-paper text-ink min-h-screen">
+  <div class="lg:grid lg:grid-cols-12 min-h-screen">
+    <!-- Sidebar -->
+    <aside class="lg:col-span-2 border-b lg:border-b-0 lg:border-r border-ink flex lg:flex-col">
+      <div class="px-4 py-4 lg:border-b border-ink flex items-center justify-between lg:block">
+        <p class="font-bold">PRESS<span class="sup">ROOM</span></p>
+        <p class="hidden lg:block text-step--2 text-gray-500 mt-1">Issue no. 047</p>
+      </div>
+      <nav class="flex lg:flex-col flex-1 overflow-x-auto" aria-label="Dashboard">
+        <a href="#" aria-current="page"
+          class="px-4 py-3 text-step--1 font-bold bg-ink text-paper whitespace-nowrap">OVERVIEW</a>
+        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">ISSUES</a>
+        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">SUBSCRIBERS</a>
+        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">SETTINGS</a>
+      </nav>
+      <div class="hidden lg:block px-4 py-4 border-t border-hairline border-gray-300">
+        <a href="../examples.html" class="text-step--2 text-gray-600 hover:underline underline-offset-4">← MONO /
+          EXAMPLES</a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="lg:col-span-10">
+      <!-- Top bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 px-4 lg:px-8 py-4 border-b border-ink">
+        <div>
+          <h1 class="text-step-2 font-bold">Overview</h1>
+          <p class="text-step--2 text-gray-500">Tuesday, 10 June — all numbers fictional</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="dropdown" data-mono-dropdown>
+            <button type="button" class="btn btn-secondary btn-sm" aria-expanded="false" aria-haspopup="true">Export
+              ▾</button>
+            <ul class="dropdown-menu" hidden>
+              <li><button type="button" data-mono-toast="Exported as CSV.">As CSV</button></li>
+              <li><button type="button" data-mono-toast="Exported as JSON.">As JSON</button></li>
+              <li><button type="button" data-mono-toast="Printed. In black and white, naturally.">Print</button></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-sm" data-mono-toast="Dashboard saved.">Save</button>
+          <button type="button" data-mono-invert
+            class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
+            title="Swap ink and paper">INVERT</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 border-b border-ink">
+        <div class="p-6 border-r border-hairline border-gray-300">
+          <p class="meta">Subscribers</p>
+          <p class="text-step-5 font-bold mt-2">12,408</p>
+          <p class="text-step--1 text-gray-600 mt-1">▲ 312 this week</p>
+        </div>
+        <div class="p-6 lg:border-r border-hairline border-gray-300">
+          <p class="meta">Open rate</p>
+          <p class="text-step-5 font-bold mt-2">61%</p>
+          <p class="text-step--1 text-gray-600 mt-1">▲ 4 pts vs. last issue</p>
+        </div>
+        <div class="p-6 border-r border-hairline border-gray-300 border-t lg:border-t-0">
+          <p class="meta">Issues sent</p>
+          <p class="text-step-5 font-bold mt-2">47</p>
+          <p class="text-step--1 text-gray-600 mt-1">— streak intact</p>
+        </div>
+        <div class="p-6 border-t lg:border-t-0">
+          <p class="meta">Unsubscribes</p>
+          <p class="text-step-5 font-bold mt-2">9</p>
+          <p class="text-step--1 text-gray-600 mt-1">▼ they wanted color</p>
+        </div>
+      </div>
+
+      <!-- Tabs + table -->
+      <div class="px-4 lg:px-8 py-8">
+        <div class="tabs" role="tablist" aria-label="Issue data">
+          <button class="tab" role="tab" id="tab-recent" aria-controls="panel-recent" aria-selected="true"
+            type="button">Recent issues</button>
+          <button class="tab" role="tab" id="tab-drafts" aria-controls="panel-drafts" aria-selected="false" tabindex="-1"
+            type="button">Drafts</button>
+        </div>
+
+        <div class="tabpanel" id="panel-recent" role="tabpanel" aria-labelledby="tab-recent">
+          <div class="overflow-x-auto">
+            <table class="table table-striped">
+              <caption class="sr-only">Recent issues and their performance</caption>
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Sent</th>
+                  <th scope="col">Opens</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>047</td>
+                  <td>Grayscale is a feature</td>
+                  <td>10 Jun</td>
+                  <td>61%</td>
+                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                </tr>
+                <tr>
+                  <td>046</td>
+                  <td>In defense of the hairline</td>
+                  <td>03 Jun</td>
+                  <td>58%</td>
+                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                </tr>
+                <tr>
+                  <td>045</td>
+                  <td>Whitespace is not empty</td>
+                  <td>27 May</td>
+                  <td>64%</td>
+                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                </tr>
+                <tr>
+                  <td>044</td>
+                  <td>The case against beige</td>
+                  <td>20 May</td>
+                  <td>57%</td>
+                  <td><span class="bg-ink text-paper px-2 py-0.5 text-step--2 tracking-wide">ARCHIVED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tabpanel" id="panel-drafts" role="tabpanel" aria-labelledby="tab-drafts" hidden>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <caption class="sr-only">Draft issues</caption>
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Last edited</th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>048</td>
+                  <td>Kerning is a love language</td>
+                  <td>Today</td>
+                  <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
+                </tr>
+                <tr>
+                  <td>049</td>
+                  <td>Untitled (but confident)</td>
+                  <td>Yesterday</td>
+                  <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
