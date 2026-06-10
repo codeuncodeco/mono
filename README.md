@@ -30,11 +30,15 @@ Test how users respond. Does it communicate? Does it connect?
 
 ## What's in the box
 
-- **Design tokens** — one stylesheet of CSS custom properties (`css/mono.css`): ink/paper, a nine-step gray ramp, a modular type scale, spacing rhythm, border weights, and measure
-- **Components** — buttons, inputs, selects, checkboxes, radios, switches, ranges, file inputs, validation patterns, tables, tabs, accordions, modals, dropdowns, tooltips, and toasts — all monochrome, all accessible
-- **Inversion** — one `data-theme="dark"` attribute swaps ink and paper site-wide (the INVERT button in the nav, persisted to localStorage)
-- **Typography** — six curated monospace faces, switchable with a single CSS variable
-- **Customizer** — tune font, base size, scale ratio, weight, tracking, leading, and borders live, then copy your theme as tokens
+- **Design tokens** — one stylesheet of CSS custom properties (`css/mono.css`): ink/paper, layered surfaces, a nine-step gray ramp, a modular type scale, spacing rhythm, rule weights, corner radius, and measure
+- **Components** — buttons, inputs, selects, checkboxes, radios, switches, ranges, file inputs, validation patterns, tables (scrolling and stacked), tabs, accordions, modals, dropdowns, tooltips, toasts, panels, a phone tab bar, and bottom sheets — all monochrome, all accessible
+- **The TUNE layer** — a global customizer on every page (slide-over on desktop, bottom sheet on phones): theme, structure, corners, typeface, scale, weight, rhythm, and icon set. Everything applies live, persists in localStorage, and exports as plain CSS
+- **Dark mode** — layered grays, not flat black: the page, raised surfaces, and overlays each get their own tier. `data-theme="dark"`, persisted, with an AUTO option that follows the system
+- **Structure axis** — `data-structure="outlined | soft | minimal"`: boxes drawn in ink, surfaces built from shades (the default), or pure negative space
+- **Corner radius** — one `--radius` token, 0–16px; 0 keeps the brutalist default and everything from checkboxes to sheets follows proportionally
+- **Icons** — one canonical vocabulary rendered by your choice of Lucide, Tabler, Phosphor, or Material Symbols: `<i class="icon" data-icon="settings"></i>`
+- **Typography** — six curated monospace faces, switchable live
+- **Phone navigation** — an app-style bottom tab bar with icons plus a mega-menu sheet; the site itself runs on it
 - **Examples** — four complete pages (login, article, dashboard, pricing) built with zero page-local CSS
 
 ## Pages
@@ -44,13 +48,13 @@ Test how users respond. Does it communicate? Does it connect?
 - `typography.html` — The specimen book: roster, scale, weight, tracking, leading, measure
 - `layout.html` — The twelve-column grid as a spec sheet
 - `gallery.html` — Typographic compositions from the system's own tokens
-- `customizer.html` — Live theme tuning + take-home token snippet
+- `customizer.html` — The TUNE layer, documented control by control
 - `examples.html` — Index of real-world example pages (`examples/`)
 - `about.html` — Manifesto, process, FAQ, colophon
 
 ## The type roster
 
-All monospace, all on Google Fonts. Space Mono is the default; switch faces by changing `--font-mono`.
+All monospace, all on Google Fonts. Space Mono is the default; switch faces in the TUNE panel or by changing `--font-mono`.
 
 | Face             | Weights         | Character                  |
 | ---------------- | --------------- | -------------------------- |
@@ -66,7 +70,14 @@ All monospace, all on Google Fonts. Space Mono is the default; switch faces by c
 ```bash
 git clone https://github.com/layogtima/mono.git
 cd mono
-# Open any HTML file in your browser — no build step
+# Open any HTML file in your browser — no build step needed to *use* the site
+```
+
+Tailwind is precompiled into the repo (`css/base.css` + `css/utilities.css`), so the site has **no runtime CDN dependency**. If you change utility classes in the markup, regenerate them once:
+
+```bash
+npm install
+npm run build:css
 ```
 
 ### Basic Template
@@ -87,44 +98,62 @@ cd mono
       rel="stylesheet"
     />
 
-    <!-- 2. Tailwind CDN + MONO config (config must come right after the CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/mono-config.js"></script>
+    <!-- 2. Theme engine (synchronous, before the stylesheets: applies saved
+            theme/structure/type/radius/icons before first paint) -->
+    <script src="js/mono-theme.js"></script>
 
-    <!-- 3. MONO tokens + components -->
+    <!-- 3. Styles: preflight, MONO tokens + components, utilities -->
+    <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/mono.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+
+    <!-- 4. Behaviors: icons, components, and the TUNE layer -->
+    <script src="js/mono-icons.js" defer></script>
     <script src="js/mono.js" defer></script>
+    <script src="js/customizer.js" defer></script>
   </head>
   <body class="bg-paper text-ink min-h-screen">
     <!-- Your design genius goes here -->
     <button class="btn">Hello, ink</button>
+    <i class="icon" data-icon="check" aria-hidden="true"></i>
   </body>
 </html>
 ```
 
+Don't want the whole system? Open the TUNE panel on the site, dial in a theme, and **COPY CSS** — you get a fonts link and a resolved `:root` token block that works anywhere.
+
 ### House rules
 
-- Use the token utilities — `bg-paper`, `text-ink`, `border-ink`, `text-gray-500` — never `bg-white` or `text-black`. That's what lets one attribute invert the whole site.
-- Type sizes are scale steps: `text-step--2` through `text-step-7`. Nothing in between.
-- Tailwind slash-opacity (`bg-ink/50`) does **not** work with `var()` colors; the one translucent thing in the system (the modal backdrop) lives in `mono.css`.
-- Borders: `border` is the system 2px; `border-hairline` is 1px.
+- Use the token utilities — `bg-paper`, `text-ink`, `border-divider`, `bg-surface-1`, `text-gray-500` — never `bg-white` or `text-black`. That's what lets one attribute restyle the whole site.
+- Type sizes are scale steps: `text-step--2` through `text-step-7` (plus `text-step-display` for big fluid numbers). Nothing in between.
+- Tailwind slash-opacity (`bg-ink/50`) does **not** work with `var()` colors; the translucent things in the system (backdrops, the tab bar blur) live in `mono.css`.
+- Borders: `border` follows the structure axis (`--divider-w`), `border-2` is the fixed 2px rule, `border-hairline` is 1px.
+- Wide tables get a `.table-scroll` wrapper; phone-first tables use `.table-stack` with `data-label` on each cell.
 
 ## Design tokens
 
 Everything hangs off CSS custom properties in `css/mono.css`:
 
-| Token                        | Default                | Role                              |
-| ---------------------------- | ---------------------- | --------------------------------- |
-| `--ink` / `--paper`          | `#0a0a0a` / `#ffffff`  | Text and surfaces; swap to invert |
-| `--gray-100` … `--gray-900`  | neutral ramp           | Everything between ink and paper  |
-| `--font-mono`                | Space Mono             | The face, everywhere              |
-| `--step--2` … `--step-7`     | 1rem base, 1.25 ratio  | The modular type scale            |
-| `--leading` / `--tracking`   | 1.6 / 0em              | Body rhythm                       |
-| `--border-w` / `--border-w-hairline` | 2px / 1px       | The two rule weights              |
-| `--space-1` … `--space-8`    | 4px … 96px             | Spacing rhythm                    |
-| `--measure`                  | 65ch                   | Maximum prose width               |
+| Token                                 | Default                | Role                                       |
+| ------------------------------------- | ---------------------- | ------------------------------------------ |
+| `--ink` / `--paper`                   | `#0f0f0f` / `#ffffff`  | Text and the page                          |
+| `--surface-1` / `--surface-2`         | `#f5f5f5` / `#ebebeb`  | Raised tiers — cards, menus, sheets        |
+| `--ink-muted` / `--ink-faint`         | `#5f5f5f` / `#979797`  | Secondary and tertiary text                |
+| `--edge` / `--divider`                | hairline grays         | Implied structure; follows `data-structure` |
+| `--gray-100` … `--gray-900`           | neutral ramp           | Everything between ink and paper           |
+| `--font-mono`                         | Space Mono             | The face, everywhere                       |
+| `--step--2` … `--step-7`              | 1rem base, 1.25 ratio  | The modular type scale                     |
+| `--step-display`                      | fluid clamp            | Stat numbers that never overflow a phone   |
+| `--leading` / `--tracking`            | 1.6 / 0em              | Body rhythm                                |
+| `--weight-bold`                       | 700                    | Every bold on the site                     |
+| `--radius`                            | 0px                    | Corners, from checkboxes to sheets         |
+| `--border-w` / `--border-w-hairline`  | 2px / 1px              | The two rule weights                       |
+| `--space-1` … `--space-8`             | 4px … 96px             | Spacing rhythm                             |
+| `--measure`                           | 65ch                   | Maximum prose width                        |
 
-Generate your own set with the [customizer](https://mono.layogtima.com/customizer.html).
+Dark mode (`data-theme="dark"`) re-points the whole set at layered grays — page `#161616`, surfaces `#1f1f1f` / `#2a2a2a` — never flat black.
+
+Generate your own set with the [TUNE panel](https://mono.layogtima.com/customizer.html).
 
 ## MONO in the Wild
 
@@ -168,4 +197,5 @@ GPL v3. Share it, improve it, build with it.
 
 - Created by [Amit](https://layogtima.com)
 - Inspired by minimalism and constraint-driven design
-- Built with [Tailwind CSS](https://tailwindcss.com/)
+- Built with [Tailwind CSS](https://tailwindcss.com/) (precompiled — no runtime CDN)
+- Icons by [Lucide](https://lucide.dev), [Tabler](https://tabler.io/icons), [Phosphor](https://phosphoricons.com), and [Material Symbols](https://fonts.google.com/icons)

@@ -15,24 +15,26 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/mono-config.js"></script>
+  <script src="../js/mono-theme.js"></script>
+  <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/mono.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <script src="../js/mono-icons.js" defer></script>
   <script src="../js/mono.js" defer></script>
+  <script src="../js/customizer.js" defer></script>
 </head>
 
 <body class="bg-paper text-ink min-h-screen flex flex-col">
   <!-- Example chrome -->
-  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+  <header class="border-b border-divider px-4 lg:px-8 h-14 flex items-center justify-between">
     <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
-    <button type="button" data-mono-invert
-      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-      title="Swap ink and paper">INVERT</button>
+    <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
   </header>
 
   <main class="flex-1">
     <!-- Header -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-16 lg:py-24">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-16 lg:py-24">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">Inkwell — version control for manuscripts</p>
         <h1 class="display">PRI<span class="sup">CING</span></h1>
@@ -46,7 +48,7 @@
     <section class="px-4 lg:px-8 py-16">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         <!-- Drafter -->
-        <div class="border border-ink p-8 flex flex-col">
+        <div class="panel p-8 flex flex-col">
           <p class="meta">Drafter</p>
           <p class="mt-4"><span class="text-step-5 font-bold">$0</span><span class="text-step--1 text-gray-600">
               /month</span></p>
@@ -63,7 +65,7 @@
         </div>
 
         <!-- Author — featured, inverted -->
-        <div class="bg-ink text-paper border border-ink p-8 flex flex-col">
+        <div class="panel-inverse p-8 flex flex-col">
           <p class="meta text-gray-400">Author — most chosen</p>
           <p class="mt-4"><span class="text-step-5 font-bold">$12</span><span class="text-step--1 text-gray-400">
               /month</span></p>
@@ -81,7 +83,7 @@
         </div>
 
         <!-- Publisher -->
-        <div class="border border-ink p-8 flex flex-col">
+        <div class="panel p-8 flex flex-col">
           <p class="meta">Publisher</p>
           <p class="mt-4"><span class="text-step-5 font-bold">$48</span><span class="text-step--1 text-gray-600">
               /month</span></p>
@@ -100,10 +102,10 @@
     </section>
 
     <!-- Comparison -->
-    <section class="px-4 lg:px-8 py-16 border-t border-ink">
-      <div class="max-w-6xl mx-auto overflow-x-auto">
+    <section class="px-4 lg:px-8 py-16 border-t border-divider">
+      <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-8">Side by side</h2>
-        <table class="table">
+        <div class="table-scroll"><table class="table">
           <caption class="sr-only">Feature comparison across plans</caption>
           <thead>
             <tr>
@@ -145,12 +147,12 @@
               <td>✓</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="px-4 lg:px-8 py-16 border-t border-ink">
+    <section class="px-4 lg:px-8 py-16 border-t border-divider">
       <div class="max-w-3xl mx-auto">
         <h2 class="meta mb-8">Questions, answered</h2>
         <details class="accordion">

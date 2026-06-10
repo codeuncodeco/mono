@@ -30,20 +30,23 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/mono-config.js"></script>
+  <script src="js/mono-theme.js"></script>
+  <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/mono.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <script src="js/mono-icons.js" defer></script>
   <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen flex flex-col">
+<body class="bg-paper text-ink min-h-screen flex flex-col" data-mono-nav>
   <a href="#main"
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
     Skip to content
   </a>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-divider">
     <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
       <a href="index.html" class="text-step-1 font-bold">MONO</a>
       <div class="flex items-center gap-4 lg:gap-6">
@@ -57,31 +60,16 @@
           <a href="about.html" aria-current="page"
             class="text-step--1 underline decoration-2 underline-offset-8">ABOUT</a>
         </div>
-        <button type="button" data-mono-invert
-          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-          title="Swap ink and paper">INVERT</button>
-        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
-          class="lg:hidden text-step--1 font-bold">MENU</button>
+        <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
-    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
-      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
-      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
-      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
-      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
-      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
-      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
-      <li><a href="about.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">ABOUT</a></li>
-    </ul>
-  </div>
 
   <main id="main" class="flex-1 pt-14">
     <!-- Hero -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-20 lg:py-28">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">The philosophy of constraint-driven design</p>
         <h1 class="display-xl">AB<span class="sup">OUT</span></h1>
@@ -120,7 +108,7 @@
     <section class="px-4 lg:px-8 py-20">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">02 — Process</h2>
-        <div class="border-t border-ink">
+        <div class="border-t border-divider">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-hairline border-gray-300 py-8">
             <span class="md:col-span-1 text-step--1 text-gray-500">i.</span>
             <h3 class="md:col-span-3 text-step-2 font-bold">Reduction</h3>
@@ -148,7 +136,7 @@
               relationships.
             </p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-ink py-8">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-divider py-8">
             <span class="md:col-span-1 text-step--1 text-gray-500">iv.</span>
             <h3 class="md:col-span-3 text-step-2 font-bold">Reaction</h3>
             <p class="md:col-span-8 measure">
@@ -161,7 +149,7 @@
     </section>
 
     <!-- 03 FAQ -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">03 — Questions</h2>
         <div class="max-w-3xl">
@@ -206,10 +194,10 @@
     </section>
 
     <!-- 04 Colophon -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">04 — Colophon</h2>
-        <dl class="border-t border-ink max-w-3xl">
+        <dl class="border-t border-divider max-w-3xl">
           <div class="grid grid-cols-12 gap-4 border-b border-hairline border-gray-300 py-4">
             <dt class="col-span-4 text-step--1 text-gray-600">TYPE</dt>
             <dd class="col-span-8 text-step--1">Space Mono by default; five more monospace faces in the
@@ -224,7 +212,7 @@
             <dt class="col-span-4 text-step--1 text-gray-600">PALETTE</dt>
             <dd class="col-span-8 text-step--1">Ink, paper, and nine grays. Hue count: zero.</dd>
           </div>
-          <div class="grid grid-cols-12 gap-4 border-b border-ink py-4">
+          <div class="grid grid-cols-12 gap-4 border-b border-divider py-4">
             <dt class="col-span-4 text-step--1 text-gray-600">LICENSE</dt>
             <dd class="col-span-8 text-step--1">GPLv3.
               <a href="https://github.com/layogtima/mono" target="_blank" rel="noopener noreferrer"
@@ -236,7 +224,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+  <footer class="border-t border-divider px-4 lg:px-8 py-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
       <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
       <p class="text-step--1 text-gray-600">

@@ -43,20 +43,23 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/mono-config.js"></script>
+  <script src="js/mono-theme.js"></script>
+  <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/mono.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <script src="js/mono-icons.js" defer></script>
   <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen flex flex-col">
+<body class="bg-paper text-ink min-h-screen flex flex-col" data-mono-nav>
   <a href="#main"
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
     Skip to content
   </a>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-divider">
     <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
       <a href="index.html" class="text-step-1 font-bold" aria-current="page">MONO</a>
       <div class="flex items-center gap-4 lg:gap-6">
@@ -69,31 +72,16 @@
           <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
           <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
         </div>
-        <button type="button" data-mono-invert
-          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-          title="Swap ink and paper">INVERT</button>
-        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
-          class="lg:hidden text-step--1 font-bold">MENU</button>
+        <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
-    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
-      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
-      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
-      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
-      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
-      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
-      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
-      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
-    </ul>
-  </div>
 
   <main id="main" class="flex-1 pt-14">
     <!-- Hero -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-32">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-20 lg:py-32">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">A design system in black &amp; white</p>
         <h1 class="display-xl">MONO<span class="sup">CHROME</span></h1>
@@ -104,7 +92,7 @@
         </p>
         <div class="mt-12 flex flex-wrap gap-4">
           <a href="components.html" class="btn">Browse components</a>
-          <a href="customizer.html" class="btn btn-secondary">Open customizer</a>
+          <button type="button" class="btn btn-secondary" data-mono-tune-open>Open the tuner</button>
         </div>
       </div>
     </section>
@@ -113,10 +101,10 @@
     <section class="px-4 lg:px-8 py-20">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-10">01 — Index</h2>
-        <ol class="border-t border-ink list-none">
+        <ol class="border-t border-divider list-none">
           <li>
             <a href="components.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">01</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">COMPONENTS</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -127,7 +115,7 @@
           </li>
           <li>
             <a href="typography.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">02</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">TYPOGRAPHY</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -138,7 +126,7 @@
           </li>
           <li>
             <a href="layout.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">03</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">LAYOUT</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -149,7 +137,7 @@
           </li>
           <li>
             <a href="gallery.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">04</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">GALLERY</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -160,18 +148,18 @@
           </li>
           <li>
             <a href="customizer.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">05</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">CUSTOMIZER</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
-                Tune the font, scale, weight, and rhythm live — then copy your
-                theme as tokens you can take home.
+                The TUNE layer: theme, structure, corners, type, and icons —
+                set once, applied on every page, yours to export.
               </span>
             </a>
           </li>
           <li>
             <a href="examples.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">06</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">EXAMPLES</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -182,7 +170,7 @@
           </li>
           <li>
             <a href="about.html"
-              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-ink px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
+              class="group grid grid-cols-12 gap-x-4 gap-y-1 items-baseline border-b border-divider px-2 py-6 hover:bg-ink hover:text-paper transition-colors">
               <span class="col-span-2 md:col-span-1 text-step--1">07</span>
               <span class="col-span-10 md:col-span-4 text-step-2 font-bold">ABOUT</span>
               <span class="col-span-10 col-start-3 md:col-span-7 md:col-start-6 text-step--1 text-gray-600 group-hover:text-gray-300">
@@ -195,7 +183,7 @@
     </section>
 
     <!-- Principles -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-10">02 — Principles</h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -288,7 +276,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+  <footer class="border-t border-divider px-4 lg:px-8 py-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
       <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
       <p class="text-step--1 text-gray-600">

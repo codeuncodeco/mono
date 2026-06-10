@@ -31,20 +31,23 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/mono-config.js"></script>
+  <script src="js/mono-theme.js"></script>
+  <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/mono.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <script src="js/mono-icons.js" defer></script>
   <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen flex flex-col">
+<body class="bg-paper text-ink min-h-screen flex flex-col" data-mono-nav>
   <a href="#main"
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
     Skip to content
   </a>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-divider">
     <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
       <a href="index.html" class="text-step-1 font-bold">MONO</a>
       <div class="flex items-center gap-4 lg:gap-6">
@@ -58,31 +61,16 @@
           <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
           <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
         </div>
-        <button type="button" data-mono-invert
-          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-          title="Swap ink and paper">INVERT</button>
-        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
-          class="lg:hidden text-step--1 font-bold">MENU</button>
+        <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
-    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
-      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
-      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
-      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
-      <li><a href="gallery.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">GALLERY</a></li>
-      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
-      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
-      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
-    </ul>
-  </div>
 
   <main id="main" class="flex-1 pt-14">
     <!-- Hero -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-20 lg:py-28">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">Compositions from the system's own tokens</p>
         <h1 class="display-xl">GALL<span class="sup">ERY</span></h1>
@@ -100,7 +88,7 @@
 
         <!-- 01 Inversion -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col overflow-hidden" aria-hidden="true">
+          <div class="group aspect-square panel border border-edge flex flex-col overflow-hidden" aria-hidden="true">
             <div class="flex-1 flex items-center justify-center bg-paper text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
               <span class="text-step-4 font-bold">DAY</span>
             </div>
@@ -117,7 +105,7 @@
 
         <!-- 02 Scale -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 gap-1 hover:bg-ink hover:text-paper transition-colors"
+          <div class="group aspect-square panel border border-edge flex flex-col justify-center px-6 gap-1 hover:bg-ink hover:text-paper transition-colors"
             aria-hidden="true">
             <span class="text-step--1">scale</span>
             <span class="text-step-0">scale</span>
@@ -135,7 +123,7 @@
 
         <!-- 03 Weight -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col items-center justify-center hover:bg-ink hover:text-paper transition-colors"
+          <div class="group aspect-square panel border border-edge flex flex-col items-center justify-center hover:bg-ink hover:text-paper transition-colors"
             aria-hidden="true">
             <span class="text-step-5 font-normal">whisper</span>
             <span class="text-step-5 font-bold">SHOUT</span>
@@ -149,7 +137,7 @@
 
         <!-- 04 The ramp -->
         <figure>
-          <div class="aspect-square border border-ink flex flex-col" aria-hidden="true">
+          <div class="aspect-square panel border border-edge flex flex-col" aria-hidden="true">
             <div class="flex-1 bg-gray-100 flex items-center px-4 text-step--2 text-gray-600">100</div>
             <div class="flex-1 bg-gray-200 flex items-center px-4 text-step--2 text-gray-600">200</div>
             <div class="flex-1 bg-gray-300 flex items-center px-4 text-step--2 text-gray-700">300</div>
@@ -169,7 +157,7 @@
 
         <!-- 05 Rhythm -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 overflow-hidden hover:bg-ink transition-colors"
+          <div class="group aspect-square panel border border-edge flex flex-col justify-center px-6 overflow-hidden hover:bg-ink transition-colors"
             aria-hidden="true">
             <p class="text-step-2 font-bold whitespace-nowrap">MONO MONO MONO</p>
             <p class="text-step-2 font-bold whitespace-nowrap text-gray-400">MONO MONO MONO</p>
@@ -186,7 +174,7 @@
 
         <!-- 06 Tracking -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col items-center justify-center gap-6 hover:bg-ink hover:text-paper transition-colors"
+          <div class="group aspect-square panel border border-edge flex flex-col items-center justify-center gap-6 hover:bg-ink hover:text-paper transition-colors"
             aria-hidden="true">
             <span class="text-step-3 font-bold" style="letter-spacing: 0.5em">A I R</span>
             <span class="text-step-3 font-bold" style="letter-spacing: -0.08em">INK</span>
@@ -200,7 +188,7 @@
 
         <!-- 07 Hierarchy -->
         <figure>
-          <div class="group aspect-square border border-ink flex flex-col justify-center px-6 gap-3 hover:bg-ink hover:text-paper transition-colors"
+          <div class="group aspect-square panel border border-edge flex flex-col justify-center px-6 gap-3 hover:bg-ink hover:text-paper transition-colors"
             aria-hidden="true">
             <span class="text-step--2 tracking-wide text-gray-500">KICKER, QUIET</span>
             <span class="text-step-3 font-bold">A headline, loud.</span>
@@ -216,7 +204,7 @@
 
         <!-- 08 Density -->
         <figure>
-          <div class="group aspect-square border border-ink p-6 overflow-hidden hover:bg-ink hover:text-paper transition-colors"
+          <div class="group aspect-square panel border border-edge p-6 overflow-hidden hover:bg-ink hover:text-paper transition-colors"
             aria-hidden="true">
             <p class="text-step--2 text-justify break-all text-gray-400 group-hover:text-gray-500" style="line-height: 1.3">
               monomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomonomono<span
@@ -232,7 +220,7 @@
 
         <!-- 09 The grid -->
         <figure>
-          <div class="aspect-square border border-ink grid grid-cols-4 grid-rows-4" aria-hidden="true">
+          <div class="aspect-square panel border border-edge grid grid-cols-4 grid-rows-4" aria-hidden="true">
             <div class="border-hairline border-gray-300"></div>
             <div class="border-hairline border-gray-300"></div>
             <div class="border-hairline border-gray-300"></div>
@@ -260,7 +248,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink bg-ink text-paper">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider bg-ink text-paper">
       <div class="max-w-6xl mx-auto">
         <p class="text-step-3 font-bold measure">Same tokens, your composition.</p>
         <p class="text-step--1 text-gray-400 mt-4 measure">
@@ -274,7 +262,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+  <footer class="border-t border-divider px-4 lg:px-8 py-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
       <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
       <p class="text-step--1 text-gray-600">
