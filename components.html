@@ -31,20 +31,23 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/mono-config.js"></script>
+  <script src="js/mono-theme.js"></script>
+  <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/mono.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <script src="js/mono-icons.js" defer></script>
   <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen flex flex-col">
+<body class="bg-paper text-ink min-h-screen flex flex-col" data-mono-nav>
   <a href="#main"
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
     Skip to content
   </a>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-divider">
     <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
       <a href="index.html" class="text-step-1 font-bold">MONO</a>
       <div class="flex items-center gap-4 lg:gap-6">
@@ -58,31 +61,16 @@
           <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
           <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
         </div>
-        <button type="button" data-mono-invert
-          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-          title="Swap ink and paper">INVERT</button>
-        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
-          class="lg:hidden text-step--1 font-bold">MENU</button>
+        <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
-    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
-      <li><a href="components.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">COMPONENTS</a></li>
-      <li><a href="typography.html" class="text-step-3 font-bold">TYPOGRAPHY</a></li>
-      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
-      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
-      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
-      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
-      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
-    </ul>
-  </div>
 
   <main id="main" class="flex-1 pt-14">
     <!-- Hero -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-20 lg:py-28">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">Every element, in ink and paper</p>
         <h1 class="display-xl">COMPO<span class="sup">NENTS</span></h1>
@@ -115,6 +103,9 @@
         <a href="#dropdown" class="hover:underline underline-offset-4">13 DROPDOWN</a>
         <a href="#tooltip" class="hover:underline underline-offset-4">14 TOOLTIP</a>
         <a href="#toast" class="hover:underline underline-offset-4">15 TOAST</a>
+        <a href="#surfaces" class="hover:underline underline-offset-4">16 SURFACES</a>
+        <a href="#tabbar" class="hover:underline underline-offset-4">17 TAB BAR &amp; SHEET</a>
+        <a href="#icons" class="hover:underline underline-offset-4">18 ICONS</a>
       </div>
     </nav>
 
@@ -126,7 +117,7 @@
           Three variants, three sizes. The primary button is solid ink; hover
           inverts it. Disabled drops to gray — never half-transparent.
         </p>
-        <div class="border border-ink p-6 lg:p-8 space-y-6">
+        <div class="panel p-6 lg:p-8 space-y-6">
           <div class="flex flex-wrap items-center gap-4">
             <button type="button" class="btn">Primary</button>
             <button type="button" class="btn btn-secondary">Secondary</button>
@@ -169,7 +160,7 @@
           and a message wired up with <code>aria-describedby</code>; never
           color alone.
         </p>
-        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="panel p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="field">
             <label class="label" for="demo-name">Name</label>
             <input class="input" type="text" id="demo-name" placeholder="Ada Lovelace" />
@@ -233,7 +224,7 @@
           CSS triangle for a marker — it inverts with the theme because it's
           drawn in <code>--ink</code>.
         </p>
-        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="panel p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="field">
             <label class="label" for="demo-font">Typeface</label>
             <div class="select">
@@ -283,7 +274,7 @@
           cursor does. Both are real inputs under
           <code>appearance:&nbsp;none</code>.
         </p>
-        <div class="border border-ink p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="panel p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <fieldset>
             <legend class="label mb-4">Subscriptions</legend>
             <div class="flex flex-col gap-3">
@@ -325,7 +316,7 @@
           A checkbox in a track. The thumb slides; with
           <code>prefers-reduced-motion</code> it simply jumps.
         </p>
-        <div class="border border-ink p-6 lg:p-8 flex flex-col gap-4">
+        <div class="panel p-6 lg:p-8 flex flex-col gap-4">
           <label class="choice"><input type="checkbox" class="switch" checked /> Autosave</label>
           <label class="choice"><input type="checkbox" class="switch" /> Public profile</label>
           <label class="choice"><input type="checkbox" class="switch" disabled /> Time travel</label>
@@ -351,7 +342,7 @@
           <code>data-mono-output</code> and the value renders live into any
           element.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <div class="field max-w-md">
             <label class="label" for="demo-range">Contrast — <output id="demo-range-out"></output></label>
             <input type="range" class="range" id="demo-range" min="0" max="100" value="80"
@@ -379,7 +370,7 @@
           <code>::file-selector-button</code>. No hidden-input tricks, so
           keyboard and screen reader behavior stay stock.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <div class="field max-w-md">
             <label class="label" for="demo-file">Attachment</label>
             <input type="file" class="file" id="demo-file" />
@@ -408,9 +399,9 @@
           error summary at the top, and per-field messages tied in with
           <code>aria-invalid</code> and <code>aria-describedby</code>.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <form class="max-w-md" onsubmit="event.preventDefault(); mono.toast('Form submitted. Hypothetically.')">
-            <div class="border border-ink p-4 mb-6" role="alert">
+            <div class="panel-raised p-4 mb-6" role="alert">
               <p class="text-step--1 font-bold">2 fields need attention</p>
               <ul class="text-step--1 mt-2 list-disc list-inside">
                 <li><a href="#val-email" class="underline underline-offset-4">Email is not valid</a></li>
@@ -439,7 +430,7 @@
           <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
           <div class="code-block">
             <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-validation">COPY</button>
-            <pre id="code-validation"><code>&lt;div class="border border-ink p-4" role="alert"&gt;
+            <pre id="code-validation"><code>&lt;div class="panel-raised p-4" role="alert"&gt;
   &lt;p class="text-step--1 font-bold"&gt;2 fields need attention&lt;/p&gt;
   &lt;ul class="text-step--1 mt-2 list-disc list-inside"&gt;
     &lt;li&gt;&lt;a href="#email"&gt;Email is not valid&lt;/a&gt;&lt;/li&gt;
@@ -465,11 +456,17 @@
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-2">09 — Table</h2>
         <p class="measure text-step--1 text-gray-600 mb-8">
-          Heavy rule under the header, hairlines between rows. Add
-          <code>.table-striped</code> for zebra rows or
-          <code>.table-dense</code> for data-heavy views.
+          Structure from the header rule, row shading, and breathing room.
+          Add <code>.table-striped</code> for zebra rows or
+          <code>.table-dense</code> for data-heavy views. Wrap wide tables
+          in <code>.table-scroll</code> so phones scroll instead of
+          crushing columns — cell padding grows on small screens, it never
+          shrinks. For phone-first data, <code>.table-stack</code> turns
+          each row into a labelled card under 640px (give every cell a
+          <code>data-label</code>).
         </p>
-        <div class="border border-ink p-6 lg:p-8 overflow-x-auto">
+        <div class="panel p-6 lg:p-8">
+          <div class="table-scroll">
           <table class="table table-striped">
             <caption>The roster, by the numbers</caption>
             <thead>
@@ -507,18 +504,56 @@
               </tr>
             </tbody>
           </table>
+          </div>
+
+          <p class="meta mt-10 mb-4">Stacked on phones — resize to see</p>
+          <table class="table table-stack">
+            <caption class="sr-only">The roster, stacked variant</caption>
+            <thead>
+              <tr>
+                <th scope="col">Typeface</th>
+                <th scope="col">Designer</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Typeface">Space Mono</td>
+                <td data-label="Designer">Colophon Foundry</td>
+                <td data-label="Year">2016</td>
+              </tr>
+              <tr>
+                <td data-label="Typeface">Courier Prime</td>
+                <td data-label="Designer">Alan Dague-Greene</td>
+                <td data-label="Year">2013</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <details class="mt-2">
           <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
           <div class="code-block">
             <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-table">COPY</button>
-            <pre id="code-table"><code>&lt;table class="table table-striped"&gt;
-  &lt;caption&gt;The roster, by the numbers&lt;/caption&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;&lt;th scope="col"&gt;Typeface&lt;/th&gt;&lt;th scope="col"&gt;Year&lt;/th&gt;&lt;/tr&gt;
-  &lt;/thead&gt;
+            <pre id="code-table"><code>&lt;!-- Wide data: wrap for horizontal scroll on phones --&gt;
+&lt;div class="table-scroll"&gt;
+  &lt;table class="table table-striped"&gt;
+    &lt;caption&gt;The roster, by the numbers&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;Typeface&lt;/th&gt;&lt;th scope="col"&gt;Year&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;Space Mono&lt;/td&gt;&lt;td&gt;2016&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Phone-first data: rows become labelled cards under 640px --&gt;
+&lt;table class="table table-stack"&gt;
   &lt;tbody&gt;
-    &lt;tr&gt;&lt;td&gt;Space Mono&lt;/td&gt;&lt;td&gt;2016&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td data-label="Typeface"&gt;Space Mono&lt;/td&gt;
+      &lt;td data-label="Year"&gt;2016&lt;/td&gt;
+    &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
           </div>
@@ -535,7 +570,7 @@
           navigation and roving tabindex — wired automatically by
           <code>js/mono.js</code>.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <div class="tabs" role="tablist" aria-label="Manifesto tabs">
             <button class="tab" role="tab" id="tab-reduce" aria-controls="panel-reduce" aria-selected="true"
               type="button">Reduce</button>
@@ -579,7 +614,7 @@
           Native <code>&lt;details&gt;</code> — zero JavaScript, fully
           keyboard accessible, and the browser remembers how it works.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <details class="accordion">
             <summary>Does it work without JavaScript?</summary>
             <p class="text-step--1 text-gray-700 measure">Yes. This accordion is a native
@@ -612,7 +647,7 @@
           Native <code>&lt;dialog&gt;</code>: focus trapping, Escape, and the
           backdrop come free from the browser. Clicking outside closes it.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <button type="button" class="btn" data-mono-modal-open="demo-modal">Open modal</button>
           <dialog id="demo-modal" class="modal" aria-labelledby="demo-modal-title">
             <h3 id="demo-modal-title" class="text-step-2 font-bold mb-4">Delete everything?</h3>
@@ -651,7 +686,7 @@
           A button with <code>aria-expanded</code> and a panel. Escape or an
           outside click closes it.
         </p>
-        <div class="border border-ink p-6 lg:p-8">
+        <div class="panel p-6 lg:p-8">
           <div class="dropdown" data-mono-dropdown>
             <button type="button" class="btn btn-secondary" aria-expanded="false" aria-haspopup="true">Actions ▾</button>
             <ul class="dropdown-menu" hidden>
@@ -688,7 +723,7 @@
           keyboard focus. Keep it to a few words — tooltips are captions, not
           paragraphs.
         </p>
-        <div class="border border-ink p-6 lg:p-8 flex flex-wrap gap-6">
+        <div class="panel p-6 lg:p-8 flex flex-wrap gap-6">
           <button type="button" class="btn btn-secondary" data-tooltip="Saves to local storage">Hover or focus me</button>
           <button type="button" class="btn btn-secondary" data-tooltip="Approximately 42 grays">How many grays?</button>
         </div>
@@ -712,7 +747,7 @@
           message in a <code>data-mono-toast</code> attribute. Toasts land in
           a <code>role="status"</code> region and dismiss themselves.
         </p>
-        <div class="border border-ink p-6 lg:p-8 flex flex-wrap gap-4">
+        <div class="panel p-6 lg:p-8 flex flex-wrap gap-4">
           <button type="button" class="btn" data-mono-toast="Changes saved. All zero colors of them.">Save changes</button>
           <button type="button" class="btn btn-secondary" data-mono-toast="Link copied to clipboard.">Copy link</button>
         </div>
@@ -731,10 +766,204 @@
         </details>
       </div>
     </section>
+
+    <!-- 16 Surfaces -->
+    <section id="surfaces" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">16 — Surfaces &amp; structure</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Structure is a token, not a habit. <code>.panel</code> reads the
+          structure axis: <strong>soft</strong> (the default) builds from
+          shades and whitespace, <strong>lines</strong> boxes everything in
+          ink, <strong>min</strong> dissolves into negative space. Switch it
+          here — or in the TUNE panel — and the whole site follows. In dark
+          mode the tiers become layered grays, never flat black.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-8" role="group" aria-label="Structure mode">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({structure:'outlined'})">Lines</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({structure:'soft'})">Soft</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({structure:'minimal'})">Min</button>
+          <span class="text-step--2 text-gray-500">applies live, saves to your browser</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6" style="background-color: var(--paper); border: 1px solid var(--edge)">
+            <p class="meta">--paper</p>
+            <p class="text-step--1 mt-2">The page itself. Everything sits on it.</p>
+          </div>
+          <div class="panel p-6">
+            <p class="meta">.panel</p>
+            <p class="text-step--1 mt-2">Cards, frames, tiers — one shade up
+              (or one border out, in lines mode).</p>
+          </div>
+          <div class="panel-raised p-6">
+            <p class="meta">.panel-raised</p>
+            <p class="text-step--1 mt-2">A second step for emphasis and
+              nested surfaces.</p>
+          </div>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-surfaces">COPY</button>
+            <pre id="code-surfaces"><code>&lt;!-- The structure axis lives on &lt;html&gt; --&gt;
+&lt;html data-structure="soft"&gt;   &lt;!-- outlined | soft | minimal --&gt;
+
+&lt;div class="panel p-6"&gt;A card.&lt;/div&gt;
+&lt;div class="panel-raised p-6"&gt;A raised card.&lt;/div&gt;
+&lt;div class="panel-inverse p-6"&gt;Solid ink.&lt;/div&gt;
+
+&lt;script&gt;
+  monoTheme.set({ structure: "minimal" }); // applies + persists
+&lt;/script&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 17 Tab bar & sheet -->
+    <section id="tabbar" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">17 — Tab bar &amp; sheet</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          Phone navigation that behaves like an app: a fixed bottom bar with
+          icons and thumb-sized targets, and a bottom sheet
+          (<code>&lt;dialog class="sheet"&gt;</code>) as the mega menu for
+          everything beyond four destinations. This site uses it on every
+          page — shrink the window and look down. The demo below is the
+          same component, inline.
+        </p>
+        <div class="panel p-6 lg:p-8 space-y-6">
+          <nav class="tabbar tabbar-demo max-w-md" aria-label="Demo">
+            <a href="#tabbar" class="tabbar-item" aria-current="page">
+              <i class="icon" data-icon="home" aria-hidden="true"></i><span>HOME</span>
+            </a>
+            <a href="#tabbar" class="tabbar-item">
+              <i class="icon" data-icon="search" aria-hidden="true"></i><span>SEARCH</span>
+            </a>
+            <a href="#tabbar" class="tabbar-item">
+              <i class="icon" data-icon="bell" aria-hidden="true"></i><span>ALERTS</span>
+            </a>
+            <button type="button" class="tabbar-item" data-mono-sheet-open="demo-sheet" aria-expanded="false">
+              <i class="icon" data-icon="more" aria-hidden="true"></i><span>MORE</span>
+            </button>
+          </nav>
+          <dialog class="sheet" id="demo-sheet" aria-label="More options">
+            <div class="sheet-handle" aria-hidden="true"></div>
+            <div class="flex items-center justify-between mb-2">
+              <p class="meta">Everything else</p>
+              <button type="button" class="btn-icon" data-mono-sheet-close aria-label="Close">
+                <i class="icon" data-icon="close" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <a href="#tabbar" class="sheet-link">
+                <i class="icon" data-icon="user" aria-hidden="true"></i>
+                <span><span class="sheet-link-title block">PROFILE</span>
+                  <span class="sheet-link-desc block">Who you are, in grayscale.</span></span>
+              </a>
+              <a href="#tabbar" class="sheet-link">
+                <i class="icon" data-icon="settings" aria-hidden="true"></i>
+                <span><span class="sheet-link-title block">SETTINGS</span>
+                  <span class="sheet-link-desc block">All eleven shades of preference.</span></span>
+              </a>
+              <a href="#tabbar" class="sheet-link">
+                <i class="icon" data-icon="download" aria-hidden="true"></i>
+                <span><span class="sheet-link-title block">EXPORTS</span>
+                  <span class="sheet-link-desc block">CSV, JSON, and honest print.</span></span>
+              </a>
+              <a href="#tabbar" class="sheet-link">
+                <i class="icon" data-icon="info" aria-hidden="true"></i>
+                <span><span class="sheet-link-title block">HELP</span>
+                  <span class="sheet-link-desc block">It's monochrome. You'll manage.</span></span>
+              </a>
+            </div>
+          </dialog>
+          <p class="hint">Open MORE — the sheet slides up on phones and centers on desktop. Escape, backdrop, and ✕ all close it.</p>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-tabbar">COPY</button>
+            <pre id="code-tabbar"><code>&lt;!-- Fixed bottom bar (hide on desktop with lg:hidden).
+     Add class="has-tabbar" to &lt;body&gt; so content clears it. --&gt;
+&lt;nav class="tabbar lg:hidden" aria-label="Primary"&gt;
+  &lt;a href="/" class="tabbar-item" aria-current="page"&gt;
+    &lt;i class="icon" data-icon="home" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;HOME&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;button class="tabbar-item" data-mono-sheet-open="menu" aria-expanded="false"&gt;
+    &lt;i class="icon" data-icon="more" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;MORE&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- The mega menu: a native dialog --&gt;
+&lt;dialog class="sheet" id="menu" aria-label="Menu"&gt;
+  &lt;div class="sheet-handle" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;a href="/settings" class="sheet-link"&gt;
+    &lt;i class="icon" data-icon="settings" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;&lt;span class="sheet-link-title block"&gt;SETTINGS&lt;/span&gt;
+      &lt;span class="sheet-link-desc block"&gt;Description.&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/dialog&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 18 Icons -->
+    <section id="icons" class="px-4 lg:px-8 py-16 border-t border-hairline border-gray-300 scroll-mt-14">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="meta mb-2">18 — Icons</h2>
+        <p class="measure text-step--1 text-gray-600 mb-8">
+          One vocabulary, four libraries. Write
+          <code>&lt;i class="icon" data-icon="settings"&gt;&lt;/i&gt;</code>
+          once; Lucide, Tabler, Phosphor, or Material Symbols renders it —
+          whichever is active. Switch sets here or in the TUNE panel; the
+          choice persists and the whole site re-draws.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-8" role="group" aria-label="Icon set">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({icons:'lucide'})">Lucide</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({icons:'tabler'})">Tabler</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({icons:'phosphor'})">Phosphor</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="monoTheme.set({icons:'material'})">Material</button>
+        </div>
+        <div class="panel p-6 lg:p-8">
+          <div id="icon-grid" class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2"></div>
+          <script>
+            /* the canonical vocabulary, straight from the adapter */
+            document.addEventListener("DOMContentLoaded", function () {
+              var grid = document.getElementById("icon-grid");
+              window.monoIcons.names.forEach(function (name) {
+                var cell = document.createElement("div");
+                cell.className = "flex flex-col items-center gap-2 py-4 text-center";
+                cell.innerHTML =
+                  '<i class="icon icon-lg" data-icon="' + name + '" aria-hidden="true"></i>' +
+                  '<span class="text-step--2 text-gray-500">' + name + "</span>";
+                grid.appendChild(cell);
+              });
+              window.monoIcons.apply(grid);
+            });
+          </script>
+        </div>
+        <details class="mt-2">
+          <summary class="text-step--1 tracking-wide cursor-pointer py-2 hover:underline underline-offset-4">SHOW CODE</summary>
+          <div class="code-block">
+            <button type="button" class="btn btn-sm copy-btn" data-mono-copy="code-icons">COPY</button>
+            <pre id="code-icons"><code>&lt;!-- One canonical name, any library --&gt;
+&lt;i class="icon" data-icon="settings" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;i class="icon icon-sm" data-icon="search" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;i class="icon icon-lg" data-icon="home" aria-hidden="true"&gt;&lt;/i&gt;
+
+&lt;script&gt;
+  monoTheme.set({ icons: "phosphor" }); // lucide | tabler | phosphor | material
+&lt;/script&gt;</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+  <footer class="border-t border-divider px-4 lg:px-8 py-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
       <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
       <p class="text-step--1 text-gray-600">

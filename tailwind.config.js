@@ -1,26 +1,23 @@
-/* MONO — shared Tailwind CDN config + theme restore.
-   Must load synchronously, immediately after the Tailwind CDN script. */
-
-/* Restore inversion before first paint to avoid a theme flash. */
-(function () {
-  var theme = "light";
-  try {
-    theme = localStorage.getItem("mono-theme") || "light";
-  } catch (e) {
-    /* storage unavailable (file://, private mode) — default to light */
-  }
-  document.documentElement.dataset.theme = theme;
-})();
-
-/* Every Tailwind color/size below resolves to a CSS custom property from
-   css/mono.css, so the INVERT toggle and the customizer drive everything.
+/* MONO — Tailwind is precompiled (no CDN at runtime). Every color and size
+   resolves to a CSS custom property from css/mono.css, so the theme engine
+   and the tune panel drive everything live.
    Note: slash-opacity utilities (bg-ink/50) do NOT work with var() colors. */
-tailwind.config = {
+module.exports = {
+  content: ["./*.html", "./examples/*.html", "./js/*.js"],
   theme: {
     extend: {
       colors: {
         ink: "var(--ink)",
         paper: "var(--paper)",
+        muted: "var(--ink-muted)",
+        faint: "var(--ink-faint)",
+        divider: "var(--divider)",
+        edge: "var(--edge)",
+        surface: {
+          1: "var(--surface-1)",
+          2: "var(--surface-2)",
+        },
+        overlay: "var(--overlay-bg)",
         gray: {
           100: "var(--gray-100)",
           200: "var(--gray-200)",
@@ -47,10 +44,20 @@ tailwind.config = {
         "step-5": ["var(--step-5)", "var(--leading-tight)"],
         "step-6": ["var(--step-6)", "var(--leading-tight)"],
         "step-7": ["var(--step-7)", "1"],
+        "step-display": ["var(--step-display)", "var(--leading-tight)"],
+      },
+      fontWeight: {
+        bold: "var(--weight-bold)",
       },
       borderWidth: {
-        DEFAULT: "var(--border-w)",
+        DEFAULT: "var(--divider-w)",
         hairline: "var(--border-w-hairline)",
+        2: "var(--border-w)",
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        DEFAULT: "var(--radius)",
+        lg: "var(--radius-lg)",
       },
       letterSpacing: {
         wide: "var(--tracking-wide)",

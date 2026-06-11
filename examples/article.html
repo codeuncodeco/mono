@@ -15,19 +15,21 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/mono-config.js"></script>
+  <script src="../js/mono-theme.js"></script>
+  <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/mono.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <script src="../js/mono-icons.js" defer></script>
   <script src="../js/mono.js" defer></script>
+  <script src="../js/customizer.js" defer></script>
 </head>
 
 <body class="bg-paper text-ink min-h-screen flex flex-col">
   <!-- Example chrome -->
-  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+  <header class="border-b border-divider px-4 lg:px-8 h-14 flex items-center justify-between">
     <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
-    <button type="button" data-mono-invert
-      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-      title="Swap ink and paper">INVERT</button>
+    <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
   </header>
 
   <main class="flex-1">
@@ -77,11 +79,11 @@
         </blockquote>
 
         <!-- Figure -->
-        <figure class="my-12 border border-ink">
+        <figure class="my-12 panel overflow-hidden">
           <div class="aspect-video flex items-center justify-center bg-gray-100" aria-hidden="true">
             <span class="text-step-6 font-bold text-gray-300 select-none">FIG. 1</span>
           </div>
-          <figcaption class="border-t border-ink px-4 py-3 text-step--1 text-gray-600">
+          <figcaption class="border-t border-hairline border-divider px-4 py-3 text-step--1 text-gray-600">
             Fig. 1 — A placeholder doing an honest day's work.
           </figcaption>
         </figure>
@@ -102,7 +104,7 @@
         </div>
 
         <!-- Footnotes -->
-        <footer class="mt-16 border-t border-ink pt-6">
+        <footer class="mt-16 border-t border-divider pt-6">
           <h2 class="meta mb-4">Notes</h2>
           <ol class="space-y-2 text-step--1 text-gray-600 list-decimal list-inside">
             <li id="fn-1">A sequencing also recommended for typography, spacing,

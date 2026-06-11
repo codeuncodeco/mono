@@ -1,0 +1,4 @@
+/* Source for css/utilities.css — Tailwind utilities only.
+   Loads AFTER css/mono.css so utilities can override component classes,
+   matching the old CDN cascade. */
+@tailwind utilities;

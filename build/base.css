@@ -1,0 +1,3 @@
+/* Source for css/base.css — Tailwind's preflight reset only.
+   Loads BEFORE css/mono.css so the system's base styles win. */
+@tailwind base;

@@ -15,28 +15,35 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/mono-config.js"></script>
+  <script src="../js/mono-theme.js"></script>
+  <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/mono.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <script src="../js/mono-icons.js" defer></script>
   <script src="../js/mono.js" defer></script>
+  <script src="../js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen">
+<body class="bg-paper text-ink min-h-screen has-tabbar">
   <div class="lg:grid lg:grid-cols-12 min-h-screen">
-    <!-- Sidebar -->
-    <aside class="lg:col-span-2 border-b lg:border-b-0 lg:border-r border-ink flex lg:flex-col">
-      <div class="px-4 py-4 lg:border-b border-ink flex items-center justify-between lg:block">
+    <!-- Sidebar: vertical rail on desktop; the tab bar takes over on phones -->
+    <aside class="lg:col-span-2 lg:border-r border-divider">
+      <div class="px-4 py-4 flex items-center justify-between lg:block border-b border-divider lg:border-b-0">
         <p class="font-bold">PRESS<span class="sup">ROOM</span></p>
-        <p class="hidden lg:block text-step--2 text-gray-500 mt-1">Issue no. 047</p>
+        <p class="text-step--2 text-gray-500 lg:mt-1">Issue no. 047</p>
       </div>
-      <nav class="flex lg:flex-col flex-1 overflow-x-auto" aria-label="Dashboard">
+      <nav class="hidden lg:flex lg:flex-col gap-1 px-2 mt-2" aria-label="Dashboard">
         <a href="#" aria-current="page"
-          class="px-4 py-3 text-step--1 font-bold bg-ink text-paper whitespace-nowrap">OVERVIEW</a>
-        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">ISSUES</a>
-        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">SUBSCRIBERS</a>
-        <a href="#" class="px-4 py-3 text-step--1 hover:bg-gray-100 whitespace-nowrap">SETTINGS</a>
+          class="flex items-center gap-3 px-3 py-2.5 text-step--1 font-bold bg-ink text-paper rounded">
+          <i class="icon" data-icon="dashboard" aria-hidden="true"></i>OVERVIEW</a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-step--1 hover:bg-surface-1 rounded">
+          <i class="icon" data-icon="file" aria-hidden="true"></i>ISSUES</a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-step--1 hover:bg-surface-1 rounded">
+          <i class="icon" data-icon="users" aria-hidden="true"></i>SUBSCRIBERS</a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-step--1 hover:bg-surface-1 rounded">
+          <i class="icon" data-icon="settings" aria-hidden="true"></i>SETTINGS</a>
       </nav>
-      <div class="hidden lg:block px-4 py-4 border-t border-hairline border-gray-300">
+      <div class="hidden lg:block px-4 py-4 mt-4 border-t border-hairline border-divider">
         <a href="../examples.html" class="text-step--2 text-gray-600 hover:underline underline-offset-4">← MONO /
           EXAMPLES</a>
       </div>
@@ -45,15 +52,15 @@
     <!-- Main -->
     <main class="lg:col-span-10">
       <!-- Top bar -->
-      <div class="flex flex-wrap items-center justify-between gap-4 px-4 lg:px-8 py-4 border-b border-ink">
-        <div>
+      <div class="flex flex-wrap items-center justify-between gap-4 px-4 lg:px-8 py-4 border-b border-divider">
+        <div class="min-w-0">
           <h1 class="text-step-2 font-bold">Overview</h1>
           <p class="text-step--2 text-gray-500">Tuesday, 10 June — all numbers fictional</p>
         </div>
         <div class="flex items-center gap-3">
-          <div class="dropdown" data-mono-dropdown>
+          <div class="dropdown hidden sm:inline-block" data-mono-dropdown>
             <button type="button" class="btn btn-secondary btn-sm" aria-expanded="false" aria-haspopup="true">Export
-              ▾</button>
+              <i class="icon icon-sm" data-icon="chevron-down" aria-hidden="true"></i></button>
             <ul class="dropdown-menu" hidden>
               <li><button type="button" data-mono-toast="Exported as CSV.">As CSV</button></li>
               <li><button type="button" data-mono-toast="Exported as JSON.">As JSON</button></li>
@@ -61,38 +68,37 @@
             </ul>
           </div>
           <button type="button" class="btn btn-sm" data-mono-toast="Dashboard saved.">Save</button>
-          <button type="button" data-mono-invert
-            class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-            title="Swap ink and paper">INVERT</button>
+          <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+            aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
         </div>
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 border-b border-ink">
-        <div class="p-6 border-r border-hairline border-gray-300">
+      <!-- Stats: shade-separated panels; numbers are fluid so phones never clip -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 px-4 lg:px-8 py-6">
+        <div class="panel p-4 lg:p-6 min-w-0">
           <p class="meta">Subscribers</p>
-          <p class="text-step-5 font-bold mt-2">12,408</p>
-          <p class="text-step--1 text-gray-600 mt-1">▲ 312 this week</p>
+          <p class="text-step-display font-bold mt-2">12,408</p>
+          <p class="text-step--2 lg:text-step--1 text-gray-600 mt-1">▲ 312 this week</p>
         </div>
-        <div class="p-6 lg:border-r border-hairline border-gray-300">
+        <div class="panel p-4 lg:p-6 min-w-0">
           <p class="meta">Open rate</p>
-          <p class="text-step-5 font-bold mt-2">61%</p>
-          <p class="text-step--1 text-gray-600 mt-1">▲ 4 pts vs. last issue</p>
+          <p class="text-step-display font-bold mt-2">61%</p>
+          <p class="text-step--2 lg:text-step--1 text-gray-600 mt-1">▲ 4 pts vs. last issue</p>
         </div>
-        <div class="p-6 border-r border-hairline border-gray-300 border-t lg:border-t-0">
+        <div class="panel p-4 lg:p-6 min-w-0">
           <p class="meta">Issues sent</p>
-          <p class="text-step-5 font-bold mt-2">47</p>
-          <p class="text-step--1 text-gray-600 mt-1">— streak intact</p>
+          <p class="text-step-display font-bold mt-2">47</p>
+          <p class="text-step--2 lg:text-step--1 text-gray-600 mt-1">— streak intact</p>
         </div>
-        <div class="p-6 border-t lg:border-t-0">
+        <div class="panel p-4 lg:p-6 min-w-0">
           <p class="meta">Unsubscribes</p>
-          <p class="text-step-5 font-bold mt-2">9</p>
-          <p class="text-step--1 text-gray-600 mt-1">▼ they wanted color</p>
+          <p class="text-step-display font-bold mt-2">9</p>
+          <p class="text-step--2 lg:text-step--1 text-gray-600 mt-1">▼ they wanted color</p>
         </div>
       </div>
 
       <!-- Tabs + table -->
-      <div class="px-4 lg:px-8 py-8">
+      <div class="px-4 lg:px-8 pb-8 pt-2">
         <div class="tabs" role="tablist" aria-label="Issue data">
           <button class="tab" role="tab" id="tab-recent" aria-controls="panel-recent" aria-selected="true"
             type="button">Recent issues</button>
@@ -101,7 +107,7 @@
         </div>
 
         <div class="tabpanel" id="panel-recent" role="tabpanel" aria-labelledby="tab-recent">
-          <div class="overflow-x-auto">
+          <div class="table-scroll">
             <table class="table table-striped">
               <caption class="sr-only">Recent issues and their performance</caption>
               <thead>
@@ -117,28 +123,28 @@
                 <tr>
                   <td>047</td>
                   <td>Grayscale is a feature</td>
-                  <td>10 Jun</td>
+                  <td class="whitespace-nowrap">10 Jun</td>
                   <td>61%</td>
-                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                  <td><span class="panel-raised px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
                 </tr>
                 <tr>
                   <td>046</td>
                   <td>In defense of the hairline</td>
-                  <td>03 Jun</td>
+                  <td class="whitespace-nowrap">03 Jun</td>
                   <td>58%</td>
-                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                  <td><span class="panel-raised px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
                 </tr>
                 <tr>
                   <td>045</td>
                   <td>Whitespace is not empty</td>
-                  <td>27 May</td>
+                  <td class="whitespace-nowrap">27 May</td>
                   <td>64%</td>
-                  <td><span class="border-hairline border-ink px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
+                  <td><span class="panel-raised px-2 py-0.5 text-step--2 tracking-wide">SENT</span></td>
                 </tr>
                 <tr>
                   <td>044</td>
                   <td>The case against beige</td>
-                  <td>20 May</td>
+                  <td class="whitespace-nowrap">20 May</td>
                   <td>57%</td>
                   <td><span class="bg-ink text-paper px-2 py-0.5 text-step--2 tracking-wide">ARCHIVED</span></td>
                 </tr>
@@ -147,38 +153,90 @@
           </div>
         </div>
 
+        <!-- Drafts: the stacked table — labelled cards on phones -->
         <div class="tabpanel" id="panel-drafts" role="tabpanel" aria-labelledby="tab-drafts" hidden>
-          <div class="overflow-x-auto">
-            <table class="table">
-              <caption class="sr-only">Draft issues</caption>
-              <thead>
-                <tr>
-                  <th scope="col">No.</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Last edited</th>
-                  <th scope="col"><span class="sr-only">Actions</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>048</td>
-                  <td>Kerning is a love language</td>
-                  <td>Today</td>
-                  <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
-                </tr>
-                <tr>
-                  <td>049</td>
-                  <td>Untitled (but confident)</td>
-                  <td>Yesterday</td>
-                  <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="table table-stack">
+            <caption class="sr-only">Draft issues</caption>
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Last edited</th>
+                <th scope="col"><span class="sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="No.">048</td>
+                <td data-label="Subject">Kerning is a love language</td>
+                <td data-label="Edited">Today</td>
+                <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
+              </tr>
+              <tr>
+                <td data-label="No.">049</td>
+                <td data-label="Subject">Untitled (but confident)</td>
+                <td data-label="Edited">Yesterday</td>
+                <td><button type="button" class="btn btn-ghost btn-sm" data-mono-toast="Draft opened.">Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>
   </div>
+
+  <!-- App tab bar: phone navigation with a mega sheet for the rest -->
+  <nav class="tabbar lg:hidden" aria-label="Dashboard">
+    <a href="#" class="tabbar-item" aria-current="page">
+      <i class="icon" data-icon="dashboard" aria-hidden="true"></i><span>OVERVIEW</span>
+    </a>
+    <a href="#" class="tabbar-item">
+      <i class="icon" data-icon="file" aria-hidden="true"></i><span>ISSUES</span>
+    </a>
+    <a href="#" class="tabbar-item">
+      <i class="icon" data-icon="users" aria-hidden="true"></i><span>SUBS</span>
+    </a>
+    <button type="button" class="tabbar-item" data-mono-sheet-open="dash-sheet" aria-expanded="false">
+      <i class="icon" data-icon="more" aria-hidden="true"></i><span>MORE</span>
+    </button>
+  </nav>
+
+  <dialog class="sheet" id="dash-sheet" aria-label="More dashboard options">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="flex items-center justify-between mb-2">
+      <p class="meta">Pressroom — everything else</p>
+      <button type="button" class="btn-icon" data-mono-sheet-close aria-label="Close">
+        <i class="icon" data-icon="close" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+      <a href="#" class="sheet-link">
+        <i class="icon" data-icon="settings" aria-hidden="true"></i>
+        <span><span class="sheet-link-title block">SETTINGS</span>
+          <span class="sheet-link-desc block">Sender name, schedule, monochrome enforcement.</span></span>
+      </a>
+      <a href="#" class="sheet-link">
+        <i class="icon" data-icon="edit" aria-hidden="true"></i>
+        <span><span class="sheet-link-title block">NEW ISSUE</span>
+          <span class="sheet-link-desc block">No. 048 won't write itself.</span></span>
+      </a>
+      <button type="button" class="sheet-link text-left w-full" data-mono-toast="Exported as CSV.">
+        <i class="icon" data-icon="download" aria-hidden="true"></i>
+        <span><span class="sheet-link-title block">EXPORT CSV</span>
+          <span class="sheet-link-desc block">Numbers, comma-separated, colorless.</span></span>
+      </button>
+      <button type="button" class="sheet-link text-left w-full" data-mono-toast="Exported as JSON.">
+        <i class="icon" data-icon="code" aria-hidden="true"></i>
+        <span><span class="sheet-link-title block">EXPORT JSON</span>
+          <span class="sheet-link-desc block">For machines with taste.</span></span>
+      </button>
+      <a href="../examples.html" class="sheet-link">
+        <i class="icon" data-icon="arrow-right" aria-hidden="true"></i>
+        <span><span class="sheet-link-title block">MONO / EXAMPLES</span>
+          <span class="sheet-link-desc block">Back to the gallery of real pages.</span></span>
+      </a>
+    </div>
+  </dialog>
 </body>
 
 </html>

@@ -1,61 +1,229 @@
 /* MONO — shared behaviors. Vanilla JS, no dependencies.
-   Wires up: invert toggle, mobile menu, tabs, modals, dropdowns,
-   tooltips-on-focus, toasts, copy buttons, range outputs. */
+   Wires up: invert toggle, the phone tab bar + mega sheet, tabs, modals,
+   dropdowns, tooltips-on-focus, toasts, copy buttons, range outputs. */
 (function () {
   "use strict";
 
-  /* ----- INVERT (ink/paper swap, persisted) ------------------------------ */
-  function setTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-    try {
-      localStorage.setItem("mono-theme", theme);
-    } catch (e) {
-      /* storage unavailable — toggle still works for this page */
-    }
+  /* ----- INVERT (ink/paper swap, persisted via monoTheme) ---------------- */
+  function syncInvertButtons() {
+    var dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll("[data-mono-invert]").forEach(function (btn) {
-      btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      btn.setAttribute("aria-pressed", dark ? "true" : "false");
     });
   }
 
   document.querySelectorAll("[data-mono-invert]").forEach(function (btn) {
-    btn.setAttribute(
-      "aria-pressed",
-      document.documentElement.dataset.theme === "dark" ? "true" : "false"
-    );
     btn.addEventListener("click", function () {
       var next =
         document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      setTheme(next);
+      if (window.monoTheme) {
+        window.monoTheme.set({ theme: next });
+      } else {
+        document.documentElement.dataset.theme = next;
+      }
+      syncInvertButtons();
     });
   });
+  syncInvertButtons();
+  if (window.monoTheme) window.monoTheme.onChange(syncInvertButtons);
 
-  /* ----- MOBILE MENU ------------------------------------------------------ */
-  var menuBtn = document.querySelector("[data-mono-menu]");
-  var menu = menuBtn && document.getElementById(menuBtn.getAttribute("aria-controls"));
+  /* ----- SITE TAB BAR + MEGA SHEET (phones) -------------------------------
+     Injected on pages that declare data-mono-nav on <body>, so the eight
+     site pages share one source of truth. Example pages ship their own
+     static tab bars instead. ----------------------------------------------- */
+  var PAGES = [
+    { href: "index.html", icon: "home", title: "Home", short: "HOME", desc: "The thesis, the index, the system in one screen." },
+    { href: "components.html", icon: "grid", title: "Components", short: "KIT", desc: "Buttons to toasts — accessible and copy-paste ready." },
+    { href: "typography.html", icon: "type", title: "Typography", short: "TYPE", desc: "Six faces, one scale, and the quiet rules of text." },
+    { href: "layout.html", icon: "layout", title: "Layout", desc: "The twelve-column grid as a spec sheet." },
+    { href: "gallery.html", icon: "image", title: "Gallery", desc: "Typographic compositions built from the tokens." },
+    { href: "customizer.html", icon: "tune", title: "Customizer", desc: "The tune layer, documented token by token." },
+    { href: "examples.html", icon: "file", title: "Examples", desc: "Login, article, dashboard, pricing — real pages." },
+    { href: "about.html", icon: "info", title: "About", desc: "The manifesto: why constraint is the point." },
+  ];
+  var TABBAR_ITEMS = ["index.html", "components.html", "typography.html"];
 
-  function closeMenu() {
-    if (!menu || menu.hidden) return;
-    menu.hidden = true;
-    menuBtn.setAttribute("aria-expanded", "false");
-    menuBtn.textContent = "MENU";
-    menuBtn.focus();
+  function currentPage() {
+    var path = location.pathname.split("/").pop() || "index.html";
+    return path;
   }
 
-  if (menuBtn && menu) {
-    menuBtn.addEventListener("click", function () {
-      var open = menu.hidden;
-      menu.hidden = !open;
-      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      menuBtn.textContent = open ? "CLOSE" : "MENU";
-      if (open) {
-        var first = menu.querySelector("a");
-        if (first) first.focus();
-      }
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === "text") node.textContent = attrs[k];
+      else node.setAttribute(k, attrs[k]);
     });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeMenu();
+    (children || []).forEach(function (c) {
+      node.appendChild(c);
+    });
+    return node;
+  }
+
+  function icon(name) {
+    return el("i", { class: "icon", "data-icon": name, "aria-hidden": "true" });
+  }
+
+  function buildSiteNav() {
+    var here = currentPage();
+
+    /* Tab bar: three destinations + TUNE + MORE */
+    var bar = el("nav", { class: "tabbar lg:hidden", "aria-label": "Primary" });
+    TABBAR_ITEMS.forEach(function (href) {
+      var page = PAGES.filter(function (p) { return p.href === href; })[0];
+      var a = el("a", { class: "tabbar-item", href: page.href }, [
+        icon(page.icon),
+        el("span", { text: page.short || page.title.toUpperCase() }),
+      ]);
+      if (here === page.href) a.setAttribute("aria-current", "page");
+      bar.appendChild(a);
+    });
+    var tuneBtn = el(
+      "button",
+      { class: "tabbar-item", type: "button", "data-mono-tune-open": "" },
+      [icon("tune"), el("span", { text: "TUNE" })]
+    );
+    bar.appendChild(tuneBtn);
+    var moreBtn = el(
+      "button",
+      {
+        class: "tabbar-item",
+        type: "button",
+        "aria-expanded": "false",
+        "data-mono-sheet-open": "mono-site-sheet",
+      },
+      [icon("more"), el("span", { text: "MORE" })]
+    );
+    if (here !== "" && TABBAR_ITEMS.indexOf(here) === -1) {
+      moreBtn.setAttribute("aria-current", "true");
+    }
+    bar.appendChild(moreBtn);
+
+    /* Mega sheet: every page with an icon and a one-liner, plus quick
+       theme/structure toggles. */
+    var sheet = el("dialog", {
+      class: "sheet",
+      id: "mono-site-sheet",
+      "aria-label": "All pages and quick settings",
+    });
+    sheet.appendChild(el("div", { class: "sheet-handle", "aria-hidden": "true" }));
+
+    var head = el("div", { class: "flex items-center justify-between mb-2" });
+    head.appendChild(el("p", { class: "meta", text: "MONO — everywhere" }));
+    var closeBtn = el(
+      "button",
+      { class: "btn-icon", type: "button", "data-mono-sheet-close": "", "aria-label": "Close menu" },
+      [icon("close")]
+    );
+    head.appendChild(closeBtn);
+    sheet.appendChild(head);
+
+    var grid = el("div", { class: "grid grid-cols-1 sm:grid-cols-2 gap-1" });
+    PAGES.forEach(function (page) {
+      var link = el("a", { class: "sheet-link", href: page.href }, [
+        icon(page.icon),
+        el("span", {}, [
+          el("span", { class: "sheet-link-title block", text: page.title.toUpperCase() }),
+          el("span", { class: "sheet-link-desc block", text: page.desc }),
+        ]),
+      ]);
+      if (here === page.href) link.setAttribute("aria-current", "page");
+      grid.appendChild(link);
+    });
+    sheet.appendChild(grid);
+
+    /* Quick toggles */
+    var quick = el("div", { class: "mt-4 pt-4 grid grid-cols-2 gap-3", style: "border-top: 1px solid var(--divider)" });
+    quick.appendChild(buildQuickSeg("Theme", "theme", [
+      ["light", "LIGHT"],
+      ["dark", "DARK"],
+      ["system", "AUTO"],
+    ]));
+    quick.appendChild(buildQuickSeg("Structure", "structure", [
+      ["outlined", "LINES"],
+      ["soft", "SOFT"],
+      ["minimal", "MIN"],
+    ]));
+    sheet.appendChild(quick);
+
+    document.body.appendChild(bar);
+    document.body.appendChild(sheet);
+    document.body.classList.add("has-tabbar", "tabbar-tune");
+    if (window.monoIcons) window.monoIcons.apply(document.body);
+  }
+
+  function buildQuickSeg(label, key, options) {
+    var wrap = el("div", {});
+    wrap.appendChild(el("p", { class: "tune-label mb-1", text: label }));
+    var seg = el("div", { class: "seg", role: "group", "aria-label": label });
+    options.forEach(function (opt) {
+      var b = el("button", { type: "button", text: opt[1], "data-value": opt[0] });
+      seg.appendChild(b);
+      b.addEventListener("click", function () {
+        if (window.monoTheme) {
+          var patch = {};
+          patch[key] = opt[0];
+          window.monoTheme.set(patch);
+        }
+        syncSeg();
+      });
+    });
+    function syncSeg() {
+      if (!window.monoTheme) return;
+      var val = window.monoTheme.get()[key];
+      seg.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-value") === val ? "true" : "false");
+      });
+    }
+    syncSeg();
+    if (window.monoTheme) window.monoTheme.onChange(syncSeg);
+    wrap.appendChild(seg);
+    return wrap;
+  }
+
+  if (document.body.hasAttribute("data-mono-nav")) {
+    buildSiteNav();
+  }
+
+  /* ----- SHEETS (bottom sheets via native <dialog>) ----------------------- */
+  function wireSheets() {
+    document.querySelectorAll("[data-mono-sheet-open]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var sheet = document.getElementById(
+          btn.getAttribute("data-mono-sheet-open")
+        );
+        if (!sheet) return;
+        sheet.showModal();
+        btn.setAttribute("aria-expanded", "true");
+        sheet.addEventListener(
+          "close",
+          function () {
+            btn.setAttribute("aria-expanded", "false");
+          },
+          { once: true }
+        );
+      });
+    });
+
+    document.querySelectorAll("dialog.sheet").forEach(function (sheet) {
+      sheet.addEventListener("click", function (e) {
+        if (e.target === sheet) sheet.close();
+      });
+      sheet.querySelectorAll("[data-mono-sheet-close]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          sheet.close();
+        });
+      });
+      /* navigating away should close it, so back-button users don't
+         return to an open sheet */
+      sheet.querySelectorAll("a[href]").forEach(function (a) {
+        a.addEventListener("click", function () {
+          sheet.close();
+        });
+      });
     });
   }
+  wireSheets();
 
   /* ----- TABS (roving tabindex, arrow keys) ------------------------------- */
   document.querySelectorAll("[role='tablist']").forEach(function (tablist) {
@@ -102,7 +270,7 @@
     });
   });
 
-  document.querySelectorAll("dialog").forEach(function (dialog) {
+  document.querySelectorAll("dialog:not(.sheet):not(.tune)").forEach(function (dialog) {
     /* click on the backdrop (the dialog element itself) closes it */
     dialog.addEventListener("click", function (e) {
       if (e.target === dialog) dialog.close();

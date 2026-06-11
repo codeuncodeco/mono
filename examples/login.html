@@ -15,23 +15,25 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/mono-config.js"></script>
+  <script src="../js/mono-theme.js"></script>
+  <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/mono.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <script src="../js/mono-icons.js" defer></script>
   <script src="../js/mono.js" defer></script>
+  <script src="../js/customizer.js" defer></script>
 </head>
 
 <body class="bg-paper text-ink min-h-screen flex flex-col">
   <!-- Example chrome -->
-  <header class="border-b border-ink px-4 lg:px-8 h-14 flex items-center justify-between">
+  <header class="border-b border-divider px-4 lg:px-8 h-14 flex items-center justify-between">
     <a href="../examples.html" class="text-step--1 hover:underline underline-offset-4">← MONO / EXAMPLES</a>
-    <button type="button" data-mono-invert
-      class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-      title="Swap ink and paper">INVERT</button>
+    <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
   </header>
 
   <main class="flex-1 baseline-grid flex items-center justify-center px-4 py-16">
-    <div class="w-full max-w-md bg-paper border border-ink">
+    <div class="w-full max-w-md panel">
       <div class="p-8 pb-0">
         <p class="meta mb-2">Example · 01</p>
         <h1 class="text-step-3 font-bold">LED<span class="sup">GER</span></h1>

@@ -1,0 +1,13 @@
+{
+  "name": "mono",
+  "private": true,
+  "description": "MONO design system — static site. `npm run build:css` regenerates the precompiled Tailwind layers after markup changes.",
+  "scripts": {
+    "build:css": "npm run build:css:base && npm run build:css:utils",
+    "build:css:base": "tailwindcss -i build/base.css -o css/base.css --minify",
+    "build:css:utils": "tailwindcss -i build/utilities.css -o css/utilities.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

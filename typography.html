@@ -31,20 +31,23 @@
     rel="stylesheet" />
 
   <!-- MONO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/mono-config.js"></script>
+  <script src="js/mono-theme.js"></script>
+  <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/mono.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <script src="js/mono-icons.js" defer></script>
   <script src="js/mono.js" defer></script>
+  <script src="js/customizer.js" defer></script>
 </head>
 
-<body class="bg-paper text-ink min-h-screen flex flex-col">
+<body class="bg-paper text-ink min-h-screen flex flex-col" data-mono-nav>
   <a href="#main"
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">
     Skip to content
   </a>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-ink">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper border-b border-divider">
     <nav class="flex items-center justify-between px-4 lg:px-8 h-14" aria-label="Main">
       <a href="index.html" class="text-step-1 font-bold">MONO</a>
       <div class="flex items-center gap-4 lg:gap-6">
@@ -58,31 +61,16 @@
           <a href="examples.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">EXAMPLES</a>
           <a href="about.html" class="text-step--1 hover:underline decoration-2 underline-offset-8">ABOUT</a>
         </div>
-        <button type="button" data-mono-invert
-          class="text-step--2 tracking-wide border-hairline border-ink px-2 py-1 hover:bg-ink hover:text-paper transition-colors"
-          title="Swap ink and paper">INVERT</button>
-        <button type="button" data-mono-menu aria-expanded="false" aria-controls="mobile-menu"
-          class="lg:hidden text-step--1 font-bold">MENU</button>
+        <button type="button" data-mono-invert class="btn-icon" title="Swap ink and paper"
+          aria-label="Invert ink and paper"><i class="icon" data-icon="contrast" aria-hidden="true"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="lg:hidden fixed inset-0 z-40 bg-paper pt-24 px-6 overflow-y-auto">
-    <ul class="flex flex-col gap-6 border-t border-ink pt-8">
-      <li><a href="components.html" class="text-step-3 font-bold">COMPONENTS</a></li>
-      <li><a href="typography.html" class="text-step-3 font-bold underline decoration-4 underline-offset-8">TYPOGRAPHY</a></li>
-      <li><a href="layout.html" class="text-step-3 font-bold">LAYOUT</a></li>
-      <li><a href="gallery.html" class="text-step-3 font-bold">GALLERY</a></li>
-      <li><a href="customizer.html" class="text-step-3 font-bold">CUSTOMIZER</a></li>
-      <li><a href="examples.html" class="text-step-3 font-bold">EXAMPLES</a></li>
-      <li><a href="about.html" class="text-step-3 font-bold">ABOUT</a></li>
-    </ul>
-  </div>
 
   <main id="main" class="flex-1 pt-14">
     <!-- Hero -->
-    <section class="baseline-grid border-b border-ink px-4 lg:px-8 py-20 lg:py-28">
+    <section class="baseline-grid border-b border-divider px-4 lg:px-8 py-20 lg:py-28">
       <div class="max-w-6xl mx-auto">
         <p class="meta mb-6">The specimen book</p>
         <h1 class="display-xl">TYPO<span class="sup">GRAPHY</span></h1>
@@ -104,9 +92,9 @@
           or try them live in the <a href="customizer.html" class="underline underline-offset-4 text-ink">customizer</a>.
         </p>
 
-        <div class="border-t border-ink">
+        <div class="border-t border-divider">
           <!-- Space Mono -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold">Space Mono</h3>
               <p class="text-step--1 text-gray-600 mt-1">Colophon Foundry, 2016</p>
@@ -121,7 +109,7 @@
           </article>
 
           <!-- JetBrains Mono -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold" style="font-family: 'JetBrains Mono', monospace">JetBrains Mono</h3>
               <p class="text-step--1 text-gray-600 mt-1">JetBrains, 2020</p>
@@ -136,7 +124,7 @@
           </article>
 
           <!-- IBM Plex Mono -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold" style="font-family: 'IBM Plex Mono', monospace">IBM Plex Mono</h3>
               <p class="text-step--1 text-gray-600 mt-1">Bold Monday for IBM, 2017</p>
@@ -151,7 +139,7 @@
           </article>
 
           <!-- Fragment Mono -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold" style="font-family: 'Fragment Mono', monospace">Fragment Mono</h3>
               <p class="text-step--1 text-gray-600 mt-1">Wei Huang, 2022</p>
@@ -166,7 +154,7 @@
           </article>
 
           <!-- Courier Prime -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold" style="font-family: 'Courier Prime', monospace">Courier Prime</h3>
               <p class="text-step--1 text-gray-600 mt-1">Alan Dague-Greene, 2013</p>
@@ -181,7 +169,7 @@
           </article>
 
           <!-- Spline Sans Mono -->
-          <article class="border-b border-ink py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+          <article class="border-b border-divider py-10 grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-4">
               <h3 class="text-step-1 font-bold" style="font-family: 'Spline Sans Mono', monospace">Spline Sans Mono</h3>
               <p class="text-step--1 text-gray-600 mt-1">SHK &amp; Google Fonts, 2022</p>
@@ -199,7 +187,7 @@
     </section>
 
     <!-- 02 Type scale -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-4">02 — Type scale</h2>
         <p class="measure text-step--1 text-gray-600 mb-12">
@@ -208,111 +196,111 @@
           recomputes the whole scale from any base and ratio you choose.
         </p>
 
-        <div class="border-t border-ink">
+        <div class="border-t border-divider">
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step -2</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">0.64rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step--2">Footnotes and fine print</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step -2</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">0.64rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step--2">Footnotes and fine print</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step -1</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">0.8rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step--1">Captions, labels, metadata</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step -1</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">0.8rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step--1">Captions, labels, metadata</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 0</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">1rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-0">Body text, the baseline</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 0</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">1rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-0">Body text, the baseline</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 1</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">1.25rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-1">Lead paragraphs</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 1</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">1.25rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-1">Lead paragraphs</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 2</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">1.563rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-2 font-bold">Minor headings</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 2</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">1.563rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-2 font-bold">Minor headings</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 3</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">1.953rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-3 font-bold">Section headings</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 3</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">1.953rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-3 font-bold">Section headings</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 4</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">2.441rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-4 font-bold">Page headings</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 4</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">2.441rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-4 font-bold">Page headings</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 5</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">3.052rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-5 font-bold">Statements</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 5</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">3.052rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-5 font-bold">Statements</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 6</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">3.815rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-6 font-bold">Display</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 6</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">3.815rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-6 font-bold">Display</span>
           </div>
-          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-ink py-4">
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">step 7</span>
-            <span class="col-span-3 sm:col-span-2 text-step--1 text-gray-600">4.768rem</span>
-            <span class="col-span-6 sm:col-span-8 text-step-7 font-bold">Hero</span>
+          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-divider py-4">
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">step 7</span>
+            <span class="col-span-6 sm:col-span-2 text-step--1 text-gray-600">4.768rem</span>
+            <span class="col-span-12 sm:col-span-8 text-step-7 font-bold">Hero</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 03 Weight & style -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">03 — Weight &amp; style</h2>
-        <div class="border-t border-ink">
+        <div class="border-t border-divider">
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">regular / 400</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2">Speak plainly.</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">regular / 400</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2">Speak plainly.</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">bold / 700</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 font-bold">Speak firmly.</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">bold / 700</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 font-bold">Speak firmly.</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">italic</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 italic">Speak softly.</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">italic</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 italic">Speak softly.</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">underline</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 underline decoration-2 underline-offset-4">Speak
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">underline</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 underline decoration-2 underline-offset-4">Speak
               pointedly.</span>
           </div>
-          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-ink py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">muted / gray-500</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 text-gray-500">Speak quietly.</span>
+          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-divider py-5">
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">muted / gray-500</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 text-gray-500">Speak quietly.</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 04 Tracking -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">04 — Tracking</h2>
-        <div class="border-t border-ink">
+        <div class="border-t border-divider">
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">-0.05em</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 font-bold" style="letter-spacing: -0.05em">COMPRESSION</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">-0.05em</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 font-bold" style="letter-spacing: -0.05em">COMPRESSION</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">0em</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 font-bold">NEUTRALITY</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">0em</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 font-bold">NEUTRALITY</span>
           </div>
           <div class="grid grid-cols-12 gap-4 items-baseline border-b border-hairline border-gray-300 py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">0.12em</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 font-bold tracking-wide">EMPHASIS</span>
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">0.12em</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 font-bold tracking-wide">EMPHASIS</span>
           </div>
-          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-ink py-5">
-            <span class="col-span-4 sm:col-span-3 text-step--1 text-gray-600">0.3em</span>
-            <span class="col-span-8 sm:col-span-9 text-step-2 font-bold" style="letter-spacing: 0.3em">AIRINESS</span>
+          <div class="grid grid-cols-12 gap-4 items-baseline border-b border-divider py-5">
+            <span class="col-span-12 sm:col-span-3 text-step--1 text-gray-600">0.3em</span>
+            <span class="col-span-12 sm:col-span-9 text-step-2 font-bold" style="letter-spacing: 0.3em">AIRINESS</span>
           </div>
         </div>
         <p class="text-step--1 text-gray-600 mt-6 measure">
@@ -323,7 +311,7 @@
     </section>
 
     <!-- 05 Leading -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">05 — Leading</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -353,7 +341,7 @@
     </section>
 
     <!-- 06 Measure -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="meta mb-12">06 — Measure</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -381,21 +369,21 @@
     </section>
 
     <!-- CTA -->
-    <section class="px-4 lg:px-8 py-20 border-t border-ink bg-ink text-paper">
+    <section class="px-4 lg:px-8 py-20 border-t border-divider bg-ink text-paper">
       <div class="max-w-6xl mx-auto">
         <p class="text-step-3 font-bold measure">Set your own scale.</p>
         <p class="text-step--1 text-gray-400 mt-4 measure">
           Pick a face, a base size, and a ratio — watch the whole system
           recompose, then copy the tokens home.
         </p>
-        <a href="customizer.html" class="btn btn-secondary mt-8"
-          style="border-color: var(--paper); color: var(--paper)">Open the customizer</a>
+        <a href="customizer.html" class="btn mt-8"
+          style="background-color: var(--paper); color: var(--ink); border-color: var(--paper)">Open the customizer</a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-ink px-4 lg:px-8 py-8">
+  <footer class="border-t border-divider px-4 lg:px-8 py-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
       <a href="https://layogtima.com" target="_blank" rel="noopener noreferrer" class="text-step-0 font-bold">AMIT</a>
       <p class="text-step--1 text-gray-600">
